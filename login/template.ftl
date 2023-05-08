@@ -35,29 +35,17 @@
         </#list>
     </#if>
     <link rel="stylesheet" href="${url.resourcesPath}/css/login.css">
+    <link rel="stylesheet" href="${url.resourcesPath}/font-awesome/css/font-awesome.min.css">
 </head>
 
 <body class="${properties.kcBodyClass!}">
 <div class="${properties.kcLoginClass!}">
     <div id="kc-header" class="${properties.kcHeaderClass!}">
-        <div id="kc-header-wrapper"
-             class="${properties.kcHeaderWrapperClass!}">${kcSanitize(msg("loginTitleHtml",(realm.displayNameHtml!'')))?no_esc}</div>
     </div>
     <div class="${properties.kcFormCardClass!}">
         <header class="${properties.kcFormHeaderClass!}">
             <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
-                <div id="kc-locale">
-                    <div id="kc-locale-wrapper" class="${properties.kcLocaleWrapperClass!}">
-                        <div class="kc-dropdown" id="kc-locale-dropdown">
-                            <a href="#" id="kc-current-locale-link">${locale.current}</a>
-                            <ul>
-                                <#list locale.supported as l>
-                                    <li class="kc-dropdown-item"><a href="${l.url}">${l.label}</a></li>
-                                </#list>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+                
         </#if>
         <#if !(auth?has_content && auth.showUsername() && !auth.showResetCredentials())>
             <#if displayRequiredFields>

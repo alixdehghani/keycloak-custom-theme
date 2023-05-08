@@ -1,7 +1,149 @@
-body {
-    font-family: "Lato", sans-serif;
+@font-face {
+    font-family: yekan;
+    src: url("../fonts/yekan.otf") format("opentype");
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: yekan;
+    src: url("../fonts/yekan.otf") format("opentype");
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: yekan;
+    src: url("../fonts/yekan.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: yekan;
+    src: url("../fonts/yekan.otf") format("opentype");
     font-weight: 400;
-    /*font-size: 16px;*/
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: yekan;
+    src: url("../fonts/yekan.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: yekan;
+    src: url("../fonts/yekan.otf") format("opentype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: yekan;
+    src: url("../fonts/yekan.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: yekan;
+    src: url("../fonts/yekan.otf") format("opentype");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: yekan;
+    src: url("../fonts/yekan.otf") format("opentype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Opensans;
+    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Opensans;
+    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Opensans;
+    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Opensans;
+    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Opensans;
+    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Opensans;
+    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Opensans;
+    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Opensans;
+    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Opensans;
+    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: yekan, Opensans, "Lato", sans-serif;
     line-height: 1.7;
     color: $color-grey-dark;
 }
@@ -22,7 +164,7 @@ body {
         animation-name: moveInLeft;
         animation-duration: 1s;
         animation-timing-function: ease-out;
-        
+
         @include respond(phone) {
             letter-spacing: 1rem;
             font-family: 5rem;
@@ -32,7 +174,7 @@ body {
         animation-iteration-count: 3;
         */
     }
-    
+
     &--sub {
         display: block;
         font-size: 2rem;
@@ -67,7 +209,7 @@ body {
 
     &:hover {
         transform: skewY(2deg) skewX(15deg) scale(1.1);
-        text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+        text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
     }
 }
 
