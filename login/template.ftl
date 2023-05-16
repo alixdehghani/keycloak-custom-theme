@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="robots" content="noindex, nofollow">
-
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <#if properties.meta?has_content>
         <#list properties.meta?split(' ') as meta>
             <meta name="${meta?split('==')[0]}" content="${meta?split('==')[1]}"/>
@@ -44,9 +44,7 @@
     </div>
     <div class="${properties.kcFormCardClass!}">
         <header class="${properties.kcFormHeaderClass!}">
-            <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
-                
-        </#if>
+            
         <#if !(auth?has_content && auth.showUsername() && !auth.showResetCredentials())>
             <#if displayRequiredFields>
                 <div class="${properties.kcContentWrapperClass!}">
@@ -134,6 +132,7 @@
 
     </div>
   </div>
+  <script src="${url.resourcesPath}/js/script.js"></script>
 </body>
 </html>
 </#macro>
