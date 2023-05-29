@@ -39,6 +39,7 @@
 </head>
 
 <body class="${properties.kcBodyClass!}">
+<img id="body-background-image" style="position: absolute;top:0;width:100%; height:100%">
 <div class="${properties.kcLoginClass!}">
     <div id="kc-header" class="${properties.kcHeaderClass!}">
     </div>

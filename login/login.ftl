@@ -51,6 +51,12 @@
                                             <input tabindex="2" id="password" placeholder="&#xf023; ${msg('password')}" class="${properties.kcInputClass!} form__input" name="password" type="password" autocomplete="off"
                                                 aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" />
                                         </div>
+                                        <div class="${properties.kcFormGroupClass!} form__group">
+                                            <input tabindex="3" id="captcha" placeholder="&#xf1c5; کد امنیتی"
+                                             required class="${properties.kcInputClass!} form__input" name="user-captcha" type="text" autocomplete="off"
+                                             oninvalid="this.setCustomValidity('لطفا مقادیر داخل عکس را وارد کنید')" oninput="setCustomValidity('')" />
+                                             <img src="${url.resourcesPath}/img/captcha.jpg" class="form__captcha"/>
+                                        </div>
                                         <div class="${properties.kcFormOptionsWrapperClass!}">
                                             <#if realm.resetPasswordAllowed>
                                                 <span><a tabindex="5" href="${url.loginResetCredentialsUrl}">
