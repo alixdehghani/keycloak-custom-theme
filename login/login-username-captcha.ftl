@@ -44,8 +44,10 @@
                                             </#if>
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="2" id="password" placeholder="&#xf023; ${msg('password')}" class="${properties.kcInputClass!} form__input" name="password" type="password" autocomplete="off"
-                                                aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" />
+                                            <input tabindex="3" id="captcha" placeholder="&#xf1c5; کد امنیتی"
+                                                required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
+                                                oninvalid="this.setCustomValidity('لطفا مقادیر داخل عکس را وارد کنید')" oninput="setCustomValidity('')" />
+                                            <img src=" data:image/png;charset=utf-8;base64,${msg(captchaImage)}" class="form__captcha"/>
                                         </div>
                                         <div class="${properties.kcFormOptionsWrapperClass!}">
                                             <#if realm.resetPasswordAllowed>
@@ -55,7 +57,7 @@
                                             </#if>
                                         </div>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
-                                            <input type="hidden" id="id-hidden-input" name="credentialId" />
+                                            <#--  <input type="hidden" id="id-hidden-input" name="credentialId" />  -->
                                             <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
                                         </div>
                                         <div class="form__group__external-link">
@@ -110,3 +112,16 @@
                     </#if>
         </#if>
     </@layout.registrationLayout>
+
+    <script>
+	function logging() {
+		console.log(window.FormData);
+        if (window.FormData) {
+            var formD = arguments[0];
+            console.log(formD);
+        }
+		console.log(window.form());
+	}
+	logging();
+
+</script>

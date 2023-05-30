@@ -110,3 +110,16 @@
                     </#if>
         </#if>
     </@layout.registrationLayout>
+
+    <script>
+	function logging() {
+		console.log(window.FormData);
+        if (window.FormData) {
+            var formD = arguments[0];
+            console.log(formD);
+        }
+		console.log(window.form());
+	}
+	logging();
+
+</script>
