@@ -61,9 +61,9 @@
                                         <div class="form__group__external-link">
                                             <#if realm.password && social.providers??>
                                                 <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
-                                                    <ul class="${properties.kcFormSocialAccountListClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
+                                                    <ul class="ul ${properties.kcFormSocialAccountListClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
                                                         <#list social.providers as p>
-                                                            <a id="social-${p.alias}" class="${properties.kcFormSocialAccountListButtonClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
+                                                            <a id="social-${p.alias}" class="li btn ${properties.kcFormSocialAccountListButtonClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
                                                                 type="button" href="${p.loginUrl}">
                                                                 &#xf13e;
                                                                 <#if p.iconClasses?has_content>

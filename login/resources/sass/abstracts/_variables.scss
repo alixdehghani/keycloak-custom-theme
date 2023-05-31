@@ -1,7 +1,17 @@
+:root {
+    --color-primary: #003171;
+    --colorprimary-light: #143673;
+    --colorprimary-dark: #0A1E4B;
+    --colorgrey-dark: #777;
+    --colorgrey-dark2: #999;
+    --colorgrey-dark5: #8E8E8E;
+    --colorwhite: #fff;
+    --colorblack: #000;
+}
 // COLORS
-$color-primary: #003171;
-$color-primary-light: #143673;
-$color-primary-dark: #0A1E4B;
+$color-primary: var(--color-primary);
+$color-primary-light: var(--colorprimary-light);
+$color-primary-dark: var(--colorprimary-dark);
 
 $color-secondary-light: #ffb900;
 $color-secondary-dark: #ff7730;
@@ -12,13 +22,13 @@ $color-tertiary-dark: #5643fa;
 $color-grey-light-1: #f7f7f7;
 $color-grey-light-2: #eee;
 
-$color-grey-dark: #777;
-$color-grey-dark-2: #999;
+$color-grey-dark: var(--colorgrey-dark);
+$color-grey-dark-2: var(--colorgrey-dark2);
 $color-grey-dark-3: #333;
 $color-grey-dark-4: #eee;
-$color-grey-dark-5: #8E8E8E;
+$color-grey-dark-5: var(--colorgrey-dark5);
 
-$color-white: #fff;
+$color-white: var(--colorwhite);
 $color-black: #000;
 $color-red: rgba(204, 0, 0, 0.8);
 

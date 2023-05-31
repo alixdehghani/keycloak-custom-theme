@@ -69,6 +69,26 @@
         animation: moveInBottom .5s ease-out .75s;
         animation-fill-mode: backwards;
     }
+
+    &:disabled {
+        background-color: $color-grey-dark-4;
+        color: $color-black;
+
+        &::after {
+            background-color: $color-grey-dark-4;
+        }
+
+        &:hover {
+            cursor: none;
+            transform: none;
+            box-shadow: none;
+    
+            &::after {
+                transform: none;
+                opacity: 1;
+            }
+        }
+    }
 }
 
 .btn-text {

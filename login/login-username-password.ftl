@@ -30,21 +30,18 @@
                                         <div class="form__group__login">
                                             <span class="form__group__login__text">ورود / ثبت نام</span>
                                         </div>
-                                        <#if messagesPerField.existsError('username','password')>
+                                        <#if messagesPerField.existsError('password')>
                                             <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
-                                                ${kcSanitize(messagesPerField.getFirstError('username','password'))?no_esc}
+                                                ${kcSanitize(messagesPerField.getFirstError('password'))?no_esc}
+                                            </span>
+                                        </#if>
+                                        <#if invalidPasswordMessage??>
+                                            <span id="input-error" aria-live="polite">
+                                                نام کاربری یافت نشد
                                             </span>
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <#if usernameEditDisabled??>
-                                                <input tabindex="1" id="username" class="${properties.kcInputClass!} form__input" name="username" value="${(login.username!'')}" type="text" disabled />
-                                                <#else>
-                                                    <input tabindex="1" id="username" placeholder="&#xf007; ${msg('username')}" class="${properties.kcInputClass!} form__input" name="username" value="${(login.username!'')}" type="text" autofocus autocomplete="off"
-                                                        aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" />
-                                            </#if>
-                                        </div>
-                                        <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="2" id="password" placeholder="&#xf023; ${msg('password')}" class="${properties.kcInputClass!} form__input" name="password" type="password" autocomplete="off"
+                                            <input tabindex="1" id="password" placeholder="&#xf023; ${msg('password')}" class="${properties.kcInputClass!} form__input" name="password" type="password" autocomplete="off"
                                                 aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" />
                                         </div>
                                         <div class="${properties.kcFormOptionsWrapperClass!}">
@@ -55,15 +52,15 @@
                                             </#if>
                                         </div>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
-                                            <input type="hidden" id="id-hidden-input" name="credentialId" />
+                                            <#--  <input type="hidden" id="id-hidden-input" name="credentialId" />  -->
                                             <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
                                         </div>
                                         <div class="form__group__external-link">
                                             <#if realm.password && social.providers??>
                                                 <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
-                                                    <ul class="${properties.kcFormSocialAccountListClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
+                                                    <ul class="ul ${properties.kcFormSocialAccountListClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
                                                         <#list social.providers as p>
-                                                            <a id="social-${p.alias}" class="${properties.kcFormSocialAccountListButtonClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
+                                                            <a id="social-${p.alias}" class="li btn ${properties.kcFormSocialAccountListButtonClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
                                                                 type="button" href="${p.loginUrl}">
                                                                 &#xf13e;
                                                                 <#if p.iconClasses?has_content>
@@ -110,16 +107,3 @@
                     </#if>
         </#if>
     </@layout.registrationLayout>
-
-    <script>
-	function logging() {
-		console.log(window.FormData);
-        if (window.FormData) {
-            var formD = arguments[0];
-            console.log(formD);
-        }
-		console.log(window.form());
-	}
-	logging();
-
-</script>

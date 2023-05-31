@@ -35,11 +35,21 @@
                                                 ${kcSanitize(messagesPerField.getFirstError('username','password'))?no_esc}
                                             </span>
                                         </#if>
+                                        <#if captchaIsNotValid??>
+                                            <span id="input-error" aria-live="polite">
+                                                کد امنیتی اشتباه است
+                                            </span>
+                                        </#if>
+                                        <#if userIsNotExist??>
+                                            <span id="input-error" aria-live="polite">
+                                                نام کاربری یافت نشد
+                                            </span>
+                                        </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
                                             <#if usernameEditDisabled??>
                                                 <input tabindex="1" id="username" class="${properties.kcInputClass!} form__input" name="username" value="${(login.username!'')}" type="text" disabled />
                                                 <#else>
-                                                    <input tabindex="1" id="username" placeholder="&#xf007; ${msg('username')}" class="${properties.kcInputClass!} form__input" name="username" value="${(login.username!'')}" type="text" autofocus autocomplete="off"
+                                                    <input tabindex="1" id="username" placeholder="&#xf007; نام کاربری" class="${properties.kcInputClass!} form__input" name="username" value="" type="text" autofocus autocomplete="off"
                                                         aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" />
                                             </#if>
                                         </div>
@@ -47,7 +57,7 @@
                                             <input tabindex="3" id="captcha" placeholder="&#xf1c5; کد امنیتی"
                                                 required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
                                                 oninvalid="this.setCustomValidity('لطفا مقادیر داخل عکس را وارد کنید')" oninput="setCustomValidity('')" />
-                                            <img src=" data:image/png;charset=utf-8;base64,${msg(captchaImage)}" class="form__captcha"/>
+                                            <img src="data:image/png;charset=utf-8;base64,${captchaImage}" class="form__captcha"/>
                                         </div>
                                         <div class="${properties.kcFormOptionsWrapperClass!}">
                                             <#if realm.resetPasswordAllowed>
@@ -57,15 +67,15 @@
                                             </#if>
                                         </div>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
-                                            <#--  <input type="hidden" id="id-hidden-input" name="credentialId" />  -->
+                                            <input type="hidden" id="id-hidden-input" name="captchaId" value="${captchaId}" />
                                             <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
                                         </div>
                                         <div class="form__group__external-link">
                                             <#if realm.password && social.providers??>
                                                 <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
-                                                    <ul class="${properties.kcFormSocialAccountListClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
+                                                    <ul class="ul ${properties.kcFormSocialAccountListClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
                                                         <#list social.providers as p>
-                                                            <a id="social-${p.alias}" class="${properties.kcFormSocialAccountListButtonClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
+                                                            <a id="social-${p.alias}" class="li btn ${properties.kcFormSocialAccountListButtonClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
                                                                 type="button" href="${p.loginUrl}">
                                                                 &#xf13e;
                                                                 <#if p.iconClasses?has_content>
@@ -112,16 +122,3 @@
                     </#if>
         </#if>
     </@layout.registrationLayout>
-
-    <script>
-	function logging() {
-		console.log(window.FormData);
-        if (window.FormData) {
-            var formD = arguments[0];
-            console.log(formD);
-        }
-		console.log(window.form());
-	}
-	logging();
-
-</script>
