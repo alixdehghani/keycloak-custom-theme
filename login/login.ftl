@@ -47,13 +47,6 @@
                                             <input tabindex="2" id="password" placeholder="&#xf023; ${msg('password')}" class="${properties.kcInputClass!} form__input" name="password" type="password" autocomplete="off"
                                                 aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" />
                                         </div>
-                                        <div class="${properties.kcFormOptionsWrapperClass!}">
-                                            <#if realm.resetPasswordAllowed>
-                                                <span><a tabindex="5" href="${url.loginResetCredentialsUrl}">
-                                                        ${msg("doForgotPassword")}
-                                                    </a></span>
-                                            </#if>
-                                        </div>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
                                             <input type="hidden" id="id-hidden-input" name="credentialId" />
                                             <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
@@ -80,7 +73,14 @@
                                                         </#list>
                                                     </ul>
                                                 </div>
-                                            </#if>
+                                            </#if>                                            
+                                                <div class="${properties.kcFormOptionsWrapperClass!}">
+                                                    <#if realm.resetPasswordAllowed>
+                                                        <span><a tabindex="5" href="${url.loginResetCredentialsUrl}">
+                                                                ${msg("doForgotPassword")}
+                                                            </a></span>
+                                                    </#if>
+                                                </div>
                                                 <a class="block" href="#" disabled>&#xf095; ویرایش شماره تلفن همراه</a>
                                         </div>
                                     </div>

@@ -67,7 +67,7 @@
                     </div>
                     <div class="col-md-10">
                         <#nested "show-username">
-                        <div id="kc-username" class="${properties.kcFormGroupClass!}">
+                        <#--  <div id="kc-username" class="${properties.kcFormGroupClass!}">
                             <label id="kc-attempted-username">${auth.attemptedUsername}</label>
                             <a id="reset-login" href="${url.loginRestartFlowUrl}">
                                 <div class="kc-login-tooltip">
@@ -75,12 +75,12 @@
                                     <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
                                 </div>
                             </a>
-                        </div>
+                        </div>  -->
                     </div>
                 </div>
             <#else>
                 <#nested "show-username">
-                <div id="kc-username" class="${properties.kcFormGroupClass!}">
+                <#--  <div id="kc-username" class="${properties.kcFormGroupClass!}">
                     <label id="kc-attempted-username">${auth.attemptedUsername}</label>
                     <a id="reset-login" href="${url.loginRestartFlowUrl}">
                         <div class="kc-login-tooltip">
@@ -88,7 +88,7 @@
                             <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
                         </div>
                     </a>
-                </div>
+                </div>  -->
             </#if>
         </#if>
       </header>
@@ -98,7 +98,7 @@
           <#-- App-initiated actions should not see warning messages about the need to complete the action -->
           <#-- during login.                                                                               -->
           <#if displayMessage && message?has_content && (message.type != 'warning' || !isAppInitiatedAction??)>
-              <div class="alert-${message.type} ${properties.kcAlertClass!} pf-m-<#if message.type = 'error'>danger<#else>${message.type}</#if>">
+              <#--  <div class="alert-${message.type} ${properties.kcAlertClass!} pf-m-<#if message.type = 'error'>danger<#else>${message.type}</#if>">
                   <div class="pf-c-alert__icon">
                       <#if message.type = 'success'><span class="${properties.kcFeedbackSuccessIcon!}"></span></#if>
                       <#if message.type = 'warning'><span class="${properties.kcFeedbackWarningIcon!}"></span></#if>
@@ -106,7 +106,7 @@
                       <#if message.type = 'info'><span class="${properties.kcFeedbackInfoIcon!}"></span></#if>
                   </div>
                       <span class="${properties.kcAlertTitleClass!}">${kcSanitize(message.summary)?no_esc}</span>
-              </div>
+              </div>  -->
           </#if>
 
           <#nested "form">

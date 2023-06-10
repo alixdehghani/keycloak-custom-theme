@@ -1,7 +1,7 @@
 <#import "template.ftl" as layout>
     <@layout.registrationLayout displayMessage=!messagesPerField.existsError('username','password') displayInfo=realm.password && realm.registrationAllowed && !registrationDisabled??; section>
         <#if section="header">
-            <#elseif section="form">            
+            <#elseif section="form">
                 <div id="kc-form" class="section-book">
                     <div id="kc-form-wrapper" class="row">
                         <div class="book">
@@ -10,10 +10,14 @@
                                     <div id="kc-locale">
                                         <div id="kc-locale-wrapper" class="${properties.kcLocaleWrapperClass!}">
                                             <div class="kc-dropdown" id="kc-locale-dropdown">
-                                                <a href="#" id="kc-current-locale-link">${locale.current}</a>
+                                                <a href="#" id="kc-current-locale-link">
+                                                    ${locale.current}
+                                                </a>
                                                 <ul>
                                                     <#list locale.supported as l>
-                                                        <li class="kc-dropdown-item"><a href="${l.url}">${l.label}</a></li>
+                                                        <li class="kc-dropdown-item"><a href="${l.url}">
+                                                                ${l.label}
+                                                            </a></li>
                                                     </#list>
                                                 </ul>
                                             </div>
@@ -28,47 +32,60 @@
                                             <h2>وزارت کار، تعاون و رفاه اجتماعی</h2>
                                         </div>
                                         <div class="form__group__login">
-                                            <span class="form__group__login__text">ورود / ثبت نام</span>
+                                            <span class="form__group__login__text">اصلاح شماره تلفن همراه</span>
                                         </div>
-                                        <#if messagesPerField.existsError('password')>
+                                        <#if messagesPerField.existsError('username','password')>
                                             <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
-                                                ${kcSanitize(messagesPerField.getFirstError('password'))?no_esc}
+                                                ${kcSanitize(messagesPerField.getFirstError('username','password'))?no_esc}
                                             </span>
                                         </#if>
-                                        <#if invalidPasswordMessage??>
+                                        <#if captchaIsNotValid??>
+                                            <span id="input-error" aria-live="polite">
+                                                کد امنیتی اشتباه است
+                                            </span>
+                                        </#if>
+                                        <#if userIsNotExist??>
                                             <span id="input-error" aria-live="polite">
                                                 نام کاربری یافت نشد
                                             </span>
                                         </#if>
+                                        <#if userIsNotEnable??>
+                                            <span id="input-error" aria-live="polite">
+                                                نام کاربری مورد نظر غیر فعال است
+                                            </span>
+                                        </#if>
+                                        <#if userIsNotOwnerOfMobile??>
+                                            <span id="input-error" aria-live="polite">
+                                                شماره موبایل وارد شده اشتباه است
+                                            </span>
+                                        </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="1" id="password" placeholder="&#xf023; ${msg('password')}" class="${properties.kcInputClass!} form__input" name="password" type="password" autocomplete="off"
-                                                aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" />
+                                            <input tabindex="1" id="nid" placeholder="&#xf007; کد ملی" class="${properties.kcInputClass!} form__input" name="username" value="" type="text" autofocus autocomplete="off" />
                                         </div>
-                                        
+                                        <div class="${properties.kcFormGroupClass!} form__group">
+                                            <input tabindex="1" id="mobile" placeholder="&#xf095; موبایل" class="${properties.kcInputClass!} form__input" name="mobile" value="" type="text" autofocus autocomplete="off" />
+                                        </div>
+                                        <div class="${properties.kcFormGroupClass!} form__group">
+                                            <input tabindex="3" id="captcha" placeholder="&#xf1c5; کد امنیتی"
+                                                required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
+                                                oninvalid="this.setCustomValidity('لطفا مقادیر داخل عکس را وارد کنید')" oninput="setCustomValidity('')" />
+                                            <img src="data:image/png;charset=utf-8;base64,${captchaImage}" class="form__captcha" />
+                                        </div>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
-                                            <#--  <input type="hidden" id="id-hidden-input" name="credentialId" />  -->
+                                            <input type="hidden" id="id-hidden-input" name="captchaId" value="${captchaId}" />
+                                            <input type="hidden" id="id-hidden-input" name="captchaId" value="${captchaId}" />
                                             <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
                                         </div>
-                                        <div class="form__group__external-link">                                            
-                                                <a class="block" href="#" disabled>&#xf095; ویرایش شماره تلفن همراه</a>                                                
-                                                <div class="${properties.kcFormOptionsWrapperClass!}">
-                                                    <#if realm.resetPasswordAllowed>                                                        
-                                                        <span><a tabindex="5" href="${url.loginResetCredentialsUrl}">
-                                                            <i class="fa-unlock-alt"></i> ${msg("doForgotPassword")}
-                                                        </a></span>
-                                                    </#if>
-                                                </div>                                       
-                                                <div id="kc-username" class="${properties.kcFormGroupClass!}">
-                                                    <#--  <label id="kc-attempted-username">${auth.attemptedUsername}</label>  -->
-                                                    <a id="reset-login" href="${url.loginRestartFlowUrl}">
-                                                    
+                                        <div class="form__group__external-link">
+                                            <div id="kc-username" class="${properties.kcFormGroupClass!}">
+                                                    <a id="reset-login" href="${url.loginRestartFlowUrl}">                                                    
                                                         <div class="kc-login-tooltip">
                                                             <#--  <i class="${properties.kcResetFlowIcon!}"></i>  -->
                                                             <i class="fa-repeat"></i>
                                                             <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
                                                         </div>
                                                     </a>
-                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </form>

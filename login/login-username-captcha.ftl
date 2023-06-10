@@ -45,6 +45,11 @@
                                                 نام کاربری یافت نشد
                                             </span>
                                         </#if>
+                                        <#if userIsNotEnable??>
+                                            <span id="input-error" aria-live="polite">
+                                                نام کاربری مورد نظر غیر فعال است
+                                            </span>
+                                        </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
                                             <#if usernameEditDisabled??>
                                                 <input tabindex="1" id="username" class="${properties.kcInputClass!} form__input" name="username" value="${(login.username!'')}" type="text" disabled />
@@ -58,13 +63,6 @@
                                                 required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
                                                 oninvalid="this.setCustomValidity('لطفا مقادیر داخل عکس را وارد کنید')" oninput="setCustomValidity('')" />
                                             <img src="data:image/png;charset=utf-8;base64,${captchaImage}" class="form__captcha"/>
-                                        </div>
-                                        <div class="${properties.kcFormOptionsWrapperClass!}">
-                                            <#if realm.resetPasswordAllowed>
-                                                <span><a tabindex="5" href="${url.loginResetCredentialsUrl}">
-                                                        ${msg("doForgotPassword")}
-                                                    </a></span>
-                                            </#if>
                                         </div>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
                                             <input type="hidden" id="id-hidden-input" name="captchaId" value="${captchaId}" />

@@ -12,6 +12,54 @@
     top: 0;
 }
 
+.time-to-live {
+    text-align: center;
+    font-size: 1.5rem;
+    color: $color-primary;
+}
+
+.sms-container {
+    // width: 20em;
+    // background-color: #ffffff;
+    padding: 0em 2em;
+    // position: absolute;
+    // transform: translate(-50%, -50%);
+    // top: 50%;
+    // left: 50%;
+    border-radius: 0.8em;
+    // box-shadow: 0 45px 60px rgba(30, 22, 1, 0.3);
+    .inputfield {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        direction: ltr;
+    }
+    .sms-input {
+        background-color: #eaedff;
+        border: 3px solid #dbeaee;
+        height: 3em;
+        width: 3em;
+        outline: none;
+        text-align: center;
+        font-size: 1.5em;
+        border-radius: 0.3em;
+        outline: none;
+        /*Hide number field arrows*/
+        -moz-appearance: textfield;
+    }
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .sms-input:disabled {
+        color: #89888b;
+    }
+    .sms-input:focus {
+        border: 3px solid #ffb800;
+    }
+}
 .section-book {
     padding: 10rem 0;
 
@@ -35,6 +83,10 @@
         left: 7px;
         max-width: 180px;
         max-height: 40px;
+
+        @include respond(tab-port) {
+            max-width: 100px;
+        }
     }
     .form__group {
         position: relative;
@@ -67,7 +119,7 @@
                     background-color: $color-primary;
                     color: $color-white;
                     text-align: center;
-                    margin: .25rem;
+                    margin: 0.25rem;
                 }
             }
             a {
@@ -75,9 +127,9 @@
                 &:link,
                 &:visited {
                     display: inline-block;
-                    font-size: 20px;
+                    font-size: 15px;
                     font-weight: 300;
-                    padding: 1rem 2rem;
+                    padding: .7rem 2rem;
                     color: $color-primary;
                     text-decoration: none;
                     text-transform: uppercase;
@@ -124,7 +176,7 @@
                 height: 15%;
                 display: flex;
                 align-items: flex-end;
-                justify-content: center; 
+                justify-content: center;
                 padding: 0 0 54px 0;
             }
         }
@@ -146,7 +198,7 @@
         //     min-height: 71vh;
         // }
 
-        @include  respond-height(big-desktop) {
+        @include respond-height(big-desktop) {
             height: 65vh;
         }
     }
