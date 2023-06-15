@@ -63,7 +63,7 @@
                                             <input tabindex="1" id="nid" placeholder="&#xf007; کد ملی" class="${properties.kcInputClass!} form__input" name="username" value="" type="text" autofocus autocomplete="off" />
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="1" id="mobile" placeholder="&#xf095; موبایل" class="${properties.kcInputClass!} form__input" name="mobile" value="" type="text" autofocus autocomplete="off" />
+                                            <input tabindex="1" id="mobile" placeholder="&#xf095; موبایل" class="${properties.kcInputClass!} form__input" name="mobile_number" value="" type="text" autofocus autocomplete="off" />
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
                                             <input tabindex="3" id="captcha" placeholder="&#xf1c5; کد امنیتی"
@@ -92,7 +92,7 @@
                                 <div class="book__form-image">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>
+                                        <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
                                     </div>
                                 </div>
                             </div>

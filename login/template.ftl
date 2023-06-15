@@ -121,13 +121,13 @@
                 </form>
             </#if>
 
-          <#if displayInfo>
+          <#--  <#if displayInfo>
               <div id="kc-info" class="${properties.kcSignUpClass!}">
                   <div id="kc-info-wrapper" class="${properties.kcInfoAreaWrapperClass!}">
                       <#nested "info">
                   </div>
               </div>
-          </#if>
+          </#if>  -->
         </div>
       </div>
 

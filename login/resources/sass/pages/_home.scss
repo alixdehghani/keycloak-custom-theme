@@ -12,6 +12,15 @@
     top: 0;
 }
 
+#kc-registration {
+    span {
+        padding: 0.7rem 2rem;
+        a {
+            padding: 0.25rem;
+        }
+    }
+}
+
 .time-to-live {
     text-align: center;
     font-size: 1.5rem;
@@ -79,10 +88,10 @@
     }
     .form__captcha {
         position: absolute;
-        top: 6px;
+        top: 5px;
         left: 7px;
         max-width: 180px;
-        max-height: 40px;
+        max-height: 35px;
 
         @include respond(tab-port) {
             max-width: 100px;
@@ -129,7 +138,7 @@
                     display: inline-block;
                     font-size: 15px;
                     font-weight: 300;
-                    padding: .7rem 2rem;
+                    padding: 0.7rem 2rem;
                     color: $color-primary;
                     text-decoration: none;
                     text-transform: uppercase;
@@ -237,6 +246,48 @@
         @include respond(tab-port) {
             padding: 27px 35px 0px 35px;
             width: 100%;
+        }
+    }
+
+    #kc-register-form {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 54px 70px 0px 70px;
+
+        .form__section {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            .custom-row {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            &__item {
+                padding: 0.5rem;
+                width: 25%;
+                @include respond(tab-port) {
+                    width: 100%;
+                }
+            }
+            &__footer {
+                width: 40%;
+                margin: 1rem auto;
+                @include respond(tab-port) {
+                    width: 100%;
+                }
+            }
+        }
+        .form__captcha {
+            top: 36px;
+            left: 10px;
+        }
+        .copyright {
+            padding: 0;
+            margin-top: 1rem;
+            text-align: center;
         }
     }
 }

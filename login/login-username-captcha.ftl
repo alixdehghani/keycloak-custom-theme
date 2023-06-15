@@ -13,7 +13,8 @@
                                                 <a href="#" id="kc-current-locale-link">${locale.current}</a>
                                                 <ul>
                                                     <#list locale.supported as l>
-                                                        <li class="kc-dropdown-item"><a href="${l.url}">${l.label}</a></li>
+                                                        <#--  <li class="kc-dropdown-item"><a href="${l.url}">${l.label}</a></li>  -->
+                                                        <li class="kc-dropdown-item"><a href="${l.url?replace('protocol/openid-connect/auth','login-actions/authenticate')}">${l.label}</a></li>
                                                     </#list>
                                                 </ul>
                                             </div>
@@ -91,14 +92,19 @@
                                                     </ul>
                                                 </div>
                                             </#if>
-                                                <a class="block" href="#" disabled>&#xf095; ویرایش شماره تلفن همراه</a>
+                                            <a class="block" href="#" disabled>&#xf095; ویرایش شماره تلفن همراه</a>
+                                            <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
+                                                <div id="kc-registration">
+                                                    <span>${msg("noAccount")} <a tabindex="6" href="${url.registrationUrl}">${msg("doRegister")}</a></span>
+                                                </div>
+                                            </#if>
                                         </div>
                                     </div>
                                 </form>
                                 <div class="book__form-image">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>
+                                        <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
                                     </div>
                                 </div>
                             </div>
