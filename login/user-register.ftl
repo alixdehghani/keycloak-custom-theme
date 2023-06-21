@@ -79,8 +79,8 @@
                                             <div class="${properties.kcFormGroupClass!} form__section__item">
                                                 <label class="form__label" for="sso_plus_user_type_input">نوع کاربر*</label><br>
                                                 <select name="sso_plus_user_type" id="sso_plus_user_type_input" class="form__input" tabindex="1">
-                                                    <option value="LEGAL" <#if sso_plus_user_type??><#if msg(sso_plus_user_type[0]) == 'LEGAL'>selected</#if></#if>>حقوقی</option>
                                                     <option value="PERSON" <#if sso_plus_user_type??><#if msg(sso_plus_user_type[0]) == 'PERSON'>selected</#if></#if>>حقیقی</option>
+                                                    <option value="LEGAL" <#if sso_plus_user_type??><#if msg(sso_plus_user_type[0]) == 'LEGAL'>selected</#if></#if>>حقوقی</option>
                                                 </select>
                                             </div>
                                             <div id="dynamic-form-section"></div>  
@@ -140,11 +140,7 @@
         });
         const dynamicFormElement = document.getElementById('dynamic-form-section');
         const PERSON_ELEMENTS = () => create(`<div class="custom-row">
-                                                <div class="${properties.kcFormGroupClass!} form__section__item">                                            
-                                                    <label class="form__label" for="username_input">نام کاربری*</label><br>
-                                                    <input tabindex="2" id="username_input" required title="" class="${properties.kcInputClass!} form__input" name="username" value="<#if username??>${msg(username[0])}</#if>" type="text" autofocus autocomplete="on"
-                                                                pattern="^[0-9]{10}$" oninvalid="this.setCustomValidity('کد ملی اشتباه است')" oninput="setCustomValidity('')"/>
-                                                </div>
+                                                <input tabindex="2" id="username_input" type="hidden" title="" class="${properties.kcInputClass!} form__input" name="username" value="<#if username??>${msg(username[0])}</#if>"/>
                                                 <div class="${properties.kcFormGroupClass!} form__section__item">
                                                 <label class="form__label" for="firstname_input">نام*</label><br>
                                                     <input tabindex="3" id="firstname_input" required title="" class="${properties.kcInputClass!} form__input" name="firstname" value="<#if firstname??>${msg(firstname[0])}</#if>" type="text" autofocus autocomplete="on"
@@ -207,11 +203,7 @@
                                             </div>
                                             </div>`);
         const LEGAL_ELEMENTS = () => create(`<div class="custom-row">
-                                                <div class="${properties.kcFormGroupClass!} form__section__item">                                            
-                                                    <label class="form__label" for="username_input">نام کاربری*</label><br>
-                                                    <input tabindex="2" id="username_input" required title="" class="${properties.kcInputClass!} form__input" name="username" value="<#if username??>${msg(username[0])}</#if>" type="text" autofocus autocomplete="on"
-                                                                />
-                                                </div>
+                                                <input tabindex="2" id="username_input" type="hidden" title="" class="${properties.kcInputClass!} form__input" name="username" value="<#if username??>${msg(username[0])}</#if>"/>
                                                 <div class="${properties.kcFormGroupClass!} form__section__item">
                                                 <label class="form__label" for="firstname_input">نام شرکت*</label><br>
                                                     <input tabindex="3" id="firstname_input" required title="" class="${properties.kcInputClass!} form__input" name="firstname" value="<#if firstname??>${msg(firstname[0])}</#if>" type="text" autofocus autocomplete="on"
@@ -267,17 +259,19 @@
                                             </div>
                                             </div>`);
         const mySelect = document.getElementById('sso_plus_user_type_input');
+        let usernameInput = document.getElementById('username_input');
+        let nationalCodeInputElement = document.getElementById('sso_plus_user_national_code_key_input');
         mySelect.onchange = (event) => {
             const inputText = event.target.value;
             const removedNode = document.querySelector('.custom-row');
             if(removedNode) {
                 removedNode.parentNode.removeChild(removedNode);
             }
-            if(inputText === 'PERSON') {                
-                dynamicFormElement.parentNode.appendChild(PERSON_ELEMENTS(),dynamicFormElement);
+            if(inputText === 'PERSON') {       
+                addDynamicForm('PERSON');
             }
-            if(inputText === 'LEGAL') {
-                dynamicFormElement.parentNode.appendChild(LEGAL_ELEMENTS(),dynamicFormElement);
+            if(inputText === 'LEGAL') {     
+                addDynamicForm('LEGAL');
             }
         }
 
@@ -290,15 +284,33 @@
             }
             return frag;
         }
-        const selectValue = mySelect.value;
-        if(selectValue) {
-            if(selectValue === 'PERSON') {                
+
+        function addDynamicForm(name) {
+            if(nationalCodeInputElement?.removeEventListener) {
+                nationalCodeInputElement.removeEventListener('input', copyValue);
+            }
+            if(name === 'PERSON') {                
                 dynamicFormElement.parentNode.appendChild(PERSON_ELEMENTS(),dynamicFormElement);
             }
-            if(selectValue === 'LEGAL') {
+            if(name === 'LEGAL') {
                 dynamicFormElement.parentNode.appendChild(LEGAL_ELEMENTS(),dynamicFormElement);
+            }
+            usernameInput = document.getElementById('username_input');
+            nationalCodeInputElement = document.getElementById('sso_plus_user_national_code_key_input');            
+            nationalCodeInputElement.addEventListener('input', copyValue);
+        }
+        const selectValue = mySelect.value;
+        if(selectValue) {
+            if(selectValue === 'PERSON') {       
+                addDynamicForm('PERSON');              
+            }
+            if(selectValue === 'LEGAL') {     
+                addDynamicForm('LEGAL');
             } 
-        } else {
-            dynamicFormElement.parentNode.appendChild(PERSON_ELEMENTS(), dynamicFormElement);
-        }   
+        } else {     
+            addDynamicForm('PERSON');
+        }
+        function copyValue (evt) {
+                usernameInput.value = evt.target.value;
+        }
 </script>

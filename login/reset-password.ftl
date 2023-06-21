@@ -32,7 +32,7 @@
                                             <h2>وزارت کار، تعاون و رفاه اجتماعی</h2>
                                         </div>
                                         <div class="form__group__login">
-                                            <span class="form__group__login__text">اصلاح شماره تلفن همراه</span>
+                                            <span class="form__group__login__text">فراموشی رمز عبور</span>
                                         </div>
                                         <#if messagesPerField.existsError('username','password')>
                                             <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
@@ -63,7 +63,7 @@
                                             <input tabindex="1" id="nid" placeholder="&#xf007; کد ملی" class="${properties.kcInputClass!} form__input" name="username" value="" type="text" autofocus autocomplete="off" />
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="1" id="mobile" placeholder="&#xf095; موبایل" class="${properties.kcInputClass!} form__input" name="mobile_number" value="" type="text" autofocus autocomplete="off" />
+                                            <input tabindex="2" id="mobile" placeholder="&#xf095; موبایل" class="${properties.kcInputClass!} form__input" name="mobile_number" value="" type="text" autofocus autocomplete="off" />
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
                                             <input tabindex="3" id="captcha" placeholder="&#xf1c5; کد امنیتی"
