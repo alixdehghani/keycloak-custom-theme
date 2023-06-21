@@ -52,10 +52,17 @@
                                             </span>
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
+                                                <select name="sso_plus_user_type" id="sso_plus_user_type_input" class="form__input" tabindex="1" placeholder="نوع کاربر" required>
+                                                    <option value="" selected disabled>نوع کاربر</option>
+                                                    <option value="PERSON" <#if sso_plus_user_type??><#if msg(sso_plus_user_type[0]) == 'PERSON'>selected</#if></#if>>حقیقی</option>
+                                                    <option value="LEGAL" <#if sso_plus_user_type??><#if msg(sso_plus_user_type[0]) == 'LEGAL'>selected</#if></#if>>حقوقی</option>
+                                                </select>
+                                            </div>
+                                        <div class="${properties.kcFormGroupClass!} form__group">
                                             <#if usernameEditDisabled??>
-                                                <input tabindex="1" id="username" class="${properties.kcInputClass!} form__input" name="username" value="${(login.username!'')}" type="text" disabled />
+                                                <input tabindex="2" id="username" class="${properties.kcInputClass!} form__input" name="username" value="${(login.username!'')}" type="text" disabled />
                                                 <#else>
-                                                    <input tabindex="1" id="username" placeholder="&#xf007; نام کاربری" class="${properties.kcInputClass!} form__input" name="username" value="" type="text" autofocus autocomplete="off"
+                                                    <input tabindex="2" required id="username" placeholder="&#xf007; نام کاربری" class="${properties.kcInputClass!} form__input" name="username" value="<#if username??><#if username[0]??>${msg(username[0])}</#if></#if>" type="text" autofocus autocomplete="off"
                                                         aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" />
                                             </#if>
                                         </div>
@@ -93,11 +100,11 @@
                                                 </div>
                                             </#if>
                                             <a class="block" href="#" disabled>&#xf095; ویرایش شماره تلفن همراه</a>
-                                            <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
+                                            <#--  <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
                                                 <div id="kc-registration">
                                                     <span>${msg("noAccount")} <a tabindex="6" href="${url.registrationUrl}">${msg("doRegister")}</a></span>
                                                 </div>
-                                            </#if>
+                                            </#if>  -->
                                         </div>
                                     </div>
                                 </form>
