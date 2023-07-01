@@ -41,8 +41,10 @@
                                             </span>
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="1" id="password" placeholder="&#xf023; ${msg('password')}" class="${properties.kcInputClass!} form__input" name="password" type="password" autocomplete="off"
-                                                aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" />
+                                            <input tabindex="1" id="password" required placeholder="&#xf023; ${msg('password')}" class="${properties.kcInputClass!} form__input" name="password" type="password" autocomplete="off"
+                                                aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
+                                                oninvalid="this.setCustomValidity('لطفا کلمه عبور را وارد کنید')" oninput="setCustomValidity('')"/>
+                                                <span toggle="#password-field" onclick="onTogglePassword()" class="fa fa-fw fa-eye field-icon toggle-password" id="toggle-password"></span>
                                         </div>
                                         
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
@@ -97,3 +99,18 @@
                     </#if>
         </#if>
     </@layout.registrationLayout>
+
+     <script>
+        function onTogglePassword() {
+            const x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+                document.getElementById("toggle-password").classList.remove('fa-eye');
+                document.getElementById("toggle-password").classList.add('fa-eye-slash');
+            } else {
+                x.type = "password";
+                document.getElementById("toggle-password").classList.remove('fa-eye-slash');
+                document.getElementById("toggle-password").classList.add('fa-eye');
+            }
+        }
+  </script>

@@ -42,7 +42,7 @@
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
                                             <input tabindex="1" id="sso_plus_user_company_owner_national_code_input" class="${properties.kcInputClass!} form__input" name="sso_plus_user_company_owner_national_code" value="<#if sso_plus_user_company_owner_national_code??><#if sso_plus_user_company_owner_national_code[0]??>${msg(sso_plus_user_company_owner_national_code[0])}</#if></#if>" type="text" autofocus autocomplete="on"
-                                                required title="" pattern="^[0-9]{10}$" oninvalid="this.setCustomValidity('شناسه ملی')" oninput="setCustomValidity('')" placeholder="شناسه ملی مدیرعامل شرکت"/>
+                                                required title="" pattern="^[0-9]{10}$" oninvalid="this.setCustomValidity('لطفا شناسه ملی را وارد کنید')" oninput="setCustomValidity('')" placeholder="کد ملی مدیر عامل شرکت"/>
                                         </div>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
                                             <#--  <input type="hidden" id="id-hidden-input" name="credentialId" />  -->

@@ -51,19 +51,20 @@
                                                 نام کاربری مورد نظر غیر فعال است
                                             </span>
                                         </#if>
+                                        <#if sso_plus_user_type??><#if sso_plus_user_type[0]??><#if msg(sso_plus_user_type[0]) == 'PERSON'>selected</#if></#if></#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                                <select name="sso_plus_user_type" id="sso_plus_user_type_input" class="form__input" tabindex="1" placeholder="نوع کاربر" required>
-                                                    <option value="" selected disabled>نوع کاربر</option>
-                                                    <option value="PERSON" <#if sso_plus_user_type??><#if msg(sso_plus_user_type[0]) == 'PERSON'>selected</#if></#if>>حقیقی</option>
-                                                    <option value="LEGAL" <#if sso_plus_user_type??><#if msg(sso_plus_user_type[0]) == 'LEGAL'>selected</#if></#if>>حقوقی</option>
+                                                <select name="sso_plus_user_type" id="sso_plus_user_type_input" class="form__input" tabindex="1" placeholder="نوع کاربر" required
+                                                    oninvalid="this.setCustomValidity('لطفا نوع کاربر را وارد کنید')" oninput="setCustomValidity('')">
+                                                    <option value="PERSON" <#if sso_plus_user_type??><#if sso_plus_user_type[0]??><#if msg(sso_plus_user_type[0]) == 'PERSON'>selected</#if></#if></#if>>حقیقی</option>
+                                                    <option value="LEGAL" <#if sso_plus_user_type??><#if sso_plus_user_type[0]??><#if msg(sso_plus_user_type[0]) == 'LEGAL'>selected</#if></#if></#if>>حقوقی</option>
                                                 </select>
-                                            </div>
+                                        </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
                                             <#if usernameEditDisabled??>
                                                 <input tabindex="2" id="username" class="${properties.kcInputClass!} form__input" name="username" value="${(login.username!'')}" type="text" disabled />
                                                 <#else>
-                                                    <input tabindex="2" required id="username" placeholder="&#xf007; نام کاربری" class="${properties.kcInputClass!} form__input" name="username" value="<#if username??><#if username[0]??>${msg(username[0])}</#if></#if>" type="text" autofocus autocomplete="off"
-                                                        aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" />
+                                                    <input tabindex="2" required id="username" class="${properties.kcInputClass!} form__input" name="username" value="<#if username??><#if username[0]??>${msg(username[0])}</#if></#if>" type="text" autofocus autocomplete="off"
+                                                        aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" oninvalid="this.setCustomValidity('لطفا نام کاربری را وارد کنید')" oninput="setCustomValidity('')"/>
                                             </#if>
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
@@ -100,17 +101,13 @@
                                                 </div>
                                             </#if>
                                             <a class="block" href="#" disabled>&#xf095; ویرایش شماره تلفن همراه</a>
-                                            <#--  <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
-                                                <div id="kc-registration">
-                                                    <span>${msg("noAccount")} <a tabindex="6" href="${url.registrationUrl}">${msg("doRegister")}</a></span>
-                                                </div>
-                                            </#if>  -->
                                         </div>
                                     </div>
                                 </form>
                                 <div class="book__form-image">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
+                                        <p>این سامانه توسط مرکز فناوری اطلاعات و توسعه داده شده است</p>
                                         <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
                                     </div>
                                 </div>
@@ -133,3 +130,28 @@
                     </#if>
         </#if>
     </@layout.registrationLayout>
+
+
+    <script type="text/javascript">
+        const usernameElement = document.getElementById('username');
+        const userTypeElement = document.getElementById('sso_plus_user_type_input');
+        userTypeElement.onchange = (event) => {
+            const inputText = event.target.value;
+            if(inputText === 'PERSON') {       
+                usernameElement.placeholder = "نام کاربری / کدملی";
+            }
+            if(inputText === 'LEGAL') {    
+                usernameElement.placeholder = "نام کاربری / شناسه شرکت"; 
+            }
+        }
+        if(userTypeElement?.value) {
+            if(userTypeElement?.value === 'PERSON') {       
+                usernameElement.placeholder = "نام کاربری / کدملی";            
+            }
+            if(userTypeElement?.value === 'LEGAL') {    
+                usernameElement.placeholder = "نام کاربری / شناسه شرکت"; 
+            } 
+        } else {     
+            usernameElement.placeholder = "نام کاربری / کدملی";
+        }
+    </script>

@@ -133,7 +133,6 @@
 
     </div>
   </div>
-  <#--  <script src="${url.resourcesPath}/js/script.js"></script>  -->
 </body>
 </html>
 </#macro>

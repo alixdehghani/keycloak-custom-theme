@@ -134,10 +134,7 @@
     <link type="text/css" rel="stylesheet" href="${url.resourcesPath}/jalalidatepicker/jalalidatepicker.min.css" />
     <script type="text/javascript" src="${url.resourcesPath}/jalalidatepicker/jalalidatepicker.min.js"></script>
     <script type="text/javascript">
-        jalaliDatepicker.startWatch({
-            minDate: "attr",
-            maxDate: "attr",
-        });
+        jalaliDatepicker.startWatch();
         const dynamicFormElement = document.getElementById('dynamic-form-section');
         const PERSON_ELEMENTS = () => create(`<div class="custom-row">
                                                 <input tabindex="2" id="username_input" type="hidden" title="" class="${properties.kcInputClass!} form__input" name="username" value="<#if username??>${msg(username[0])}</#if>"/>

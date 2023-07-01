@@ -60,10 +60,12 @@
                                             </span>
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="1" id="nid" placeholder="&#xf007; کد ملی" class="${properties.kcInputClass!} form__input" name="username" value="" type="text" autofocus autocomplete="off" />
+                                            <input tabindex="1" id="nid" placeholder="&#xf007; کد ملی" required class="${properties.kcInputClass!} form__input" name="username" value="" type="text" autofocus autocomplete="off"
+                                                oninvalid="this.setCustomValidity('لطفا کد ملی را وارد کنید')" oninput="setCustomValidity('')"/>
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="2" id="mobile" placeholder="&#xf095; موبایل" class="${properties.kcInputClass!} form__input" name="mobile_number" value="" type="text" autofocus autocomplete="off" />
+                                            <input tabindex="2" id="mobile" placeholder="&#xf095; موبایل" required class="${properties.kcInputClass!} form__input" name="mobile_number" value="" type="text" autofocus autocomplete="off"
+                                                oninvalid="this.setCustomValidity('لطفا موبایل را وارد کنید')" oninput="setCustomValidity('')"/>
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
                                             <input tabindex="3" id="captcha" placeholder="&#xf1c5; کد امنیتی"

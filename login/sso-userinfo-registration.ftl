@@ -40,14 +40,32 @@
                                                 نام کاربری یافت نشد
                                             </span>
                                         </#if>
+                                        <#if inquiryServiceIdMatchingHasError??>
+                                            <span id="input-error" aria-live="polite">
+                                                شماره موبایل وارد شده متلق به این کد ملی نمی باشد
+                                            </span>
+                                        </#if>
+                                        <#if inquiryCivilRegistryHasError??>
+                                            <span id="input-error" aria-live="polite">
+                                                کدملی وارد شده با تاریخ تولد تطابق ندارد
+                                            </span>
+                                        </#if>
+                                        <#if inquiryPostalCodeHasError??>
+                                            <span id="input-error" aria-live="polite">
+                                                کد پستی وارد شده معتبر نمی باشد
+                                            </span>
+                                        </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">                                            
-                                            <input tabindex="1" id="mobile_number_input" required title="" placeholder="شماره همراه" class="${properties.kcInputClass!} form__input" name="mobile_number" value="<#if mobile_number??><#if mobile_number[0]??>${msg(mobile_number[0])}</#if></#if>" type="text" autofocus autocomplete="on"/>
+                                            <input tabindex="1" id="mobile_number_input" required title="" placeholder="شماره همراه" class="${properties.kcInputClass!} form__input" name="mobile_number" value="<#if mobile_number??><#if mobile_number[0]??>${msg(mobile_number[0])}</#if></#if>" type="text" autofocus autocomplete="on"
+                                                oninvalid="this.setCustomValidity('لطفا شماره همراه را وارد کنید')" oninput="setCustomValidity('')"/>
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group" style="position: relative">
-                                            <input tabindex="2" data-jdp  data-jdp-max-date="today" required title="" placeholder="تاریخ تولد" type="text" id="sso_plus_user_birth_date_key_input" class="${properties.kcInputClass!} form__input" name="sso_plus_user_birth_date_key" value="<#if sso_plus_user_birth_date_key??><#if sso_plus_user_birth_date_key[0]??>${msg(sso_plus_user_birth_date_key[0])}</#if></#if>" readonly/>
+                                            <input tabindex="2" data-jdp  required title="" placeholder="تاریخ تولد" type="text" id="sso_plus_user_birth_date_key_input" class="${properties.kcInputClass!} form__input" name="sso_plus_user_birth_date_key" value="<#if sso_plus_user_birth_date_key??><#if sso_plus_user_birth_date_key[0]??>${msg(sso_plus_user_birth_date_key[0])}</#if></#if>" readonly
+                                                oninvalid="this.setCustomValidity('لطفا تاریخ تولد را وارد کنید')" oninput="setCustomValidity('')"/>
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="3" id="sso_plus_user_postal_code_input" placeholder="کد پستی" required title="" class="${properties.kcInputClass!} form__input" name="sso_plus_user_postal_code" value="<#if sso_plus_user_postal_code??><#if sso_plus_user_postal_code[0]??>${msg(sso_plus_user_postal_code[0])}</#if></#if>" type="text" autofocus autocomplete="on"/>
+                                            <input tabindex="3" id="sso_plus_user_postal_code_input" placeholder="کد پستی" required title="" class="${properties.kcInputClass!} form__input" name="sso_plus_user_postal_code" value="<#if sso_plus_user_postal_code??><#if sso_plus_user_postal_code[0]??>${msg(sso_plus_user_postal_code[0])}</#if></#if>" type="text" autofocus autocomplete="on"
+                                                oninvalid="this.setCustomValidity('لطفا کد پستی را وارد کنید')" oninput="setCustomValidity('')"/>
                                         </div>                                        
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
                                             <#--  <input type="hidden" id="id-hidden-input" name="credentialId" />  -->
@@ -103,8 +121,5 @@
     <link type="text/css" rel="stylesheet" href="${url.resourcesPath}/jalalidatepicker/jalalidatepicker.min.css" />
     <script type="text/javascript" src="${url.resourcesPath}/jalalidatepicker/jalalidatepicker.min.js"></script>
     <script type="text/javascript">
-        jalaliDatepicker.startWatch({
-            minDate: "attr",
-            maxDate: "attr",
-        });
+        jalaliDatepicker.startWatch();
     </script>

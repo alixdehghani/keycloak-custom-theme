@@ -51,10 +51,12 @@
                                             </span>
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="2" id="password" placeholder="&#xf023; رمز عبور جدید" class="${properties.kcInputClass!} form__input" name="passwordNew" type="password" autocomplete="off"/>
+                                            <input tabindex="2" id="password" required placeholder="&#xf023; رمز عبور جدید" class="${properties.kcInputClass!} form__input" name="passwordNew" type="password" autocomplete="off"
+                                                oninvalid="this.setCustomValidity('لطفا رمز عبور را وارد کنید')" oninput="setCustomValidity('')"/>
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="2" id="password" placeholder="&#xf023; تکرار رمز عبور جدید" class="${properties.kcInputClass!} form__input" name="passwordRepeatNew" type="password" autocomplete="off"/>
+                                            <input tabindex="2" id="password" required placeholder="&#xf023; تکرار رمز عبور جدید" class="${properties.kcInputClass!} form__input" name="passwordRepeatNew" type="password" autocomplete="off"
+                                                oninvalid="this.setCustomValidity('لطفا تکرار رمز عبور را وارد کنید')" oninput="setCustomValidity('')"/>
                                         </div>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
                                             <input type="hidden" id="id-hidden-input" name="credentialId" />
