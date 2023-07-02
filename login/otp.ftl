@@ -150,6 +150,16 @@
         e.target.previousElementSibling.value = "";
         updateInputConfig(e.target.previousElementSibling, false);
         inputCount -= 1;
+        } else if (value.length == 0 && e.key == "Delete") {
+        finalInput = finalInput.substring(0, finalInput.length - 1);
+        if (inputCount == 0) {
+            updateInputConfig(e.target, false);
+            return false;
+        }
+        updateInputConfig(e.target, true);
+        e.target.previousElementSibling.value = "";
+        updateInputConfig(e.target.previousElementSibling, false);
+        inputCount -= 1;
         } else if (value.length > 1) {
         e.target.value = value.split("")[0];
         }
@@ -160,6 +170,7 @@
     window.addEventListener("keyup", (e) => {
     if (inputCount > 4) {        
         submitButton.disabled = false;
+        //document.getElementById("kc-form-login").submit();
         if (e.key == "Backspace") {
         finalInput = finalInput.substring(0, finalInput.length - 1);
         updateInputConfig(inputField.lastElementChild, false);

@@ -40,6 +40,11 @@
                                                 نام کاربری یافت نشد
                                             </span>
                                         </#if>
+                                        <#if passwordIsNotValid??>
+                                            <span id="input-error" aria-live="polite">
+                                                کلمه عبور اشتباه است
+                                            </span>
+                                        </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
                                             <input tabindex="1" id="password" required placeholder="&#xf023; ${msg('password')}" class="${properties.kcInputClass!} form__input" name="password" type="password" autocomplete="off"
                                                 aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"

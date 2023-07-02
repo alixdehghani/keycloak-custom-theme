@@ -42,17 +42,32 @@
                                         </#if>
                                         <#if inquiryServiceIdMatchingHasError??>
                                             <span id="input-error" aria-live="polite">
-                                                شماره موبایل وارد شده متلق به این کد ملی نمی باشد
+                                                خطا در استعلام شماره موبایل
                                             </span>
                                         </#if>
                                         <#if inquiryCivilRegistryHasError??>
                                             <span id="input-error" aria-live="polite">
-                                                کدملی وارد شده با تاریخ تولد تطابق ندارد
+                                                خطا در استعلام ثبت احوال
                                             </span>
                                         </#if>
                                         <#if inquiryPostalCodeHasError??>
                                             <span id="input-error" aria-live="polite">
-                                                کد پستی وارد شده معتبر نمی باشد
+                                                خطا در استعلام کد پستی
+                                            </span>
+                                        </#if>                                        
+                                        <#if userIsNotOwnerOfMobile??>
+                                            <span id="input-error" aria-live="polite">
+                                                شماره موبایل وارد شده متعلق به این کد ملی نیست
+                                            </span>
+                                        </#if>                                        
+                                        <#if postalCodeIsNotValid??>
+                                            <span id="input-error" aria-live="polite">
+                                                کد پستی وارد شده اشتباه است
+                                            </span>
+                                        </#if>                                        
+                                        <#if birthDateAndNationalCodeAreNotCorrect??>
+                                            <span id="input-error" aria-live="polite">
+                                                تاریخ تولد وارد شده برای این کد ملی صحیح نمی باشد
                                             </span>
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">                                            
