@@ -37,10 +37,10 @@
                                 <div class="form__group__login">
                                     <span class="form__group__login__text"></span>
                                 </div>
-                                <p id="instruction1 input-error" class="instruction">
+                                <#--  <p id="instruction1 input-error" class="instruction">
                                     ${msg("pageExpiredMsg1")} <a id="loginRestartLink" href="${url.loginRestartFlowUrl}">${msg("doClickHere")}</a> .<br/>
                                     ${msg("pageExpiredMsg2")} <a id="loginContinueLink" href="${url.loginAction}">${msg("doClickHere")}</a> .
-                                </p>
+                                </p>  -->
                                 <div class="form__group__external-link">                                             
                                         <div id="kc-username" class="${properties.kcFormGroupClass!}">
                                             <#--  <label id="kc-attempted-username">${auth.attemptedUsername}</label>  -->
@@ -59,6 +59,7 @@
                         <div class="book__form-image">
                             <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                             <div class="book__form-image-text">
+                                <p>این سامانه توسط مرکز فناوری اطلاعات و توسعه داده شده است</p>
                                 <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
                             </div>
                         </div>

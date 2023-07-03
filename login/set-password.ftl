@@ -51,12 +51,14 @@
                                             </span>
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="2" id="password" required placeholder="&#xf023; رمز عبور جدید" class="${properties.kcInputClass!} form__input" name="passwordNew" type="password" autocomplete="off"
+                                            <input tabindex="1" id="password" required placeholder="&#xf023; رمز عبور جدید" class="${properties.kcInputClass!} form__input" name="passwordNew" type="password" autocomplete="off"
                                                 oninvalid="this.setCustomValidity('لطفا رمز عبور را وارد کنید')" oninput="setCustomValidity('')"/>
+                                            <span toggle="#password-field" onclick="onTogglePassword('password', 'toggle-password-1')" class="fa fa-fw fa-eye field-icon toggle-password" id="toggle-password-1"></span>
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="2" id="password" required placeholder="&#xf023; تکرار رمز عبور جدید" class="${properties.kcInputClass!} form__input" name="passwordRepeatNew" type="password" autocomplete="off"
+                                            <input tabindex="2" id="repeat-password" required placeholder="&#xf023; تکرار رمز عبور جدید" class="${properties.kcInputClass!} form__input" name="passwordRepeatNew" type="password" autocomplete="off"
                                                 oninvalid="this.setCustomValidity('لطفا تکرار رمز عبور را وارد کنید')" oninput="setCustomValidity('')"/>
+                                            <span toggle="#password-field" onclick="onTogglePassword('repeat-password', 'toggle-password-2')" class="fa fa-fw fa-eye field-icon toggle-password" id="toggle-password-2"></span>
                                         </div>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
                                             <input type="hidden" id="id-hidden-input" name="credentialId" />
@@ -80,6 +82,7 @@
                                 <div class="book__form-image">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
+                                        <p>این سامانه توسط مرکز فناوری اطلاعات و توسعه داده شده است</p>
                                         <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
                                     </div>
                                 </div>
@@ -102,3 +105,18 @@
                     </#if>
         </#if>
     </@layout.registrationLayout>
+
+<script>
+    function onTogglePassword(inputId, toggleIconId) {
+        const x = document.getElementById(inputId);
+        if (x.type === "password") {
+            x.type = "text";
+            document.getElementById(toggleIconId).classList.remove('fa-eye');
+            document.getElementById(toggleIconId).classList.add('fa-eye-slash');
+        } else {
+            x.type = "password";
+            document.getElementById(toggleIconId).classList.remove('fa-eye-slash');
+            document.getElementById(toggleIconId).classList.add('fa-eye');
+        }
+    }
+</script>
