@@ -60,15 +60,15 @@
                                             </span>
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="1" id="nid" placeholder="&#xf007; کد ملی" required class="${properties.kcInputClass!} form__input" name="username" value="" type="text" autofocus autocomplete="off"
+                                            <input tabindex="1" id="nid" placeholder="کد ملی" required class="${properties.kcInputClass!} form__input" name="username" value="" type="text" autofocus autocomplete="off"
                                                 oninvalid="this.setCustomValidity('لطفا کد ملی را وارد کنید')" oninput="setCustomValidity('')"/>
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="2" id="mobile" placeholder="&#xf095; موبایل" required class="${properties.kcInputClass!} form__input" name="mobile_number" value="" type="text" autofocus autocomplete="off"
+                                            <input tabindex="2" id="mobile" placeholder="موبایل" required class="${properties.kcInputClass!} form__input" name="mobile_number" value="" type="text" autofocus autocomplete="off"
                                                 oninvalid="this.setCustomValidity('لطفا موبایل را وارد کنید')" oninput="setCustomValidity('')"/>
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="3" id="captcha" placeholder="&#xf1c5; کد امنیتی"
+                                            <input tabindex="3" id="captcha" placeholder="کد امنیتی"
                                                 required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
                                                 oninvalid="this.setCustomValidity('لطفا مقادیر داخل عکس را وارد کنید')" oninput="setCustomValidity('')" />
                                             <img src="data:image/png;charset=utf-8;base64,${captchaImage}" class="form__captcha" />
@@ -78,23 +78,25 @@
                                             <input type="hidden" id="id-hidden-input" name="captchaId" value="${captchaId}" />
                                             <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
                                         </div>
-                                        <div class="form__group__external-link">
-                                            <div id="kc-username" class="${properties.kcFormGroupClass!}">
-                                                    <a id="reset-login" href="${url.loginRestartFlowUrl}">                                                    
-                                                        <div class="kc-login-tooltip">
+                                        <div class="form__group__external-link center-aling" style="margin: 115px auto 25px auto">                                            
+                                                <div id="kc-username" class="${properties.kcFormGroupClass!}">
+                                                    <#--  <label id="kc-attempted-username">${auth.attemptedUsername}</label>  -->
+                                                    <a id="reset-login" class="no-padd-marg" href="${url.loginRestartFlowUrl}">
+                                                    
+                                                        <div class="kc-login-tooltip center">
                                                             <#--  <i class="${properties.kcResetFlowIcon!}"></i>  -->
-                                                            <i class="fa-repeat"></i>
+                                                            <i class="fa-repeat padding-25 margin-left-5px"></i>
                                                             <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
                                                         </div>
                                                     </a>
-                                            </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </form>
                                 <div class="book__form-image">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>این سامانه توسط مرکز فناوری اطلاعات و توسعه داده شده است</p>
+                                        <p>این سامانه توسط مرکز فناوری اطلاعات و ارتباطات وزارت تعاون، کار و رفاه اجتماعی توسعه داده شده است</p>
                                         <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
                                     </div>
                                 </div>

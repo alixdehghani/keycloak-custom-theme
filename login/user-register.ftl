@@ -92,7 +92,7 @@
                                                 <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" type="submit" value="${msg("doRegister")}"/>
                                             </div>
                                             <#--  <div class="form__group__external-link">                                            
-                                                <a class="block" href="#" disabled>&#xf095; ویرایش شماره تلفن همراه</a>
+                                                <a class="block" href="#" disabled>&#xf10b; ویرایش شماره تلفن همراه</a>
                                             </div>   -->
                                             <div id="kc-username" class="${properties.kcFormGroupClass!} form__group__external-link">
                                                     <#--  <label id="kc-attempted-username">${auth.attemptedUsername}</label>  -->
@@ -108,7 +108,7 @@
                                         </div>                                       
                                     </div>
                                     <div class="copyright">
-                                        <p>این سامانه توسط مرکز فناوری اطلاعات و توسعه داده شده است</p>
+                                        <p>این سامانه توسط مرکز فناوری اطلاعات و ارتباطات وزارت تعاون، کار و رفاه اجتماعی توسعه داده شده است</p>
                                         <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
                                     </div>
                                 </form>

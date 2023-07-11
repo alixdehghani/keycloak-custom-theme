@@ -21,6 +21,11 @@
     }
 }
 
+.toggle-password {
+    font-size: large !important;
+    cursor: pointer !important;
+}
+
 .time-to-live {
     text-align: center;
     font-size: 1.5rem;
@@ -42,16 +47,17 @@
         display: flex;
         justify-content: space-around;
         direction: ltr;
+        gap: 9px;
     }
     .sms-input {
-        background-color: #eaedff;
-        border: 3px solid #dbeaee;
+        background-color: #fff;
+        border: 1px solid #003171;
         height: 3em;
-        width: 3em;
+        width: 5em;
         outline: none;
         text-align: center;
         font-size: 1.5em;
-        border-radius: 0.3em;
+        border-radius: 0.8em;
         outline: none;
         /*Hide number field arrows*/
         -moz-appearance: textfield;
@@ -84,7 +90,7 @@
     position: relative;
     .form__input {
         width: 100%;
-        font-family: yekan, FontAwesome;
+        font-family: Vazirmatn FD, yekan, FontAwesome;
     }
     .form__captcha {
         position: absolute;
@@ -118,7 +124,7 @@
         }
 
         &__external-link {
-            font-family: yekan, FontAwesome;
+            font-family: Vazirmatn FD, yekan, FontAwesome;
             display: flex;
             flex-direction: column;
             .ul {
@@ -136,8 +142,8 @@
                 &:link,
                 &:visited {
                     display: inline-block;
-                    font-size: 15px;
-                    font-weight: 300;
+                    font-size: 1.1rem;
+                    //font-weight: 300;
                     padding: 0.7rem 2rem;
                     color: $color-primary;
                     text-decoration: none;

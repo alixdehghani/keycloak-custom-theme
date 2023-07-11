@@ -25,3 +25,36 @@
     color: white !important;
 }
 .center {display: flex !important; justify-content: center !important; align-items: center;}
+.center-aling {display: flex !important; align-items: center;}
+.padding-25 {
+    padding: .25rem !important;
+}
+
+.padding-5-all {
+    padding: .5rem !important;
+}
+
+.padding-5-vertical {
+    padding: 0 .5rem !important;
+}
+
+.no-border {
+    border: none !important;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.font-size-large {
+    font-size: large !important;
+}
+
+.no-padd-marg {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.margin-left-5px {
+    margin-left: 5px !important;
+}

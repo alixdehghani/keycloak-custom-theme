@@ -46,9 +46,9 @@
                                             <#--  <label id="kc-attempted-username">${auth.attemptedUsername}</label>  -->
                                                 <a id="reset-login" class="btn main-color center" href="${url.loginRestartFlowUrl}">
                                             
-                                                <div class="kc-login-tooltip">
+                                               <div class="kc-login-tooltip center">
                                                     <#--  <i class="${properties.kcResetFlowIcon!}"></i>  -->
-                                                    <i class="fa-repeat"></i>
+                                                    <i class="fa-repeat padding-25 margin-left-5px"></i>
                                                     <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
                                                 </div>
                                             </a>
@@ -59,7 +59,7 @@
                         <div class="book__form-image">
                             <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                             <div class="book__form-image-text">
-                                <p>این سامانه توسط مرکز فناوری اطلاعات و توسعه داده شده است</p>
+                                <p>این سامانه توسط مرکز فناوری اطلاعات و ارتباطات وزارت تعاون، کار و رفاه اجتماعی توسعه داده شده است</p>
                                 <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
                             </div>
                         </div>

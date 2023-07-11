@@ -81,7 +81,7 @@
                                                             </a></span>
                                                     </#if>
                                                 </div>
-                                                <a class="block" href="#" disabled>&#xf095; ویرایش شماره تلفن همراه</a>
+                                                <a class="block" href="#" disabled>&#xf10b; ویرایش شماره تلفن همراه</a>
                                         </div>
                                     </div>
                                 </form>

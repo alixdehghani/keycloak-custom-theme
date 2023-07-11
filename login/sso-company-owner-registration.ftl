@@ -48,22 +48,14 @@
                                             <#--  <input type="hidden" id="id-hidden-input" name="credentialId" />  -->
                                             <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
                                         </div>
-                                        <div class="form__group__external-link">                                            
-                                                <#--  <a class="block" href="#" disabled>&#xf095; ویرایش شماره تلفن همراه</a>                                                  -->
-                                                <#--  <div class="${properties.kcFormOptionsWrapperClass!}">
-                                                    <#if realm.resetPasswordAllowed>                                                        
-                                                        <span><a tabindex="5" href="${url.loginResetCredentialsUrl}">
-                                                            <i class="fa-unlock-alt"></i> ${msg("doForgotPassword")}
-                                                        </a></span>
-                                                    </#if>
-                                                </div>                                         -->
+                                        <div class="form__group__external-link center-aling" style="margin: 115px auto 25px auto">                                            
                                                 <div id="kc-username" class="${properties.kcFormGroupClass!}">
                                                     <#--  <label id="kc-attempted-username">${auth.attemptedUsername}</label>  -->
-                                                    <a id="reset-login" href="${url.loginRestartFlowUrl}">
+                                                    <a id="reset-login" class="no-padd-marg" href="${url.loginRestartFlowUrl}">
                                                     
-                                                        <div class="kc-login-tooltip">
+                                                        <div class="kc-login-tooltip center">
                                                             <#--  <i class="${properties.kcResetFlowIcon!}"></i>  -->
-                                                            <i class="fa-repeat"></i>
+                                                            <i class="fa-repeat padding-25 margin-left-5px"></i>
                                                             <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
                                                         </div>
                                                     </a>
@@ -74,7 +66,7 @@
                                 <div class="book__form-image">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>این سامانه توسط مرکز فناوری اطلاعات و توسعه داده شده است</p>
+                                        <p>این سامانه توسط مرکز فناوری اطلاعات و ارتباطات وزارت تعاون، کار و رفاه اجتماعی توسعه داده شده است</p>
                                         <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
                                     </div>
                                 </div>

@@ -58,32 +58,32 @@
                                         <span class="time-to-live"></span>
                                         <div class="form__group form__group__btn resend-otp-ctx">
                                             <input type="hidden" id="kc-form-buttons" class="resend-otp-submit" id="kc-resend-code" name="resendOtp" type="submit" value="true"/>
-                                            <input id="kc-form-buttons" class="btn btn--light resend-otp-btn" id="kc-resend-code" type="submit" value="&#xf1d8; ارسال مجدد"/>
+                                            <input id="kc-form-buttons" class="btn btn--light resend-otp-btn" id="kc-resend-code" type="submit" value="&#xf021; ارسال مجدد"/>
                                         </div>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
                                             <input type="hidden" id="id-hidden-input" name="userOtpValue"/>
                                             <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green submit" onclick="validateOTP()" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
                                         </div>
-                                        <div class="form__group__external-link">
-                                                <a class="block" href="#" disabled>&#xf095; ویرایش شماره تلفن همراه</a>
+                                        <div class="form__group__external-link center-aling" style="margin: 115px auto 25px auto">
+                                                <a class="block center-aling no-padd-marg" href="#" disabled><i class="padding-25 fa fa-mobile font-size-large margin-left-5px"></i><span>تغییر شماره تلفن همراه</span></a>                                                
                                                 <div id="kc-username" class="${properties.kcFormGroupClass!}">
                                                     <#--  <label id="kc-attempted-username">${auth.attemptedUsername}</label>  -->
-                                                    <a id="reset-login" href="${url.loginRestartFlowUrl}">
+                                                    <a id="reset-login" class="no-padd-marg" href="${url.loginRestartFlowUrl}">
                                                     
-                                                        <div class="kc-login-tooltip">
+                                                        <div class="kc-login-tooltip center">
                                                             <#--  <i class="${properties.kcResetFlowIcon!}"></i>  -->
-                                                            <i class="fa-repeat"></i>
+                                                            <i class="fa-repeat padding-25 margin-left-5px"></i>
                                                             <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
                                                         </div>
                                                     </a>
-                                            </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </form>
                                 <div class="book__form-image">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>این سامانه توسط مرکز فناوری اطلاعات و توسعه داده شده است</p>
+                                        <p>این سامانه توسط مرکز فناوری اطلاعات و ارتباطات وزارت تعاون، کار و رفاه اجتماعی توسعه داده شده است</p>
                                         <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
                                     </div>
                                 </div>

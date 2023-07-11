@@ -51,13 +51,41 @@
                                                 نام کاربری مورد نظر غیر فعال است
                                             </span>
                                         </#if>
-                                        <#if sso_plus_user_type??><#if sso_plus_user_type[0]??><#if msg(sso_plus_user_type[0]) == 'PERSON'>selected</#if></#if></#if>
+                                        <#if inquiryCompanyInfoHasError??>
+                                            <span id="input-error" aria-live="polite">
+                                                پاسخی از سرویس استعلام شرکت ها دریافت نشد
+                                            </span>
+                                        </#if>
+                                        <#if nationalCodeIsNotValid??>
+                                            <#if sso_plus_user_type??>
+                                                <#if sso_plus_user_type[0]??>
+                                                    <#if msg(sso_plus_user_type[0]) == 'PERSON'>
+                                                        <span id="input-error" aria-live="polite">
+                                                         کد ملی وارد شده اشتباه است
+                                                        </span>
+                                                    </#if>
+                                                    <#if msg(sso_plus_user_type[0]) == 'LEGAL'>
+                                                        <span id="input-error" aria-live="polite">
+                                                         شناسه شرکت وارد شده اشتباه است
+                                                        </span>
+                                                    </#if>
+                                                </#if>
+                                            </#if>
+                                        </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                                <select name="sso_plus_user_type" id="sso_plus_user_type_input" class="form__input" tabindex="1" placeholder="نوع کاربر" required
+                                                <#--  <select name="sso_plus_user_type" id="sso_plus_user_type_input" class="form__input" tabindex="1" placeholder="نوع کاربر" required
                                                     oninvalid="this.setCustomValidity('لطفا نوع کاربر را وارد کنید')" oninput="setCustomValidity('')">
                                                     <option value="PERSON" <#if sso_plus_user_type??><#if sso_plus_user_type[0]??><#if msg(sso_plus_user_type[0]) == 'PERSON'>selected</#if></#if></#if>>حقیقی</option>
                                                     <option value="LEGAL" <#if sso_plus_user_type??><#if sso_plus_user_type[0]??><#if msg(sso_plus_user_type[0]) == 'LEGAL'>selected</#if></#if></#if>>حقوقی</option>
-                                                </select>
+                                                </select>  -->
+                                                <div class="form__group form__input center no-border no-padding ">
+                                                    <input type="hidden" id="sso_plus_user_type"  value="<#if sso_plus_user_type??><#if sso_plus_user_type[0]??>${msg(sso_plus_user_type[0])}</#if></#if>">
+                                                    <span class="padding-5-vertical">نوع کاربر: </span>
+                                                    <input type="radio" id="person" class="padding-5-vertical" name="sso_plus_user_type" onclick="setPlaceHolder('PERSON')" value="PERSON">
+                                                    <label for="person" class="padding-5-vertical">حقیقی</label>
+                                                    <input type="radio" id="legal" class="padding-5-vertical" name="sso_plus_user_type" onclick="setPlaceHolder('LEGAL')" value="LEGAL">
+                                                    <label for="legal" class="padding-5-vertical">حقوقی</label>
+                                                </div>
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
                                             <#if usernameEditDisabled??>
@@ -68,7 +96,7 @@
                                             </#if>
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="3" id="captcha" placeholder="&#xf1c5; کد امنیتی"
+                                            <input tabindex="3" id="captcha" placeholder="کد امنیتی"
                                                 required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
                                                 oninvalid="this.setCustomValidity('لطفا مقادیر داخل عکس را وارد کنید')" oninput="setCustomValidity('')" />
                                             <img src="data:image/png;charset=utf-8;base64,${captchaImage}" class="form__captcha"/>
@@ -100,14 +128,14 @@
                                                     </ul>
                                                 </div>
                                             </#if>
-                                            <a class="block" href="#" disabled>&#xf095; ویرایش شماره تلفن همراه</a>
+                                            <a class="block center-aling no-padding" href="#" disabled><i class="padding-5-all fa fa-mobile font-size-large margin-left-5px"></i><span>تغییر شماره تلفن همراه</span></a>
                                         </div>
                                     </div>
                                 </form>
                                 <div class="book__form-image">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>این سامانه توسط مرکز فناوری اطلاعات و توسعه داده شده است</p>
+                                        <p>این سامانه توسط مرکز فناوری اطلاعات و ارتباطات وزارت تعاون، کار و رفاه اجتماعی توسعه داده شده است</p>
                                         <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
                                     </div>
                                 </div>
@@ -134,24 +162,27 @@
 
     <script type="text/javascript">
         const usernameElement = document.getElementById('username');
-        const userTypeElement = document.getElementById('sso_plus_user_type_input');
-        userTypeElement.onchange = (event) => {
-            const inputText = event.target.value;
-            if(inputText === 'PERSON') {       
-                usernameElement.placeholder = "نام کاربری / کدملی";
+        const ssoPlusUserTypeEl = document.getElementById('sso_plus_user_type');
+        const legalElement = document.getElementById('legal');
+        const personElement = document.getElementById('person');
+        if(!ssoPlusUserTypeEl?.value ) {
+            personElement.checked = true;
+            setPlaceHolder('PERSON');
+        } else if(ssoPlusUserTypeEl?.value === 'LEGAL') {
+            legalElement.checked = true;
+            setPlaceHolder('LEGAL');
+        } else if(ssoPlusUserTypeEl?.value === 'PERSON') {
+            personElement.checked = true;
+            setPlaceHolder('PERSON');
+        }        
+
+        function setPlaceHolder (value) {            
+            if(value === 'PERSON') {       
+                usernameElement.placeholder = "کدملی";
             }
-            if(inputText === 'LEGAL') {    
-                usernameElement.placeholder = "نام کاربری / شناسه شرکت"; 
+            if(value === 'LEGAL') {    
+                usernameElement.placeholder = "شناسه شرکت"; 
             }
-        }
-        if(userTypeElement?.value) {
-            if(userTypeElement?.value === 'PERSON') {       
-                usernameElement.placeholder = "نام کاربری / کدملی";            
-            }
-            if(userTypeElement?.value === 'LEGAL') {    
-                usernameElement.placeholder = "نام کاربری / شناسه شرکت"; 
-            } 
-        } else {     
-            usernameElement.placeholder = "نام کاربری / کدملی";
         }
     </script>
+
