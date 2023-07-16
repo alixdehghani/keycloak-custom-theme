@@ -61,6 +61,10 @@
         outline: none;
         /*Hide number field arrows*/
         -moz-appearance: textfield;
+
+        @include respond(phone) {
+            width: 4em;
+        }
     }
     input[type="number"]::-webkit-outer-spin-button,
     input[type="number"]::-webkit-inner-spin-button {
@@ -90,7 +94,7 @@
     position: relative;
     .form__input {
         width: 100%;
-        font-family: Vazirmatn FD, yekan, FontAwesome;
+        font-family: Vazirmatn, yekan, FontAwesome;
     }
     .form__captcha {
         position: absolute;
@@ -124,7 +128,7 @@
         }
 
         &__external-link {
-            font-family: Vazirmatn FD, yekan, FontAwesome;
+            font-family: Vazirmatn, yekan, FontAwesome;
             display: flex;
             flex-direction: column;
             .ul {

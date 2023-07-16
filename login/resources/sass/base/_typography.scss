@@ -1,71 +1,87 @@
+// @font-face {
+//     font-family: yekan;
+//     src: url("../fonts/yekan.otf") format("opentype");
+//     font-weight: 100;
+//     font-style: normal;
+//     font-display: swap;
+// }
+
+// @font-face {
+//     font-family: yekan;
+//     src: url("../fonts/yekan.otf") format("opentype");
+//     font-weight: 200;
+//     font-style: normal;
+//     font-display: swap;
+// }
+
+// @font-face {
+//     font-family: yekan;
+//     src: url("../fonts/yekan.otf") format("opentype");
+//     font-weight: 300;
+//     font-style: normal;
+//     font-display: swap;
+// }
+
+// @font-face {
+//     font-family: yekan;
+//     src: url("../fonts/yekan.otf") format("opentype");
+//     font-weight: 400;
+//     font-style: normal;
+//     font-display: swap;
+// }
+
+// @font-face {
+//     font-family: yekan;
+//     src: url("../fonts/yekan.otf") format("opentype");
+//     font-weight: 500;
+//     font-style: normal;
+//     font-display: swap;
+// }
+
+// @font-face {
+//     font-family: yekan;
+//     src: url("../fonts/yekan.otf") format("opentype");
+//     font-weight: 600;
+//     font-style: normal;
+//     font-display: swap;
+// }
+
+// @font-face {
+//     font-family: yekan;
+//     src: url("../fonts/yekan.otf") format("opentype");
+//     font-weight: 700;
+//     font-style: normal;
+//     font-display: swap;
+// }
+
+// @font-face {
+//     font-family: yekan;
+//     src: url("../fonts/yekan.otf") format("opentype");
+//     font-weight: 800;
+//     font-style: normal;
+//     font-display: swap;
+// }
+
+// @font-face {
+//     font-family: yekan;
+//     src: url("../fonts/yekan.otf") format("opentype");
+//     font-weight: 900;
+//     font-style: normal;
+//     font-display: swap;
+// }
+
 @font-face {
-    font-family: yekan;
-    src: url("../fonts/yekan.otf") format("opentype");
+    font-family: Opensans;
+    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
     font-weight: 100;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: yekan;
-    src: url("../fonts/yekan.otf") format("opentype");
+    font-family: Opensans;
+    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
     font-weight: 200;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: yekan;
-    src: url("../fonts/yekan.otf") format("opentype");
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: yekan;
-    src: url("../fonts/yekan.otf") format("opentype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: yekan;
-    src: url("../fonts/yekan.otf") format("opentype");
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: yekan;
-    src: url("../fonts/yekan.otf") format("opentype");
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: yekan;
-    src: url("../fonts/yekan.otf") format("opentype");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: yekan;
-    src: url("../fonts/yekan.otf") format("opentype");
-    font-weight: 800;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: yekan;
-    src: url("../fonts/yekan.otf") format("opentype");
-    font-weight: 900;
     font-style: normal;
     font-display: swap;
 }
@@ -73,77 +89,150 @@
 @font-face {
     font-family: Opensans;
     src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Opensans;
+    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Opensans;
+    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Opensans;
+    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Opensans;
+    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Opensans;
+    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Opensans;
+    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+	font-family: 'yekan';
+	src:	url('../fonts/Yekan.eot'); /* IE9 Compat Modes */
+	src:	url('../fonts/Yekan.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('../fonts/Yekan.woff2') format('woff2'), /* Modern Browsers */
+			url('../fonts/Yekan.woff') format('woff'), /* Modern Browsers */
+			url('../fonts/Yekan.otf') format('opentype'), /* Open Type Font */	
+			url('../fonts/Yekan.ttf') format('truetype'); /* Safari, Android, iOS */
+	font-weight: normal;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+	font-display: auto;
+}
+
+/* Generated by script */
+@font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/Vazirmatn-Thin.woff2') format('woff2');
     font-weight: 100;
     font-style: normal;
     font-display: swap;
-}
-
-@font-face {
-    font-family: Opensans;
-    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+  }
+  
+  @font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/Vazirmatn-ExtraLight.woff2') format('woff2');
     font-weight: 200;
     font-style: normal;
     font-display: swap;
-}
-
-@font-face {
-    font-family: Opensans;
-    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+  }
+  
+  @font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/Vazirmatn-Light.woff2') format('woff2');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
-}
-
-@font-face {
-    font-family: Opensans;
-    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+  }
+  
+  @font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/Vazirmatn-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
-}
-
-@font-face {
-    font-family: Opensans;
-    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+  }
+  
+  @font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/Vazirmatn-Medium.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
-}
-
-@font-face {
-    font-family: Opensans;
-    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+  }
+  
+  @font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/Vazirmatn-SemiBold.woff2') format('woff2');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
-}
-
-@font-face {
-    font-family: Opensans;
-    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+  }
+  
+  @font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/Vazirmatn-Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
-}
-
-@font-face {
-    font-family: Opensans;
-    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+  }
+  
+  @font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/Vazirmatn-ExtraBold.woff2') format('woff2');
     font-weight: 800;
     font-style: normal;
     font-display: swap;
-}
-
-@font-face {
-    font-family: Opensans;
-    src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+  }
+  
+  @font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/Vazirmatn-Black.woff2') format('woff2');
     font-weight: 900;
     font-style: normal;
     font-display: swap;
-}
+  }
+  
+  
 
 body {
-    font-family: yekan, Opensans, "Lato", sans-serif;
+    font-family: Vazirmatn, yekan, Opensans, "Lato", sans-serif;
     line-height: 1.7;
     color: $color-grey-dark;
 }

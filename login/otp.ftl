@@ -45,11 +45,11 @@
                                         </#if>
                                         <div class="sms-container form__group">
                                             <div class="inputfield">
-                                            <input type="number" maxlength="1" class="sms-input" disabled />
-                                            <input type="number" maxlength="1" class="sms-input" disabled />
-                                            <input type="number" maxlength="1" class="sms-input" disabled />
-                                            <input type="number" maxlength="1" class="sms-input" disabled />
-                                            <input type="number" maxlength="1" class="sms-input" disabled />
+                                            <input type="text" pattern="\d*" maxlength="1" class="sms-input" disabled />
+                                            <input type="text" pattern="\d*" maxlength="1" class="sms-input" disabled />
+                                            <input type="text" pattern="\d*" maxlength="1" class="sms-input" disabled />
+                                            <input type="text" pattern="\d*" maxlength="1" class="sms-input" disabled />
+                                            <input type="text" pattern="\d*" maxlength="1" class="sms-input" disabled />
                                             </div>
                                         </div>
                                         <#if generatedOtpRemainTime??>
@@ -113,22 +113,26 @@
     const inputField = document.querySelector(".inputfield");
     const submitButton = document.querySelector(".submit");
     const dataInput = document.querySelector("#id-hidden-input");
+    const p2e = s => s.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
+    const a2e = s => s.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d))
     submitButton.disabled = true;
     let inputCount = 0,
     finalInput = "";
 
     //Update input
     const updateInputConfig = (element, disabledStatus) => {
-    element.disabled = disabledStatus;
-    if (!disabledStatus) {
-        element.focus();
-    } else {
-        element.blur();
-    }
+        element.disabled = disabledStatus;
+        if (!disabledStatus) {
+            element.focus();
+        } else {
+            element.blur();
+        }
     };
 
     input.forEach((element) => {
     element.addEventListener("keyup", (e) => {
+        e.target.value = p2e(e.target.value);
+        e.target.value = a2e(e.target.value);
         e.target.value = e.target.value.replace(/[^0-9]/g, "");
         let { value } = e.target;
 
@@ -171,7 +175,7 @@
     window.addEventListener("keyup", (e) => {
     if (inputCount > 4) {        
         submitButton.disabled = false;
-        //document.getElementById("kc-form-login").submit();
+        document.getElementById("kc-login").click();
         if (e.key == "Backspace") {
         finalInput = finalInput.substring(0, finalInput.length - 1);
         updateInputConfig(inputField.lastElementChild, false);

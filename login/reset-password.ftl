@@ -63,12 +63,12 @@
                                             <input tabindex="1" id="nid" placeholder="کد ملی" required class="${properties.kcInputClass!} form__input" name="username" value="" type="text" autofocus autocomplete="off"
                                                 oninvalid="this.setCustomValidity('لطفا کد ملی را وارد کنید')" oninput="setCustomValidity('')"/>
                                         </div>
-                                        <div class="${properties.kcFormGroupClass!} form__group">
+                                        <#--  <div class="${properties.kcFormGroupClass!} form__group">
                                             <input tabindex="2" id="mobile" placeholder="موبایل" required class="${properties.kcInputClass!} form__input" name="mobile_number" value="" type="text" autofocus autocomplete="off"
                                                 oninvalid="this.setCustomValidity('لطفا موبایل را وارد کنید')" oninput="setCustomValidity('')"/>
-                                        </div>
+                                        </div>  -->
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="3" id="captcha" placeholder="کد امنیتی"
+                                            <input tabindex="2" id="captcha" placeholder="کد امنیتی"
                                                 required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
                                                 oninvalid="this.setCustomValidity('لطفا مقادیر داخل عکس را وارد کنید')" oninput="setCustomValidity('')" />
                                             <img src="data:image/png;charset=utf-8;base64,${captchaImage}" class="form__captcha" />

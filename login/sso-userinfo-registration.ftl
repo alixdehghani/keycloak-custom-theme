@@ -138,9 +138,9 @@
         jalaliDatepicker.startWatch();
     </script>  -->
 
-<script src="${url.resourcesPath}/jdpv2/jquery-3.7.0.min.js"></script>
-<#--  
-<link rel="stylesheet" href="${url.resourcesPath}/jdpv2/persian-datepicker.min.css"/>
+<script src="${url.resourcesPath}/jquery/jquery-3.7.0.min.js"></script>
+
+<#--  <link rel="stylesheet" href="${url.resourcesPath}/jdpv2/persian-datepicker.min.css"/>
 <script src="${url.resourcesPath}/jdpv2/persian-date.min.js"></script>
 <script src="${url.resourcesPath}/jdpv2/persian-datepicker.min.js"></script>
 <script type="text/javascript">
@@ -190,7 +190,7 @@
 
 
 
-<link rel="stylesheet" href="${url.resourcesPath}/kamanddp/kamadatepicker.min.css">
+<#--  <link rel="stylesheet" href="${url.resourcesPath}/kamanddp/kamadatepicker.min.css">
 <script src="${url.resourcesPath}/kamanddp/kamadatepicker.min.js"></script>
 
 <script type="text/javascript">
@@ -202,5 +202,15 @@
 	    gotoToday: true,
         forceFarsiDigits: true,
         swapNextPrev: true
+    });
+</script>  -->
+
+
+
+<link type="text/css" rel="stylesheet" href="${url.resourcesPath}/datepicker-persian/persianDatepicker-default.css" />
+<script type="text/javascript" src="${url.resourcesPath}/datepicker-persian/persianDatepicker.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $("#sso_plus_user_birth_date_key_input").persianDatepicker();       
     });
 </script>
