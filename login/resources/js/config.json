@@ -1,0 +1,17 @@
+{
+    "front.auth.init.background": "/statics/background1.jpg",
+    "customer.name": "وزارت کار، تعاون و رفاه اجتماعی",
+    "title": "سامانه احراز هویت",
+    "title.logo": "/static/fingerprint.jpg",
+    "title.image": "/static/image.jpg",
+    "copyright.text": "سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است",
+    "color-primary": "#003171",
+    "color-primary-light": "#143673",
+    "color-primary-dark": "#0A1E4B",
+    "color-grey-dark": "#777",
+    "color-grey-dark-2": "#999",
+    "color-grey-dark-5": "#8E8E8E",
+    "color-white": "#fff",
+    "color-black": "#000",
+    "default-font-size": "1.6rem"
+}
