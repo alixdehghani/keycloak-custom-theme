@@ -24,11 +24,11 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2>سامانه احرازهویت یکپارچه</h2>
-                                            <h2>وزارت کار، تعاون و رفاه اجتماعی</h2>
+                                            <h2>${msg('mainTitle')}</h2>
+                                            <h2>${msg('organization')}</h2>
                                         </div>
                                         <div class="form__group__login">
-                                            <span class="form__group__login__text">ورود / ثبت نام</span>
+                                            <span class="form__group__login__text">${msg('login')} / ${msg('register')}</span>
                                         </div>
                                         <#if messagesPerField.existsError('password')>
                                             <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
@@ -37,12 +37,13 @@
                                         </#if>
                                         <#if invalidPasswordMessage??>
                                             <span id="input-error" aria-live="polite">
-                                                نام کاربری یافت نشد
+                                                ${msg('invalidPasswordMessage')}
                                             </span>
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
                                             <input tabindex="1" id="sso_plus_user_company_owner_national_code_input" class="${properties.kcInputClass!} form__input" name="sso_plus_user_company_owner_national_code" value="<#if sso_plus_user_company_owner_national_code??><#if sso_plus_user_company_owner_national_code[0]??>${msg(sso_plus_user_company_owner_national_code[0])}</#if></#if>" type="text" autofocus autocomplete="on"
-                                                required title="" pattern="^[0-9]{10}$" oninvalid="this.setCustomValidity('لطفا شناسه ملی را وارد کنید')" oninput="setCustomValidity('')" placeholder="کد ملی مدیر عامل شرکت"/>
+                                                required title=""  placeholder="${msg('companyOwnerNationalCode')}"/>
+                                                <#--  pattern="^[0-9]{10}$"  -->
                                         </div>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
                                             <#--  <input type="hidden" id="id-hidden-input" name="credentialId" />  -->
@@ -63,11 +64,10 @@
                                         </div>
                                     </div>
                                 </form>
-                                <div class="book__form-image">
+                                <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>این سامانه توسط مرکز فناوری اطلاعات و ارتباطات وزارت تعاون، کار و رفاه اجتماعی توسعه داده شده است</p>
-                                        <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
+                                        <p>${msg('footerText')}</p>
                                     </div>
                                 </div>
                             </div>
@@ -89,3 +89,27 @@
                     </#if>
         </#if>
     </@layout.registrationLayout>
+
+        <script type="text/javascript">
+        const usernameElement = document.getElementById('sso_plus_user_company_owner_national_code_input');
+        const kcLoginEl = document.getElementById('kc-login');
+        const p2e = s => s.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
+        kcLoginEl.addEventListener('click', (e) => {
+            const reg = new RegExp('^[0-9]+$');
+            const value = p2e(usernameElement.value);
+            if(!reg.test(value)) {
+                usernameElement.setCustomValidity('${msg('pleaseEnterNumeric')}')
+            }
+            if(!value) {
+                usernameElement.setCustomValidity('${msg('pleaseEnterComponyOwnerCode')}');  
+            }
+        })
+        
+        usernameElement.oninput = function(e) {
+                    e.target.setCustomValidity("");
+        };
+
+        
+        
+
+    </script>

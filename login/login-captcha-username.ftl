@@ -13,7 +13,6 @@
                                                 <a href="#" id="kc-current-locale-link">${locale.current}</a>
                                                 <ul>
                                                     <#list locale.supported as l>
-                                                        <#--  <li class="kc-dropdown-item"><a href="${l.url}">${l.label}</a></li>  -->
                                                         <li class="kc-dropdown-item"><a href="${l.url?replace('protocol/openid-connect/auth','login-actions/authenticate')}">${l.label}</a></li>
                                                     </#list>
                                                 </ul>
@@ -25,11 +24,11 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2>سامانه احرازهویت یکپارچه</h2>
-                                            <h2>وزارت کار، تعاون و رفاه اجتماعی</h2>
+                                            <h2>${msg('mainTitle')}</h2>
+                                            <h2>${msg('organization')}</h2>
                                         </div>
                                         <div class="form__group__login">
-                                            <span class="form__group__login__text">ورود / ثبت نام</span>
+                                            <span class="form__group__login__text">${msg('login')} / ${msg('register')}</span>
                                         </div>
                                         <#if messagesPerField.existsError('username','password')>
                                             <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
@@ -38,22 +37,22 @@
                                         </#if>
                                         <#if captchaIsNotValid??>
                                             <span id="input-error" aria-live="polite">
-                                                کد امنیتی اشتباه است
+                                                ${msg('captchaIsNotValid')}
                                             </span>
                                         </#if>
                                         <#if userIsNotExist??>
                                             <span id="input-error" aria-live="polite">
-                                                نام کاربری یافت نشد
+                                                ${msg('userIsNotExist')}
                                             </span>
                                         </#if>
                                         <#if userIsNotEnable??>
                                             <span id="input-error" aria-live="polite">
-                                                نام کاربری مورد نظر غیر فعال است
+                                                ${msg('userIsNotEnable')}
                                             </span>
                                         </#if>
                                         <#if inquiryCompanyInfoHasError??>
                                             <span id="input-error" aria-live="polite">
-                                                پاسخی از سرویس استعلام شرکت ها دریافت نشد
+                                                ${msg('inquiryCompanyInfoHasError')}
                                             </span>
                                         </#if>
                                         <#if nationalCodeIsNotValid??>
@@ -61,12 +60,12 @@
                                                 <#if sso_plus_user_type[0]??>
                                                     <#if msg(sso_plus_user_type[0]) == 'PERSON'>
                                                         <span id="input-error" aria-live="polite">
-                                                         کد ملی وارد شده اشتباه است
+                                                         ${msg('nationalCodeIsNotValid')}
                                                         </span>
                                                     </#if>
                                                     <#if msg(sso_plus_user_type[0]) == 'LEGAL'>
                                                         <span id="input-error" aria-live="polite">
-                                                         شناسه شرکت وارد شده اشتباه است
+                                                         ${msg('companyIdIsNotValid')}
                                                         </span>
                                                     </#if>
                                                 </#if>
@@ -80,11 +79,11 @@
                                                 </select>  -->
                                                 <div class="form__group form__input center no-border no-padding ">
                                                     <input type="hidden" id="sso_plus_user_type"  value="<#if sso_plus_user_type??><#if sso_plus_user_type[0]??>${msg(sso_plus_user_type[0])}</#if></#if>">
-                                                    <span class="padding-5-vertical">نوع کاربر: </span>
+                                                    <span class="padding-5-vertical">${msg('userType')}: </span>
                                                     <input type="radio" id="person" class="padding-5-vertical" name="sso_plus_user_type" onclick="setPlaceHolder('PERSON')" value="PERSON">
-                                                    <label for="person" class="padding-5-vertical">حقیقی</label>
+                                                    <label for="person" class="padding-5-vertical">${msg('person')}</label>
                                                     <input type="radio" id="legal" class="padding-5-vertical" name="sso_plus_user_type" onclick="setPlaceHolder('LEGAL')" value="LEGAL">
-                                                    <label for="legal" class="padding-5-vertical">حقوقی</label>
+                                                    <label for="legal" class="padding-5-vertical">${msg('legal')}</label>
                                                 </div>
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
@@ -92,14 +91,14 @@
                                                 <input tabindex="2" id="username" class="${properties.kcInputClass!} form__input" name="username" value="${(login.username!'')}" type="text" disabled />
                                                 <#else>
                                                     <input tabindex="2" required id="username" class="${properties.kcInputClass!} form__input" name="username" value="<#if username??><#if username[0]??>${msg(username[0])}</#if></#if>" type="text" autofocus autocomplete="off"
-                                                        aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" oninvalid="this.setCustomValidity('لطفا نام کاربری را وارد کنید')" oninput="setCustomValidity('')"/>
+                                                        aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" />
                                             </#if>
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="3" id="captcha" placeholder="کد امنیتی"
+                                            <input tabindex="3" id="captcha" placeholder="${msg('captchaText')}"
                                                 required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
-                                                oninvalid="this.setCustomValidity('لطفا مقادیر داخل عکس را وارد کنید')" oninput="setCustomValidity('')" />
-                                            <img src="data:image/png;charset=utf-8;base64,${captchaImage}" class="form__captcha"/>
+                                                oninvalid="this.setCustomValidity('${msg('pleaseEnterTheCaptcha')}')" oninput="setCustomValidity('')" />
+                                            <span class="form__captcha"><img class ="locale-choose" src="data:image/png;charset=utf-8;base64,${captchaImage}" /></span>
                                         </div>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
                                             <input type="hidden" id="id-hidden-input" name="captchaId" value="${captchaId}" />
@@ -128,15 +127,14 @@
                                                     </ul>
                                                 </div>
                                             </#if>
-                                            <a class="block center-aling no-padding" href="#" disabled><i class="padding-5-all fa fa-mobile font-size-large margin-left-5px"></i><span>تغییر شماره تلفن همراه</span></a>
+                                            <a class="block center-aling no-padding" href="#" disabled><i class="padding-5-all fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('changeMobileNumber')}</span></a>
                                         </div>
                                     </div>
                                 </form>
-                                <div class="book__form-image">
+                                <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>این سامانه توسط مرکز فناوری اطلاعات و ارتباطات وزارت تعاون، کار و رفاه اجتماعی توسعه داده شده است</p>
-                                        <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
+                                        <p>${msg('footerText')}</p>
                                     </div>
                                 </div>
                             </div>
@@ -165,6 +163,9 @@
         const ssoPlusUserTypeEl = document.getElementById('sso_plus_user_type');
         const legalElement = document.getElementById('legal');
         const personElement = document.getElementById('person');
+        const kcLoginEl = document.getElementById('kc-login');
+        const inputErrorEl = document.getElementById('input-error');
+        const p2e = s => s.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
         if(!ssoPlusUserTypeEl?.value ) {
             personElement.checked = true;
             setPlaceHolder('PERSON');
@@ -178,11 +179,26 @@
 
         function setPlaceHolder (value) {            
             if(value === 'PERSON') {       
-                usernameElement.placeholder = "کدملی";
+                usernameElement.placeholder = "${msg('nationalCode')}/${msg('userName')}";
             }
             if(value === 'LEGAL') {    
-                usernameElement.placeholder = "شناسه شرکت"; 
+                usernameElement.placeholder = "${msg('companyID')}/${msg('userName')}"; 
             }
         }
+        kcLoginEl.addEventListener('click', (e) => {
+            //const reg = new RegExp('^[0-9]+$');
+            //const value = p2e(usernameElement.value);
+            //if(!reg.test(value)) {
+                //usernameElement.setCustomValidity('لطفا فقط مقادیر عددی وارد کنید')
+            //}
+            if(!value) {
+                usernameElement.setCustomValidity('${msg('pleaseEnterUsername')}');  
+            }
+        })
+        
+        usernameElement.oninput = function(e) {
+            e.target.setCustomValidity("");
+        };
+
     </script>
 

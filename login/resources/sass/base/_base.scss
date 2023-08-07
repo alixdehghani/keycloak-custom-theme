@@ -9,7 +9,7 @@
 html {
     // This defines what 1rem is
     font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
-    direction: rtl;
+    // direction: rtl;
     @include respond(tab-land) {
         font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
     }
@@ -41,7 +41,7 @@ body {
     // background-color: $color-grey-dark-2;
     position: relative;
     margin: .25rem;
-    direction: ltr;
+    // direction: ltr;
     color: $color-primary-light;
 }
 .kc-dropdown > a{
@@ -102,5 +102,12 @@ jdp-container {
 
 i {
     font-style: normal !important;
+}
+
+.toast-error {
+    font-size: large;
+    @include respond(phone) {
+        min-width: 60%
+    }
 }
 

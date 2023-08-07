@@ -2,12 +2,19 @@
     &__group:not(:last-child) {
         margin-bottom: 2rem;
         .field-icon {
-            float: left;
-            margin-left: 10px;
+            
             margin-top: -30px;
             position: relative;
             z-index: 2;
           }
+        .ltr {
+            float: right;
+            margin-right: 10px;
+        }
+        .rtl {
+            float: left;
+            margin-left: 10px;
+        }
     }
 
     &__input {

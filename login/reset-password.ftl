@@ -28,11 +28,11 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2>سامانه احرازهویت یکپارچه</h2>
-                                            <h2>وزارت کار، تعاون و رفاه اجتماعی</h2>
+                                            <h2>${msg('mainTitle')}</h2>
+                                            <h2>${msg('organization')}</h2>
                                         </div>
                                         <div class="form__group__login">
-                                            <span class="form__group__login__text">فراموشی رمز عبور</span>
+                                            <span class="form__group__login__text">${msg('forgetPassword')}</span>
                                         </div>
                                         <#if messagesPerField.existsError('username','password')>
                                             <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
@@ -41,37 +41,37 @@
                                         </#if>
                                         <#if captchaIsNotValid??>
                                             <span id="input-error" aria-live="polite">
-                                                کد امنیتی اشتباه است
+                                                ${msg('captchaIsNotValid')}
                                             </span>
                                         </#if>
                                         <#if userIsNotExist??>
                                             <span id="input-error" aria-live="polite">
-                                                نام کاربری یافت نشد
+                                                ${msg('userIsNotExist')}
                                             </span>
                                         </#if>
                                         <#if userIsNotEnable??>
                                             <span id="input-error" aria-live="polite">
-                                                نام کاربری مورد نظر غیر فعال است
+                                                ${msg('userIsNotEnable')}
                                             </span>
                                         </#if>
                                         <#if userIsNotOwnerOfMobile??>
                                             <span id="input-error" aria-live="polite">
-                                                شماره موبایل وارد شده اشتباه است
+                                                ${msg('userIsNotOwnerOfMobile')}
                                             </span>
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="1" id="nid" placeholder="کد ملی" required class="${properties.kcInputClass!} form__input" name="username" value="" type="text" autofocus autocomplete="off"
-                                                oninvalid="this.setCustomValidity('لطفا کد ملی را وارد کنید')" oninput="setCustomValidity('')"/>
+                                            <input tabindex="1" id="nid" placeholder="${msg('nationalCode')}" required class="${properties.kcInputClass!} form__input" name="username" value="" type="text" autofocus autocomplete="off"
+                                                oninvalid="this.setCustomValidity('${msg('pleaseEnterNationalCode')}')" oninput="setCustomValidity('')"/>
                                         </div>
                                         <#--  <div class="${properties.kcFormGroupClass!} form__group">
                                             <input tabindex="2" id="mobile" placeholder="موبایل" required class="${properties.kcInputClass!} form__input" name="mobile_number" value="" type="text" autofocus autocomplete="off"
                                                 oninvalid="this.setCustomValidity('لطفا موبایل را وارد کنید')" oninput="setCustomValidity('')"/>
                                         </div>  -->
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="2" id="captcha" placeholder="کد امنیتی"
+                                            <input tabindex="2" id="captcha" placeholder="${msg('captchaText')}"
                                                 required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
-                                                oninvalid="this.setCustomValidity('لطفا مقادیر داخل عکس را وارد کنید')" oninput="setCustomValidity('')" />
-                                            <img src="data:image/png;charset=utf-8;base64,${captchaImage}" class="form__captcha" />
+                                                oninvalid="this.setCustomValidity('${msg('pleaseEnterTheCaptcha')}')" oninput="setCustomValidity('')" />
+                                            <span class="form__captcha"><img class ="locale-choose" src="data:image/png;charset=utf-8;base64,${captchaImage}" /></span>
                                         </div>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
                                             <input type="hidden" id="id-hidden-input" name="captchaId" value="${captchaId}" />
@@ -93,11 +93,10 @@
                                         </div>
                                     </div>
                                 </form>
-                                <div class="book__form-image">
+                                <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>این سامانه توسط مرکز فناوری اطلاعات و ارتباطات وزارت تعاون، کار و رفاه اجتماعی توسعه داده شده است</p>
-                                        <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
+                                        <p>${msg('footerText')}</p>
                                     </div>
                                 </div>
                             </div>

@@ -24,11 +24,11 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2>سامانه احرازهویت یکپارچه</h2>
-                                            <h2>وزارت کار، تعاون و رفاه اجتماعی</h2>
+                                            <h2>${msg('mainTitle')}</h2>
+                                            <h2>${msg('organization')}</h2>
                                         </div>
                                         <div class="form__group__login">
-                                            <span class="form__group__login__text">ورود / ثبت نام</span>
+                                            <span class="form__group__login__text">${msg('login')} / ${msg('register')}</span>
                                         </div>
                                         <#if messagesPerField.existsError('username','password')>
                                             <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
@@ -81,14 +81,14 @@
                                                             </a></span>
                                                     </#if>
                                                 </div>
-                                                <a class="block" href="#" disabled>&#xf10b; ویرایش شماره تلفن همراه</a>
+                                                <a class="block center-aling no-padding" href="#" disabled><i class="padding-5-all fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('changeMobileNumber')}</span></a>
                                         </div>
                                     </div>
                                 </form>
-                                <div class="book__form-image">
+                                <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
+                                        <p>${msg('footerText')}</p>
                                     </div>
                                 </div>
                             </div>

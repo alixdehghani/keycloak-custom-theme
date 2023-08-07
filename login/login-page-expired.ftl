@@ -31,8 +31,8 @@
                             <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                             <div class="book__form-section">
                                 <div class="book__form__title">
-                                    <h2>سامانه احرازهویت یکپارچه</h2>
-                                    <h2>وزارت کار، تعاون و رفاه اجتماعی</h2>
+                                    <h2>${msg('mainTitle')}</h2>
+                                    <h2>${msg('organization')}</h2>
                                 </div>
                                 <div class="form__group__login">
                                     <span class="form__group__login__text"></span>
@@ -56,11 +56,10 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="book__form-image">
+                        <div class="book__form-image locale-choose">
                             <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                             <div class="book__form-image-text">
-                                <p>این سامانه توسط مرکز فناوری اطلاعات و ارتباطات وزارت تعاون، کار و رفاه اجتماعی توسعه داده شده است</p>
-                                <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
+                                <p>${msg('footerText')}</p>
                             </div>
                         </div>
                     </div>

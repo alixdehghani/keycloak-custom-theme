@@ -2,7 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" class="${properties.kcHtmlClass!}">
 
-<head>
+<head
+     <#if (realm.internationalizationEnabled  && locale.supported?size gt 1) && ((locale.current == 'Persian') || (locale.current == 'فارسی'))>dir="rtl"</#if>
+     <#if (realm.internationalizationEnabled  && locale.supported?size gt 1) && ((locale.current == 'English') || (locale.current == 'انگلیسی'))>dir="ltr"</#if>
+>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="robots" content="noindex, nofollow">
@@ -36,10 +39,39 @@
     </#if>
     <link rel="stylesheet" href="${url.resourcesPath}/css/login.css">
     <link rel="stylesheet" href="${url.resourcesPath}/font-awesome/css/font-awesome.min.css">
+    <script src="${url.resourcesPath}/jquery/jquery-3.7.0.min.js"></script>
+    <link rel="stylesheet" href="${url.resourcesPath}/toastify/toastify.css">
+    <script src="${url.resourcesPath}/toastify/toastify.js">
+        function showErrorToast(value) {
+            Toastify({
+                text: value,
+                duration: 5000,
+                newWindow: true,
+                close: true,
+                gravity: "bottom", // `top` or `bottom`
+                position: "left", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    background: "linear-gradient(to right, #ab2f00, #7f2402)",
+                },
+                onClick: function(){} // Callback after click
+            }).showToast();
+        }
+    </script>
+    
 </head>
 
-<body class="${properties.kcBodyClass!}">
+<body class="${properties.kcBodyClass!}" dir="auto">
 <#--  <img id="body-background-image" style="position: absolute;top:0;width:100%; height:100%">  -->
+<#if (realm.internationalizationEnabled  && locale.supported?size gt 1)>
+    <#if ((locale.current == 'Persian') || (locale.current == 'فارسی'))>
+        <input id="locale-value" type="hidden" value="rtl">
+    </#if>
+    <#if ((locale.current == 'English') || (locale.current == 'انگلیسی'))>
+        <input id="locale-value" type="hidden" value="ltr">
+    </#if>
+
+</#if>
 <div class="${properties.kcLoginClass!}">
     <div id="kc-header" class="${properties.kcHeaderClass!}">
     </div>
@@ -135,4 +167,29 @@
   </div>
 </body>
 </html>
+<script>
+        const inputErrorElement = document.getElementById('input-error');
+        if(inputErrorElement) {
+            const value = inputErrorElement.innerText || inputErrorElement.textContent;;
+            showErrorToast(value.trim())
+        }
+        function showErrorToast(value) {
+            Toastify({
+                text: value,
+                duration: 5000,
+                className: "toast-error",
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    background: "linear-gradient(to right, #dc4a58, #dc4a58)",
+                },
+                onClick: function(){} // Callback after click
+            }).showToast();
+        }
+        const locale = document.getElementById('locale-value').value;
+        const localesEl = document.querySelectorAll('.locale-choose').forEach(el => el.classList.add(locale));
+    </script>
 </#macro>

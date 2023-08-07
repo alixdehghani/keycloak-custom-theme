@@ -24,13 +24,14 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2>سامانه احرازهویت یکپارچه</h2>
-                                            <h2>وزارت کار، تعاون و رفاه اجتماعی</h2>                                            
+                                            <h2>${msg('mainTitle')}</h2>
+                                            <h2>${msg('organization')}</h2>                                            
                                         </div>
                                         <div class="form__group__login">
                                         <#if otpUserPhoneSent??>
                                             <span id="otp-user-phone-sent" style="display: none;">${msg(otpUserPhoneSent)}</span>
-                                            <span class="form__group__login__text ">رمز به شماره <span class="otp-user-phone-sent-txt" style="display:inline-block;direction: ltr;"></span> ارسال شده است</span>
+                                            <#--  <span class="form__group__login__text ">رمز به شماره <span class="otp-user-phone-sent-txt" style="display:inline-block;direction: ltr;"></span> ارسال شده است</span>  -->
+                                            <span class="form__group__login__text ">${msg('sendOptMessage',(otpUserPhoneSent!''))}</span>
                                         </#if>
                                         </div>
                                         <#if messagesPerField.existsError('username','password')>
@@ -40,7 +41,7 @@
                                         </#if>
                                         <#if otpIsNotValid??>
                                             <span id="input-error" aria-live="polite">
-                                                کد وارد شده اشتباه است
+                                                ${msg('otpIsNotValid')}
                                             </span>
                                         </#if>
                                         <div class="sms-container form__group">
@@ -58,14 +59,14 @@
                                         <span class="time-to-live"></span>
                                         <div class="form__group form__group__btn resend-otp-ctx">
                                             <input type="hidden" id="kc-form-buttons" class="resend-otp-submit" id="kc-resend-code" name="resendOtp" type="submit" value="true"/>
-                                            <input id="kc-form-buttons" class="btn btn--light resend-otp-btn" id="kc-resend-code" type="submit" value="&#xf021; ارسال مجدد"/>
+                                            <input id="kc-form-buttons" class="btn btn--light resend-otp-btn" id="kc-resend-code" type="submit" value="&#xf021; ${msg('resendText')}"/>
                                         </div>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
                                             <input type="hidden" id="id-hidden-input" name="userOtpValue"/>
                                             <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green submit" onclick="validateOTP()" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
                                         </div>
                                         <div class="form__group__external-link center-aling" style="margin: 115px auto 25px auto">
-                                                <a class="block center-aling no-padd-marg" href="#" disabled><i class="padding-25 fa fa-mobile font-size-large margin-left-5px"></i><span>تغییر شماره تلفن همراه</span></a>                                                
+                                                <a class="block center-aling no-padd-marg" href="#" disabled><i class="padding-25 fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('changeMobileNumber')}</span></a>                                                
                                                 <div id="kc-username" class="${properties.kcFormGroupClass!}">
                                                     <#--  <label id="kc-attempted-username">${auth.attemptedUsername}</label>  -->
                                                     <a id="reset-login" class="no-padd-marg" href="${url.loginRestartFlowUrl}">
@@ -80,10 +81,10 @@
                                         </div>
                                     </div>
                                 </form>
-                                <div class="book__form-image">
+                                <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>این سامانه توسط مرکز فناوری اطلاعات و ارتباطات وزارت تعاون، کار و رفاه اجتماعی توسعه داده شده است</p>
+                                        <p>${msg('footerText')}</p>
                                         <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
                                     </div>
                                 </div>

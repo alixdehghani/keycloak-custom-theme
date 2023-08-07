@@ -24,11 +24,11 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2>سامانه احرازهویت یکپارچه</h2>
-                                            <h2>وزارت کار، تعاون و رفاه اجتماعی</h2>
+                                            <h2>${msg('mainTitle')}</h2>
+                                            <h2>${msg('organization')}</h2>
                                         </div>
                                         <div class="form__group__login">
-                                            <span class="form__group__login__text">تنظیم رمز عبور</span>
+                                            <span class="form__group__login__text">${msg('setPassword')}</span>
                                         </div>
                                         <#if messagesPerField.existsError('username','password')>
                                             <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
@@ -37,28 +37,28 @@
                                         </#if>
                                         <#if passwordHasNotMinimumRequirement??>
                                             <span id="input-error" aria-live="polite">
-                                                رمز عبور ضعیف است
+                                                ${msg('passwordHasNotMinimumRequirement')}
                                             </span>
                                         </#if>
                                         <#if passwordsAreNotTheSame??>
                                             <span id="input-error" aria-live="polite">
-                                                رمز وارد شده با تکرار آن یکسان نیست
+                                                ${msg('passwordsAreNotTheSame')}
                                             </span>
                                         </#if>
                                         <#if setPasswordHasError??>
                                             <span id="input-error" aria-live="polite">
-                                                عملیات با خطا مواجه شد
+                                                ${msg('setPasswordHasError')}
                                             </span>
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="1" id="password" required placeholder="&#xf023; رمز عبور جدید" class="${properties.kcInputClass!} form__input" name="passwordNew" type="password" autocomplete="off"
-                                                oninvalid="this.setCustomValidity('لطفا رمز عبور را وارد کنید')" oninput="setCustomValidity('')"/>
-                                            <span toggle="#password-field" onclick="onTogglePassword('password', 'toggle-password-1')" class="fa fa-fw fa-eye field-icon toggle-password" id="toggle-password-1"></span>
+                                            <input tabindex="1" id="password" required placeholder="&#xf023; ${msg('newPassword')}" class="${properties.kcInputClass!} form__input" name="passwordNew" type="password" autocomplete="off"
+                                                oninvalid="this.setCustomValidity('${msg('pleaseEnterPassword')}')" oninput="setCustomValidity('')"/>
+                                            <span toggle="#password-field" onclick="onTogglePassword('password', 'toggle-password-1')" class="fa fa-fw fa-eye field-icon locale-choose toggle-password" id="toggle-password-1"></span>
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="2" id="repeat-password" required placeholder="&#xf023; تکرار رمز عبور جدید" class="${properties.kcInputClass!} form__input" name="passwordRepeatNew" type="password" autocomplete="off"
-                                                oninvalid="this.setCustomValidity('لطفا تکرار رمز عبور را وارد کنید')" oninput="setCustomValidity('')"/>
-                                            <span toggle="#password-field" onclick="onTogglePassword('repeat-password', 'toggle-password-2')" class="fa fa-fw fa-eye field-icon toggle-password" id="toggle-password-2"></span>
+                                            <input tabindex="2" id="repeat-password" required placeholder="&#xf023; ${msg('repeatNewPassword')}" class="${properties.kcInputClass!} form__input" name="passwordRepeatNew" type="password" autocomplete="off"
+                                                oninvalid="this.setCustomValidity('${msg('pleaseEnterNewPassword')}')" oninput="setCustomValidity('')"/>
+                                            <span toggle="#password-field" onclick="onTogglePassword('repeat-password', 'toggle-password-2')" class="fa fa-fw fa-eye field-icon locale-choose toggle-password" id="toggle-password-2"></span>
                                         </div>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
                                             <input type="hidden" id="id-hidden-input" name="credentialId" />
@@ -79,11 +79,10 @@
                                         </div>
                                     </div>
                                 </form>
-                                <div class="book__form-image">
+                                <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>این سامانه توسط مرکز فناوری اطلاعات و ارتباطات وزارت تعاون، کار و رفاه اجتماعی توسعه داده شده است</p>
-                                        <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
+                                        <p>${msg('footerText')}</p>
                                     </div>
                                 </div>
                             </div>

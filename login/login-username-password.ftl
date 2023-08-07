@@ -24,11 +24,11 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2>سامانه احرازهویت یکپارچه</h2>
-                                            <h2>وزارت کار، تعاون و رفاه اجتماعی</h2>
+                                            <h2>${msg('mainTitle')}</h2>
+                                            <h2>${msg('organization')}</h2>
                                         </div>
                                         <div class="form__group__login">
-                                            <span class="form__group__login__text">ورود / ثبت نام</span>
+                                            <span class="form__group__login__text">${msg('login')} / ${msg('register')}</span>
                                         </div>
                                         <#if messagesPerField.existsError('password')>
                                             <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
@@ -37,19 +37,19 @@
                                         </#if>
                                         <#if invalidPasswordMessage??>
                                             <span id="input-error" aria-live="polite">
-                                                نام کاربری یافت نشد
+                                                ${msg('invalidPasswordMessage')}
                                             </span>
                                         </#if>
                                         <#if passwordIsNotValid??>
                                             <span id="input-error" aria-live="polite">
-                                                کلمه عبور اشتباه است
+                                                ${msg('passwordIsNotValid')}
                                             </span>
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
                                             <input tabindex="1" id="password" required placeholder="${msg('password')}" class="${properties.kcInputClass!} form__input" name="password" type="password" autocomplete="off"
                                                 aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
-                                                oninvalid="this.setCustomValidity('لطفا کلمه عبور را وارد کنید')" oninput="setCustomValidity('')"/>
-                                                <span toggle="#password-field" onclick="onTogglePassword()" class="fa fa-fw fa-eye field-icon toggle-password" id="toggle-password"></span>
+                                                oninvalid="this.setCustomValidity('${msg('pleaseEnterPassword')}')" oninput="setCustomValidity('')"/>
+                                                <span toggle="#password-field" onclick="onTogglePassword()" class="fa fa-fw fa-eye field-icon locale-choose toggle-password" id="toggle-password"></span>
                                         </div>
                                         
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
@@ -64,7 +64,7 @@
                                             </#if>
                                         </div>                                       
                                         <div class="form__group__external-link center-aling" style="margin: 115px auto 25px auto">                                            
-                                                <a class="block center-aling no-padd-marg" href="#" disabled><i class="padding-25 fa fa-mobile font-size-large margin-left-5px"></i><span>تغییر شماره تلفن همراه</span></a>                                                
+                                                <a class="block center-aling no-padd-marg" href="#" disabled><i class="padding-25 fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('changeMobileNumber')}</span></a>                                                
                                                 <div id="kc-username" class="${properties.kcFormGroupClass!}">
                                                     <#--  <label id="kc-attempted-username">${auth.attemptedUsername}</label>  -->
                                                     <a id="reset-login" class="no-padd-marg" href="${url.loginRestartFlowUrl}">
@@ -79,10 +79,10 @@
                                         </div>
                                     </div>
                                 </form>
-                                <div class="book__form-image">
+                                <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>این سامانه توسط مرکز فناوری اطلاعات و ارتباطات وزارت تعاون، کار و رفاه اجتماعی توسعه داده شده است</p>
+                                        <p>${msg('footerText')}</p>
                                         <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
                                     </div>
                                 </div>
