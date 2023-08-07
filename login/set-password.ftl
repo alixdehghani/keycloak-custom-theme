@@ -51,7 +51,7 @@
                                             </span>
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="1" id="password" required placeholder="&#xf023; ${msg('newPassword')}" class="${properties.kcInputClass!} form__input" name="passwordNew" type="password" autocomplete="off"
+                                            <input tabindex="1" id="password" required placeholder="&#xf023; ${msg('newPassword')}" class="${properties.kcInputClass!} form__input" autofocus name="passwordNew" type="password" autocomplete="off"
                                                 oninvalid="this.setCustomValidity('${msg('pleaseEnterPassword')}')" oninput="setCustomValidity('')"/>
                                             <span toggle="#password-field" onclick="onTogglePassword('password', 'toggle-password-1')" class="fa fa-fw fa-eye field-icon locale-choose toggle-password" id="toggle-password-1"></span>
                                         </div>

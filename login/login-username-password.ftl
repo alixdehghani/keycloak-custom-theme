@@ -46,7 +46,7 @@
                                             </span>
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="1" id="password" required placeholder="${msg('password')}" class="${properties.kcInputClass!} form__input" name="password" type="password" autocomplete="off"
+                                            <input tabindex="1" id="password" required placeholder="${msg('password')}" class="${properties.kcInputClass!} form__input" name="password" autofocus type="password" autocomplete="off"
                                                 aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
                                                 oninvalid="this.setCustomValidity('${msg('pleaseEnterPassword')}')" oninput="setCustomValidity('')"/>
                                                 <span toggle="#password-field" onclick="onTogglePassword()" class="fa fa-fw fa-eye field-icon locale-choose toggle-password" id="toggle-password"></span>
@@ -54,11 +54,11 @@
                                         
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
                                             <#--  <input type="hidden" id="id-hidden-input" name="credentialId" />  -->
-                                            <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
+                                            <input tabindex="2" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
                                         </div>
                                         <div class="${properties.kcFormOptionsWrapperClass!} form__group__external-link" style="margin-top: -1rem;">
                                             <#if realm.resetPasswordAllowed>                                                        
-                                                <span><a tabindex="5" class="padding-5-vertical" href="${url.loginResetCredentialsUrl}">
+                                                <span><a tabindex="3" class="padding-5-vertical" href="${url.loginResetCredentialsUrl}">
                                                     <i class="fa-unlock-alt margin-left-5px"></i> ${msg("doForgotPassword")}
                                                 </a></span>
                                             </#if>

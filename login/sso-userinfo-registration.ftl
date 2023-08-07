@@ -144,9 +144,16 @@
         const mobileReg = new RegExp('^(\\+98|0)?9\\d{9}$');
         const postalCodeReg = new RegExp('^[0-9]{10}$');
         const p2e = s => s.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
-        $(function() {
-            $("#sso_plus_user_birth_date_key_input").persianDatepicker();       
-        });
+        if(locale === 'ltr') {
+            birthDateEl.type='date';
+            birthDateEl.readOnly = false;
+        }
+        if(locale === 'rtl') {
+            $(function() {
+                $("#sso_plus_user_birth_date_key_input").persianDatepicker();       
+            });
+        }
+        console.log(locale);
         kcLoginEl.addEventListener('click', (e) => {
             const mobikeValue = p2e(phoneEl.value);
             const postalCodeValue = p2e(postalCodeEl.value);
