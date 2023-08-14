@@ -30,8 +30,7 @@
                                         <div class="form__group__login">
                                         <#if otpUserPhoneSent??>
                                             <span id="otp-user-phone-sent" style="display: none;">${msg(otpUserPhoneSent)}</span>
-                                            <#--  <span class="form__group__login__text ">رمز به شماره <span class="otp-user-phone-sent-txt" style="display:inline-block;direction: ltr;"></span> ارسال شده است</span>  -->
-                                            <span class="form__group__login__text ">${msg('sendOptMessage',(otpUserPhoneSent!''))}</span>
+                                            <span class="form__group__login__text ">${msg('sendOptMessageS')} <span class="otp-user-phone-sent-txt locale-choose"></span> ${msg('sendOptMessageE')}</span>
                                         </#if>
                                         </div>
                                         <#if messagesPerField.existsError('username','password')>

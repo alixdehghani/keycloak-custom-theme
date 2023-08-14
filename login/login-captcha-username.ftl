@@ -191,7 +191,7 @@
             //if(!reg.test(value)) {
                 //usernameElement.setCustomValidity('لطفا فقط مقادیر عددی وارد کنید')
             //}
-            if(!value) {
+            if(!usernameElement?.value) {
                 usernameElement.setCustomValidity('${msg('pleaseEnterUsername')}');  
             }
         })
