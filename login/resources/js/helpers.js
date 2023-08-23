@@ -1,4 +1,4 @@
-import { TIMEOUT_SEC } from './config.js';
+const resourcesPath = document.getElementById('resources-path').value;
 
 const timeout = function (s) {
   return new Promise(function (_, reject) {
@@ -8,7 +8,7 @@ const timeout = function (s) {
   });
 };
 
-export const AJAX = async function (url, uploadData = undefined) {
+const AJAX = async function (url, uploadData = undefined, config={}) {
   try {
     const fetchPro = uploadData
       ? fetch(url, {
@@ -20,7 +20,7 @@ export const AJAX = async function (url, uploadData = undefined) {
         })
       : fetch(url);
 
-    const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
+    const res = await Promise.race([fetchPro, timeout(config?.TIMEOUT_SEC || 10)]);
     const data = await res.json();
 
     if (!res.ok) throw new Error(`${data.message} (${res.status})`);
@@ -30,37 +30,12 @@ export const AJAX = async function (url, uploadData = undefined) {
   }
 };
 
-
-// export const getJSON = async function (url) {
-//   try {
-//     const fetchPro = fetch(url);
-//     const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
-//     const data = await res.json();
-
-//     if (!res.ok) throw new Error(`${data.message} (${res.status})`);
-//     return data;
-//   } catch (err) {
-//     throw err;
-//   }
-// };
-
-// export const sendJSON = async function (url, uploadData) {
-//   try {
-//     const fetchPro = fetch(url, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(uploadData),
-//     });
-
-//     const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
-//     const data = await res.json();
-
-//     if (!res.ok) throw new Error(`${data.message} (${res.status})`);
-//     return data;
-//   } catch (err) {
-//     throw err;
-//   }
-// };
+const loadConfig = async function () {
+  try {
+      const data = await AJAX(`${resourcesPath}/config.json`);
+      return data;
+  } catch (err) {
+      throw err;
+  }
+}
 

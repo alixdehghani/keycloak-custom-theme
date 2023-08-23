@@ -6,6 +6,7 @@
      <#if (realm.internationalizationEnabled  && locale.supported?size gt 1) && ((locale.current == 'Persian') || (locale.current == 'فارسی'))>dir="rtl"</#if>
      <#if (realm.internationalizationEnabled  && locale.supported?size gt 1) && ((locale.current == 'English') || (locale.current == 'انگلیسی'))>dir="ltr"</#if>
 >
+    <input id="resources-path" type="hidden" value="${msg(url.resourcesPath)}">
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="robots" content="noindex, nofollow">
@@ -58,7 +59,7 @@
             }).showToast();
         }
     </script>
-    
+    <script src="${url.resourcesPath}/js/helpers.js"></script>
 </head>
 
 <body class="${properties.kcBodyClass!}" dir="auto">
@@ -192,4 +193,5 @@
         const locale = document.getElementById('locale-value').value;
         const localesEl = document.querySelectorAll('.locale-choose').forEach(el => el.classList.add(locale));
     </script>
+    <#--  <script src="${url.resourcesPath}/js/script.js" type="text/javascript"></script>  -->
 </#macro>

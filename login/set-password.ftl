@@ -50,6 +50,12 @@
                                                 ${msg('setPasswordHasError')}
                                             </span>
                                         </#if>
+                                        <#if passwordIsExistInPast??>
+                                            <span id="input-error" aria-live="polite">
+                                                ${msg('passwordIsExistInPast')}
+                                            </span>                                            
+                                            <input id="password-is-exist-in-past" type="hidden" value="${msg(passwordIsExistInPast)}">
+                                        </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
                                             <input tabindex="1" id="password" required placeholder="&#xf023; ${msg('newPassword')}" class="${properties.kcInputClass!} form__input" autofocus name="passwordNew" type="password" autocomplete="off"
                                                 oninvalid="this.setCustomValidity('${msg('pleaseEnterPassword')}')" oninput="setCustomValidity('')"/>
@@ -107,8 +113,6 @@
     </@layout.registrationLayout>
 
 <script>
-    const code = document.getElementById("password");
-    const display = document.getElementsByClassName("textbox")[0];
     function onTogglePassword(inputId, toggleIconId) {
         const x = document.getElementById(inputId);
         if (x.type === "password") {
@@ -121,36 +125,5 @@
             document.getElementById(toggleIconId).classList.add('fa-eye');
         }
     }
-
-
-    code.addEventListener("keyup", function() {
-    checkpassword(code.value);
-    });
-
-
-    function checkpassword(password) {
-        let errorText = ['${msg('checkStrongPassword1')}'];
-        if (!password.match(/[a-z]+/)) {
-          errorText.push('${msg('lowerCaseLetter')}');
-        }
-        if (!password.match(/[A-Z]+/)) {
-            errorText.push('${msg('upperCaseUetter')}');
-        }
-        if (!password.match(/[0-9]+/)) {
-            errorText.push('${msg('numericCharacter')}');
-        }
-        if (!password.match(/[$@#&!%*._+=?]+/)) {
-            errorText.push('${msg('specialCharacter')}: $@#&!%*._+=?')
-        }
-
-        if (password.length < 6) {
-            display.innerHTML = "${msg('minimumNumberOfCharacters')}";
-        } else {
-            if(errorText.length > 1) {
-                display.innerHTML = errorText.slice(0, 2).join(' ') + ', '  + errorText.slice(2, 5).join(', ') + (locale === 'rtl' ? ' باشد' : '');
-            } else {
-                display.innerHTML = "";
-            }
-        }
-    }
 </script>
+<script src="${url.resourcesPath}/js/passwordPolicyHints.js" type="text/javascript"></script>

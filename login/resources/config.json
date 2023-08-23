@@ -1,0 +1,105 @@
+{
+    "api_url": "http://sso1.ssoplus.ir",
+    "TIMEOUT_SEC": 10, 
+    "password_policy_hints":  [
+        {
+            "name":"MINIMUM_LENGTH",
+            "value":15,
+            "status":true,
+            "hints":{
+                "en":"",
+                "fa":"حداقل تعداد کاراکتر رمز عبور 15 عدد می باشد"
+            }
+        },
+        {
+            "name":"UPPERCASE_CHARACTERS",
+            "value":2,
+            "status":true,
+            "hints":{
+                "en":"",
+                "fa":"رمز عبور می بایست حداقل دو حرف بزرگ داشته باشد"
+            }
+        },
+        {
+            "name":"DIGITS",
+            "value":2,
+            "status":true,
+            "hints":{
+                "en":"",
+                "fa":"رمز عبور می بایست شامل 2 عدد باشد"
+            }
+        },
+        {
+            "name":"SPECIAL_CHARACTERS",
+            "value":3,
+            "status":true,
+            "hints":{
+                "en":"",
+                "fa":"رمز عبور می بایست شامل 3 کاراکتر خاص باشد"
+            }
+        },
+        {
+            "name":"NOT_RECENTLY_USED",
+            "value":5000,
+            "status":true,			
+            "hints":{
+                "en":"",
+                "fa":"رمز عبور ایجاد شده، یکی از رمزهای عبور قدیمی می باشد"
+            }
+        },
+        {
+            "name":"NOT_USERNAME",
+            "value":"",
+            "status":true,			
+            "hints":{
+                "en":"",
+                "fa":""
+            }
+        },
+        {
+            "name":"NOT_EMAIL",
+            "value":"",
+            "status":true,
+            "hints":{
+                "en":"",
+                "fa":""
+            }
+        },
+        {
+            "name":"LOWERCASE_CHARACTERS",
+            "value":2,
+            "status":true,
+            "hints":{
+                "en":"",
+                "fa":"رمز عبور حداقل می بایست شامل 2 حرف کوچک باشد"
+            }
+        },
+        {
+            "name":"PASSWORD_BLACKLIST",
+            "value":"",
+            "status":true,			
+            "hints":{
+                "en":"",
+                "fa":"رمز عبور به عنوان رمز عبور نامعتبر می باشد"
+            }
+        },
+        {
+            "name":"EXPIRE_PASSWORD",
+            "value":"",
+            "status":false,			
+            "hints":{
+                "en":"",
+                "fa":""
+            }
+        },
+        {
+            "name":"REGULAR_EXPRESSION",
+            "value":"",
+            "status":false,						
+            "hints":{
+                "en":"",
+                "fa":""
+            }
+        }
+     ]
+}
