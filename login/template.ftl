@@ -60,9 +60,10 @@
         }
     </script>
     <script src="${url.resourcesPath}/js/helpers.js"></script>
+    <script src="${url.resourcesPath}/js/script.js" type="text/javascript"></script>
 </head>
 
-<body class="${properties.kcBodyClass!}" dir="auto">
+<body class="${properties.kcBodyClass!}" dir="auto" style="display: none;">
 <#--  <img id="body-background-image" style="position: absolute;top:0;width:100%; height:100%">  -->
 <#if (realm.internationalizationEnabled  && locale.supported?size gt 1)>
     <#if ((locale.current == 'Persian') || (locale.current == 'فارسی'))>
@@ -193,5 +194,13 @@
         const locale = document.getElementById('locale-value').value;
         const localesEl = document.querySelectorAll('.locale-choose').forEach(el => el.classList.add(locale));
     </script>
-    <#--  <script src="${url.resourcesPath}/js/script.js" type="text/javascript"></script>  -->
+<script>
+    if($('#kc-content-wrapper').children(0).attr('id')) {
+        console.log()
+        if($('#kc-content-wrapper').children(0).attr('id') !== 'kc-form') {
+            window.location.href = $('#kc-info-message a').attr('href') || '/';
+        }
+    }
+</script>
+
 </#macro>

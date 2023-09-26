@@ -65,7 +65,9 @@
                                             <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green submit" onclick="validateOTP()" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
                                         </div>
                                         <div class="form__group__external-link center-aling" style="margin: 115px auto 25px auto">
-                                                <a class="block center-aling no-padd-marg" href="#" disabled><i class="padding-25 fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('changeMobileNumber')}</span></a>                                                
+                                                <#--  <#if (msg(sso_spi_change_phone_number_is_active)?? && msg(sso_spi_change_phone_number_is_active[0]) == 'TRUE')>  -->
+                                                    <a class="block center-aling no-padd-marg" href="#" disabled><i class="padding-25 fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('changeMobileNumber')}</span></a>                                                
+                                                <#--  </#if>  -->
                                                 <div id="kc-username" class="${properties.kcFormGroupClass!}">
                                                     <#--  <label id="kc-attempted-username">${auth.attemptedUsername}</label>  -->
                                                     <a id="reset-login" class="no-padd-marg" href="${url.loginRestartFlowUrl}">
@@ -116,87 +118,75 @@
     const p2e = s => s.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
     const a2e = s => s.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d))
     submitButton.disabled = true;
-    let inputCount = 0,
-    finalInput = "";
-
+    inputs = ['','','','',''];
+    
     //Update input
     const updateInputConfig = (element, disabledStatus) => {
-        element.disabled = disabledStatus;
+        element.disabled = false;
         if (!disabledStatus) {
+            if(element.value) {
+                element.value = ''
+            }
             element.focus();
         } else {
             element.blur();
         }
     };
 
-    input.forEach((element) => {
-    element.addEventListener("keyup", (e) => {
-        e.target.value = p2e(e.target.value);
-        e.target.value = a2e(e.target.value);
-        e.target.value = e.target.value.replace(/[^0-9]/g, "");
-        let { value } = e.target;
-
-        if (value.length == 1) {
-        updateInputConfig(e.target, true);
-        if (inputCount <= 4 && e.key != "Backspace") {
-            finalInput += value;
-            if (inputCount < 4) {
-            updateInputConfig(e.target.nextElementSibling, false);
+    input.forEach((element, index) => {
+        element.addEventListener("keyup", (e) => {
+            e.target.value = p2e(e.target.value);
+            e.target.value = a2e(e.target.value);
+            e.target.value = e.target.value.replace(/[^0-9]/g, "");
+            let { value } = e.target;
+            if(value.length > 1) {
+                value = value.substring(value.length - 1, value.length);
             }
-        }
-        inputCount += 1;
-        } else if (value.length == 0 && e.key == "Backspace") {
-        finalInput = finalInput.substring(0, finalInput.length - 1);
-        if (inputCount == 0) {
-            updateInputConfig(e.target, false);
-            return false;
-        }
-        updateInputConfig(e.target, true);
-        e.target.previousElementSibling.value = "";
-        updateInputConfig(e.target.previousElementSibling, false);
-        inputCount -= 1;
-        } else if (value.length == 0 && e.key == "Delete") {
-        finalInput = finalInput.substring(0, finalInput.length - 1);
-        if (inputCount == 0) {
-            updateInputConfig(e.target, false);
-            return false;
-        }
-        updateInputConfig(e.target, true);
-        e.target.previousElementSibling.value = "";
-        updateInputConfig(e.target.previousElementSibling, false);
-        inputCount -= 1;
-        } else if (value.length > 1) {
-        e.target.value = value.split("")[0];
-        }
-        submitButton.disabled = true;
-    });
-    });
-
-    window.addEventListener("keyup", (e) => {
-    if (inputCount > 4) {        
-        submitButton.disabled = false;
-        document.getElementById("kc-login").click();
-        if (e.key == "Backspace") {
-        finalInput = finalInput.substring(0, finalInput.length - 1);
-        updateInputConfig(inputField.lastElementChild, false);
-        inputField.lastElementChild.value = "";
-        inputCount -= 1;
-        submitButton.disabled = true;
-        }
-    }
+            if (value.length == 1 && (e.key != "Backspace" || e.key != "Delete")) {
+                inputs[index] = value;
+                if(index < 4) {
+                    updateInputConfig(e.target.nextElementSibling, false);
+                }
+            } else if (value.length == 0 && e.key == "Backspace") {
+                if (inputs[index]) {
+                    e.target.value = '';
+                    inputs[index] = '';
+                    updateInputConfig(e.target, false);
+                    return false;
+                } else if(e.target['previousElementSibling']) {
+                    e.target.previousElementSibling.value = "";
+                    inputs[index - 1] = '';
+                    updateInputConfig(e.target.previousElementSibling, false);
+                }
+            }  else if (value.length == 0 && e.key == "Delete") {
+                if (inputs[index]) {
+                    e.target.value = '';
+                    inputs[index] = '';
+                    updateInputConfig(e.target, false);
+                    return false;
+                } else if(e.target['previousElementSibling']) {
+                    e.target.previousElementSibling.value = "";
+                    inputs[index - 1] = '';
+                    updateInputConfig(e.target.previousElementSibling, false);
+                }
+            }
+            if(inputs.every(el => el)) {
+                submitButton.disabled = false;
+                document.getElementById("kc-login").click();
+            }
+        });
     });
 
     const validateOTP = () => {
-        dataInput.value = finalInput;
+        dataInput.value = inputs.join('');
     };
 
     //Start
     const startInput = () => {
-    inputCount = 0;
-    finalInput = "";
     input.forEach((element) => {
         element.value = "";
     });
+    
     updateInputConfig(inputField.firstElementChild, false);
     };
 
@@ -228,7 +218,6 @@
 	}
 	const ttlResult = document.getElementById('generated-otp-expire').innerHTML;    
     const ttl = Math.floor(Number(ttlResult.slice(1, ttlResult.length - 1)) / 1000);
-    console.log(ttl)
     resentCtx = document.querySelector('.resend-otp-ctx');
 	display = document.querySelector('.time-to-live');
     resendOtpSubmit = document.querySelector('.resend-otp-submit');

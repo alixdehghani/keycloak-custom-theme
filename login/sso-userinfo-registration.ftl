@@ -150,7 +150,10 @@
         }
         if(locale === 'rtl') {
             $(function() {
-                $("#sso_plus_user_birth_date_key_input").persianDatepicker();       
+                $("#sso_plus_user_birth_date_key_input").persianDatepicker({
+                    startDate: "1307/01/01",
+                    endDate:"today",
+                })      
             });
         }
         console.log(locale);

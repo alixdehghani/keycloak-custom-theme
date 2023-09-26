@@ -94,40 +94,51 @@
                                                         aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" />
                                             </#if>
                                         </div>
-                                        <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="3" id="captcha" placeholder="${msg('captchaText')}"
-                                                required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
-                                                oninvalid="this.setCustomValidity('${msg('pleaseEnterTheCaptcha')}')" oninput="setCustomValidity('')" />
-                                            <span class="form__captcha"><img class ="locale-choose" src="data:image/png;charset=utf-8;base64,${captchaImage}" /></span>
-                                        </div>
+                                        <#--  <#if (msg(sso_spi_captcha_is_active)?? && msg(sso_spi_captcha_is_active[0]) == 'TRUE')>  -->
+                                            <div class="${properties.kcFormGroupClass!} form__group">
+                                                <input tabindex="3" id="captcha" placeholder="${msg('captchaText')}"
+                                                    required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
+                                                    oninvalid="this.setCustomValidity('${msg('pleaseEnterTheCaptcha')}')" oninput="setCustomValidity('')" />
+                                                <span class="form__captcha"><img class ="locale-choose" src="data:image/png;charset=utf-8;base64,${captchaImage}" /></span>
+                                            </div>
+                                        <#--  </#if>  -->
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
                                             <input type="hidden" id="id-hidden-input" name="captchaId" value="${captchaId}" />
                                             <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
                                         </div>
                                         <div class="form__group__external-link">
-                                            <#if realm.password && social.providers??>
-                                                <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
-                                                    <ul class="ul ${properties.kcFormSocialAccountListClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
-                                                        <#list social.providers as p>
-                                                            <a id="social-${p.alias}" class="li btn ${properties.kcFormSocialAccountListButtonClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
-                                                                type="button" href="${p.loginUrl}">
-                                                                &#xf13e;
-                                                                <#if p.iconClasses?has_content>
-                                                                    <i class="${properties.kcCommonLogoIdP!} ${p.iconClasses!}" aria-hidden="true"></i>
-                                                                    <span class="${properties.kcFormSocialAccountNameClass!} kc-social-icon-text">
-                                                                        ${p.displayName!}
-                                                                    </span>
-                                                                    <#else>
-                                                                        <span class="${properties.kcFormSocialAccountNameClass!}">
-                                                                            ${p.displayName!}
-                                                                        </span>
-                                                                </#if>
-                                                            </a>
-                                                        </#list>
-                                                    </ul>
-                                                </div>
-                                            </#if>
-                                            <a class="block center-aling no-padding" href="#" disabled><i class="padding-5-all fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('changeMobileNumber')}</span></a>
+                                            <#--  <#if sso_spi_government_sso_is_active??>  -->
+                                                <#--  <#if (msg(sso_spi_government_sso_is_active) == '[TRUE]')>  -->
+                                                    <#if realm.password && social.providers??>
+                                                        <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
+                                                            <ul class="ul ${properties.kcFormSocialAccountListClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
+                                                                <#list social.providers as p>
+                                                                    <a id="social-${p.alias}" class="li btn ${properties.kcFormSocialAccountListButtonClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
+                                                                        type="button" href="${p.loginUrl}">
+                                                                        &#xf13e;
+                                                                        <#if p.iconClasses?has_content>
+                                                                            <i class="${properties.kcCommonLogoIdP!} ${p.iconClasses!}" aria-hidden="true"></i>
+                                                                            <span class="${properties.kcFormSocialAccountNameClass!} kc-social-icon-text">
+                                                                                ${p.displayName!}
+                                                                            </span>
+                                                                            <#else>
+                                                                                <span class="${properties.kcFormSocialAccountNameClass!}">
+                                                                                    ${p.displayName!}
+                                                                                </span>
+                                                                        </#if>
+                                                                    </a>
+                                                                </#list>
+                                                            </ul>
+                                                        </div>
+                                                    </#if>
+                                                <#--  </#if>  -->
+                                            <#--  </#if>  -->
+                                            
+                                            <#--  <#if (sso_spi_change_phone_number_is_active??)>  --> 
+                                                <#--  <#if (msg(sso_spi_change_phone_number_is_active[0]) == 'TRUE')>                                                      -->
+                                                    <a class="block center-aling no-padding" href="#" disabled><i class="padding-5-all fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('changeMobileNumber')}</span></a>
+                                                <#--  </#if>  -->
+                                            <#--  </#if>  -->
                                         </div>
                                     </div>
                                 </form>

@@ -64,7 +64,9 @@
                                             </#if>
                                         </div>                                       
                                         <div class="form__group__external-link center-aling" style="margin: 115px auto 25px auto">                                            
-                                                <a class="block center-aling no-padd-marg" href="#" disabled><i class="padding-25 fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('changeMobileNumber')}</span></a>                                                
+                                                <#--  <#if (msg(sso_spi_change_phone_number_is_active)?? && msg(sso_spi_change_phone_number_is_active[0]) == 'TRUE')>  -->
+                                                    <a class="block center-aling no-padd-marg" href="#" disabled><i class="padding-25 fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('changeMobileNumber')}</span></a>                                                
+                                                <#--  </#if>  -->
                                                 <div id="kc-username" class="${properties.kcFormGroupClass!}">
                                                     <#--  <label id="kc-attempted-username">${auth.attemptedUsername}</label>  -->
                                                     <a id="reset-login" class="no-padd-marg" href="${url.loginRestartFlowUrl}">

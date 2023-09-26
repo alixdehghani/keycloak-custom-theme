@@ -40,6 +40,11 @@
                                                 ${msg('invalidPasswordMessage')}
                                             </span>
                                         </#if>
+                                        <#if companyOwnerNationalCodeIsNotValid??>
+                                            <span id="input-error" aria-live="polite">
+                                                ${msg('companyOwnerNationalCodeIsNotValid')}
+                                            </span>
+                                        </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
                                             <input tabindex="1" id="sso_plus_user_company_owner_national_code_input" class="${properties.kcInputClass!} form__input" name="sso_plus_user_company_owner_national_code" value="<#if sso_plus_user_company_owner_national_code??><#if sso_plus_user_company_owner_national_code[0]??>${msg(sso_plus_user_company_owner_national_code[0])}</#if></#if>" type="text" autofocus autocomplete="on"
                                                 required title=""  placeholder="${msg('companyOwnerNationalCode')}"/>

@@ -8,7 +8,7 @@ const timeout = function (s) {
   });
 };
 
-const AJAX = async function (url, uploadData = undefined, config={}) {
+const AJAX = async function (url, uploadData = undefined) {
   try {
     const fetchPro = uploadData
       ? fetch(url, {
@@ -20,7 +20,7 @@ const AJAX = async function (url, uploadData = undefined, config={}) {
         })
       : fetch(url);
 
-    const res = await Promise.race([fetchPro, timeout(config?.TIMEOUT_SEC || 10)]);
+    const res = await Promise.race([fetchPro, timeout(10)]);
     const data = await res.json();
 
     if (!res.ok) throw new Error(`${data.message} (${res.status})`);
@@ -29,13 +29,4 @@ const AJAX = async function (url, uploadData = undefined, config={}) {
     throw err;
   }
 };
-
-const loadConfig = async function () {
-  try {
-      const data = await AJAX(`${resourcesPath}/config.json`);
-      return data;
-  } catch (err) {
-      throw err;
-  }
-}
 

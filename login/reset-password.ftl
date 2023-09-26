@@ -67,12 +67,14 @@
                                             <input tabindex="2" id="mobile" placeholder="موبایل" required class="${properties.kcInputClass!} form__input" name="mobile_number" value="" type="text" autofocus autocomplete="off"
                                                 oninvalid="this.setCustomValidity('لطفا موبایل را وارد کنید')" oninput="setCustomValidity('')"/>
                                         </div>  -->
-                                        <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="2" id="captcha" placeholder="${msg('captchaText')}"
-                                                required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
-                                                oninvalid="this.setCustomValidity('${msg('pleaseEnterTheCaptcha')}')" oninput="setCustomValidity('')" />
-                                            <span class="form__captcha"><img class ="locale-choose" src="data:image/png;charset=utf-8;base64,${captchaImage}" /></span>
-                                        </div>
+                                        <#--  <#if (msg(sso_spi_captcha_is_active)?? && msg(sso_spi_captcha_is_active[0]) == 'TRUE')>  -->
+                                            <div class="${properties.kcFormGroupClass!} form__group">
+                                                <input tabindex="2" id="captcha" placeholder="${msg('captchaText')}"
+                                                    required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
+                                                    oninvalid="this.setCustomValidity('${msg('pleaseEnterTheCaptcha')}')" oninput="setCustomValidity('')" />
+                                                <span class="form__captcha"><img class ="locale-choose" src="data:image/png;charset=utf-8;base64,${captchaImage}" /></span>
+                                            </div>
+                                        <#--  </#if>  -->
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
                                             <input type="hidden" id="id-hidden-input" name="captchaId" value="${captchaId}" />
                                             <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />

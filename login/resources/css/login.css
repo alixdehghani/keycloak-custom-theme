@@ -1247,20 +1247,22 @@ body {
   .book .form__input {
     width: 100%;
     font-family: Vazirmatn, yekan, FontAwesome; }
-  .book .form__captcha {
+  .book .form__captcha img {
     max-width: 180px;
     max-height: 35px; }
     @media only screen and (max-width: 56.25em) {
-      .book .form__captcha {
+      .book .form__captcha img {
         max-width: 100px; } }
-    .book .form__captcha > .ltr {
-      position: absolute;
-      top: 5px;
-      right: 7px; }
-    .book .form__captcha > .rtl {
-      position: absolute;
-      top: 5px;
-      left: 7px; }
+  .book .form__captcha > .ltr {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem 0.5rem 0 0; }
+  .book .form__captcha > .rtl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.5rem 0 0 0.5rem; }
   .book .form__group {
     position: relative;
     width: 100%; }
@@ -1395,9 +1397,6 @@ body {
         @media only screen and (max-width: 56.25em) {
           .book #kc-register-form .form__section__footer {
             width: 100%; } }
-    .book #kc-register-form .form__captcha {
-      top: 36px;
-      left: 10px; }
     .book #kc-register-form .copyright {
       padding: 0;
       margin-top: 1rem;

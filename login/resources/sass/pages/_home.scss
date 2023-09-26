@@ -42,9 +42,8 @@
 }
 
 .otp-user-phone-sent-txt {
-    display:inline-block;
+    display: inline-block;
     direction: ltr;
-
 }
 
 .sms-container {
@@ -112,20 +111,24 @@
         font-family: Vazirmatn, yekan, FontAwesome;
     }
     .form__captcha {
-        max-width: 180px;
-        max-height: 35px;
-        @include respond(tab-port) {
-            max-width: 100px;
+        & img {
+            max-width: 180px;
+            max-height: 35px;
+            @include respond(tab-port) {
+                max-width: 100px;
+            }
         }
         & > .ltr {
             position: absolute;
-            top: 5px;
-            right: 7px;
+            top: 0;
+            right: 0;
+            padding: 0.5rem 0.5rem 0 0;
         }
         & > .rtl {
             position: absolute;
-            top: 5px;
-            left: 7px;
+            top: 0;
+            left: 0;
+            padding: 0.5rem 0 0 0.5rem;
         }
     }
     .form__group {
@@ -255,7 +258,7 @@
     &__form-image {
         width: 50%;
         background-color: $color-primary;
-        
+
         display: flex;
         justify-content: center;
         align-items: center;
@@ -269,8 +272,6 @@
             display: none;
         }
     }
-
-
 
     #kc-form-login {
         display: flex;
@@ -321,10 +322,10 @@
                 }
             }
         }
-        .form__captcha {
-            top: 36px;
-            left: 10px;
-        }
+        // .form__captcha {
+        //     top: 36px;
+        //     left: 10px;
+        // }
         .copyright {
             padding: 0;
             margin-top: 1rem;
