@@ -196,7 +196,6 @@
     </script>
 <script>
     if($('#kc-content-wrapper').children(0).attr('id')) {
-        console.log()
         if($('#kc-content-wrapper').children(0).attr('id') !== 'kc-form') {
             window.location.href = $('#kc-info-message a').attr('href') || '/';
         }

@@ -104,22 +104,24 @@ const renderError = function () {
 //   }
 // };
 
+const confEmitter$ = new ObsEmitter();
 const loadStaticConfig = async function () {
   try {
     const data = await AJAX(`/app_init.json?nocache=${Date.now()}`);
     // const data = {
-    //   "color_primary": "#003171",
-    //   "colorprimary_light": "#143673",
-    //   "colorprimary_dark": "#0A1E4B",
-    //   "colorgrey_dark": "#777",
-    //   "colorgrey_dark2": "#999",
-    //   "colorgrey_dark5": "#8E8E8E",
-    //   "colorwhite": "#fff",
-    //   "colorblack": "#000",
-    //   "image1Url": 'http://sso1.ssoplus.ir/statics/background1.jpg',
-    //   "image2Url": 'http://sso1.ssoplus.ir/statics/background1.jpg'
-    // };
-    state.static = { ...data };
+      //   "color_primary": "#003171",
+      //   "colorprimary_light": "#143673",
+      //   "colorprimary_dark": "#0A1E4B",
+      //   "colorgrey_dark": "#777",
+      //   "colorgrey_dark2": "#999",
+      //   "colorgrey_dark5": "#8E8E8E",
+      //   "colorwhite": "#fff",
+      //   "colorblack": "#000",
+      //   "image1Url": 'http://sso1.ssoplus.ir/statics/background1.jpg',
+      //   "image2Url": 'http://sso1.ssoplus.ir/statics/background1.jpg'
+      // };
+      state.static = { ...data };
+      confEmitter$.next();
   } catch (err) {
     console.error(`${err} 💥💥💥💥`);
     throw err;

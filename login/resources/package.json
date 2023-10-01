@@ -6,7 +6,7 @@
   "scripts": {
     "watch:sass": "node-sass sass/main.scss css/login.css -w",
     "devserver": "live-server",
-    "start": "npm-run-all --parallel devserver watch:sass",
+    "start": "npm-run-all --parallel watch:sass",
     "compile:sass": "node-sass sass/main.scss tmp/style.comp.css",
     "concat:css": "concat -o tmp/style.concat.css tmp/icon-font.css tmp/style.comp.css",
     "prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" tmp/style.comp.css -o tmp/style.prefix.css",
