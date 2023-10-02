@@ -28,12 +28,16 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2>${msg('mainTitle')}</h2>
-                                            <h2>${msg('organization')}</h2>
+                                            <h2 id="first-level-system-title">${msg('mainTitle')}</h2>
+                                            <h2 id="system-title">${msg('organization')}</h2>
                                         </div>
-                                        <div class="form__group__login">
-                                            <span class="form__group__login__text">${msg('forgetPassword')}</span>
-                                        </div>
+                                        <#if (auth_forget_password_is_active??)> 
+                                            <#if (msg(auth_forget_password_is_active[0]) == 'true')> 
+                                                <div class="form__group__login">
+                                                    <span class="form__group__login__text">${msg('forgetPassword')}</span>
+                                                </div>
+                                            </#if>
+                                        </#if>
                                         <#if messagesPerField.existsError('username','password')>
                                             <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
                                                 ${kcSanitize(messagesPerField.getFirstError('username','password'))?no_esc}
@@ -67,14 +71,16 @@
                                             <input tabindex="2" id="mobile" placeholder="موبایل" required class="${properties.kcInputClass!} form__input" name="mobile_number" value="" type="text" autofocus autocomplete="off"
                                                 oninvalid="this.setCustomValidity('لطفا موبایل را وارد کنید')" oninput="setCustomValidity('')"/>
                                         </div>  -->
-                                        <#--  <#if (msg(sso_spi_captcha_is_active)?? && msg(sso_spi_captcha_is_active[0]) == 'TRUE')>  -->
-                                            <div class="${properties.kcFormGroupClass!} form__group">
-                                                <input tabindex="2" id="captcha" placeholder="${msg('captchaText')}"
-                                                    required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
-                                                    oninvalid="this.setCustomValidity('${msg('pleaseEnterTheCaptcha')}')" oninput="setCustomValidity('')" />
-                                                <span class="form__captcha"><img class ="locale-choose" src="data:image/png;charset=utf-8;base64,${captchaImage}" /></span>
-                                            </div>
-                                        <#--  </#if>  -->
+                                        <#if (auth_captcha_is_active??)> 
+                                            <#if (msg(auth_captcha_is_active[0]) == 'true')> 
+                                                <div class="${properties.kcFormGroupClass!} form__group">
+                                                    <input tabindex="2" id="captcha" placeholder="${msg('captchaText')}"
+                                                        required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
+                                                        oninvalid="this.setCustomValidity('${msg('pleaseEnterTheCaptcha')}')" oninput="setCustomValidity('')" />
+                                                    <span class="form__captcha"><img class ="locale-choose" src="data:image/png;charset=utf-8;base64,${captchaImage}" /></span>
+                                                </div>
+                                            </#if>
+                                        </#if>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
                                             <input type="hidden" id="id-hidden-input" name="captchaId" value="${captchaId}" />
                                             <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
@@ -97,7 +103,7 @@
                                 <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>${msg('footerText')}</p>
+                                        <p id="copyright">${msg('footerText')}</p>
                                     </div>
                                 </div>
                             </div>

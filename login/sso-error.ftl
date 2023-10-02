@@ -24,8 +24,8 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2>${msg('mainTitle')}</h2>
-                                            <h2>${msg('organization')}</h2>
+                                            <h2 id="first-level-system-title">${msg('mainTitle')}</h2>
+                                            <h2 id="system-title">${msg('organization')}</h2>
                                         </div>
                                         <div class="form__group__login">
                                             <span class="form__group__login__text"></span>
@@ -54,7 +54,7 @@
                                 <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>${msg('footerText')}</p>
+                                        <p id="copyright">${msg('footerText')}</p>
                                         <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
                                     </div>
                                 </div>

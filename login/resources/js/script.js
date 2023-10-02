@@ -21,23 +21,28 @@ const render = function (data, render = true) {
   _data = data;
   // const markup = _generateMarkup();
   // if (!render) return markup;
-  document.querySelector(':root').style.setProperty('--color-primary', state.static.color_primary);
-  document.querySelector(':root').style.setProperty('--colorprimary-light', state.static.colorprimary_light);
-  document.querySelector(':root').style.setProperty('--colorprimary-dark', state.static.colorprimary_dark);
-  document.querySelector(':root').style.setProperty('--colorgrey-dark', state.static.colorgrey_dark);
-  document.querySelector(':root').style.setProperty('--colorgrey-dark2', state.static.colorgrey_dark2);
-  document.querySelector(':root').style.setProperty('--colorgrey-dark5', state.static.colorgrey_dark5);
-  document.querySelector(':root').style.setProperty('--colorwhite', state.static.colorwhite);
-  document.querySelector(':root').style.setProperty('--colorblack', state.static.colorblack);
+  document.querySelector(':root').style.setProperty('--color-primary', state.static.auth_color_primary);
+  document.querySelector(':root').style.setProperty('--colorprimary-light', state.static.auth_colorprimary_light);
+  document.querySelector(':root').style.setProperty('--colorprimary-dark', state.static.auth_colorprimary_dark);
+  document.querySelector(':root').style.setProperty('--colorgrey-dark', state.static.auth_colorgrey_dark);
+  document.querySelector(':root').style.setProperty('--colorgrey-dark2', state.static.auth_colorgrey_dark2);
+  document.querySelector(':root').style.setProperty('--colorgrey-dark5', state.static.auth_colorgrey_dark5);
+  document.querySelector(':root').style.setProperty('--colorwhite', state.static.auth_colorwhite);
+  document.querySelector(':root').style.setProperty('--colorblack', state.static.auth_colorblack);
   _clear();
   // _parentElement.insertAdjacentHTML('afterbegin', markup);
   
-  $('.book__form-image-logo > img').attr("src", state.static.image1Url);
+  $('.book__form-image-logo > img').attr("src", state.static.auth_customerLogo);
   //$(".book__form-image-logo > img").attr('height','349');
   $(".book__form-image-logo > img").css('max-width', '100%');
-  $('.book__form-title-logo').attr("src", state.static.image2Url);
+  $('.book__form-title-logo').attr("src", state.static.auth_fingerprintImageUrl);
   //$(".book__form-title-logo").attr('height','71');
   $(".book__form-title-logo").css('max-width', '100%');
+  $("#favicon").attr("href", state.static.auth_favicon);
+  $('#tab-title').text(setTextById('tab-title'));
+  $('#copyright').text(setTextById('copyright'));
+  $('#system-title').text(setTextById('system-title'));
+  $('#first-level-system-title').text(setTextById('first-level-system-title'));
   _parentElement.style.display = 'block';
 };
 const _generateMarkup = function () {
@@ -153,6 +158,21 @@ init();
 // const kcContentWrapperEl = document.getElementById('kc-content-wrapper');
 // console.log(kcContentWrapperEl.id)
 
+
+function setTextById(id) {
+  switch (id) {
+    case 'tab-title':
+      return state.static[`auth_tabTitle_${localeLabel}`] || '';
+    case 'copyright':
+      return state.static[`auth_copyright_${localeLabel}`] || '';
+    case 'system-title':
+      return state.static[`auth_systemTitle_${localeLabel}`] || '';
+    case 'first-level-system-title':
+      return state.static[`auth_firstLevelSystemTitle_${localeLabel}`] || '';
+    default:
+      break;
+  }
+}
 
 
 

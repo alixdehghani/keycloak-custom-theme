@@ -24,8 +24,8 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2>${msg('mainTitle')}</h2>
-                                            <h2>${msg('organization')}</h2>
+                                            <h2 id="first-level-system-title">${msg('mainTitle')}</h2>
+                                            <h2 id="system-title">${msg('organization')}</h2>
                                         </div>
                                         <div class="form__group__login">
                                             <span class="form__group__login__text">${msg('login')} / ${msg('register')}</span>
@@ -52,30 +52,32 @@
                                             <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
                                         </div>
                                         <div class="form__group__external-link">
-                                            <#--  <#if (msg(sso_spi_government_sso_is_active)?? && msg(sso_spi_government_sso_is_active[0]) == 'TRUE')>  -->
-                                                <#if realm.password && social.providers??>
-                                                    <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
-                                                        <ul class="ul ${properties.kcFormSocialAccountListClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
-                                                            <#list social.providers as p>
-                                                                <a id="social-${p.alias}" class="li btn ${properties.kcFormSocialAccountListButtonClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
-                                                                    type="button" href="${p.loginUrl}">
-                                                                    &#xf13e;
-                                                                    <#if p.iconClasses?has_content>
-                                                                        <i class="${properties.kcCommonLogoIdP!} ${p.iconClasses!}" aria-hidden="true"></i>
-                                                                        <span class="${properties.kcFormSocialAccountNameClass!} kc-social-icon-text">
-                                                                            ${p.displayName!}
-                                                                        </span>
-                                                                        <#else>
-                                                                            <span class="${properties.kcFormSocialAccountNameClass!}">
+                                            <#if auth_government_sso_is_active??>
+                                                <#if (msg(auth_government_sso_is_active[0]) == 'true')>
+                                                    <#if realm.password && social.providers??>
+                                                        <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
+                                                            <ul class="ul ${properties.kcFormSocialAccountListClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
+                                                                <#list social.providers as p>
+                                                                    <a id="social-${p.alias}" class="li btn ${properties.kcFormSocialAccountListButtonClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
+                                                                        type="button" href="${p.loginUrl}">
+                                                                        &#xf13e;
+                                                                        <#if p.iconClasses?has_content>
+                                                                            <i class="${properties.kcCommonLogoIdP!} ${p.iconClasses!}" aria-hidden="true"></i>
+                                                                            <span class="${properties.kcFormSocialAccountNameClass!} kc-social-icon-text">
                                                                                 ${p.displayName!}
                                                                             </span>
-                                                                    </#if>
-                                                                </a>
-                                                            </#list>
-                                                        </ul>
-                                                    </div>
-                                                </#if>   
-                                            <#--  </#if>                                           -->
+                                                                            <#else>
+                                                                                <span class="${properties.kcFormSocialAccountNameClass!}">
+                                                                                    ${p.displayName!}
+                                                                                </span>
+                                                                        </#if>
+                                                                    </a>
+                                                                </#list>
+                                                            </ul>
+                                                        </div>
+                                                    </#if>   
+                                                </#if>
+                                            </#if>                                         
                                                 <div class="${properties.kcFormOptionsWrapperClass!}">
                                                     <#if realm.resetPasswordAllowed>
                                                         <span><a tabindex="5" href="${url.loginResetCredentialsUrl}">
@@ -83,16 +85,18 @@
                                                             </a></span>
                                                     </#if>
                                                 </div>
-                                                <#--  <#if (msg(sso_spi_change_phone_number_is_active)?? && msg(sso_spi_change_phone_number_is_active[0]) == 'TRUE')>  -->
-                                                    <a class="block center-aling no-padding" href="#" disabled><i class="padding-5-all fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('changeMobileNumber')}</span></a>
-                                                <#--  </#if>  -->
+                                                <#if (auth_change_phone_number_is_active??)> 
+                                                    <#if (msg(auth_change_phone_number_is_active[0]) == 'true')> 
+                                                        <a class="block center-aling no-padding" href="#" disabled><i class="padding-5-all fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('changeMobileNumber')}</span></a>
+                                                    </#if>
+                                                </#if>
                                         </div>
                                     </div>
                                 </form>
                                 <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>${msg('footerText')}</p>
+                                        <p id="copyright">${msg('footerText')}</p>
                                     </div>
                                 </div>
                             </div>

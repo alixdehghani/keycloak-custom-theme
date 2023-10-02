@@ -1188,6 +1188,12 @@ body {
   #kc-registration span a {
     padding: 0.25rem; }
 
+#kc-social-providers .ul {
+  flex-wrap: wrap; }
+  #kc-social-providers .ul .li {
+    flex: 1;
+    min-width: 45%; }
+
 .toggle-password {
   font-size: large !important;
   cursor: pointer !important; }
@@ -1362,7 +1368,6 @@ body {
         display: none; } }
   .book #kc-form-login {
     display: flex;
-    justify-content: flex-start;
     flex-direction: column;
     align-items: center;
     width: 50%;

@@ -24,8 +24,8 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2>${msg('mainTitle')}</h2>
-                                            <h2>${msg('organization')}</h2>
+                                            <h2 id="first-level-system-title">${msg('mainTitle')}</h2>
+                                            <h2 id="system-title">${msg('organization')}</h2>
                                         </div>
                                         <div class="form__group__login">
                                             <span class="form__group__login__text">${msg('login')} / ${msg('register')}</span>
@@ -94,21 +94,23 @@
                                                         aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" />
                                             </#if>
                                         </div>
-                                        <#--  <#if (msg(sso_spi_captcha_is_active)?? && msg(sso_spi_captcha_is_active[0]) == 'TRUE')>  -->
-                                            <div class="${properties.kcFormGroupClass!} form__group">
-                                                <input tabindex="3" id="captcha" placeholder="${msg('captchaText')}"
-                                                    required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
-                                                    oninvalid="this.setCustomValidity('${msg('pleaseEnterTheCaptcha')}')" oninput="setCustomValidity('')" />
-                                                <span class="form__captcha"><img class ="locale-choose" src="data:image/png;charset=utf-8;base64,${captchaImage}" /></span>
-                                            </div>
-                                        <#--  </#if>  -->
+                                        <#if (auth_captcha_is_active??)> 
+                                            <#if (msg(auth_captcha_is_active[0]) == 'true')> 
+                                                <div class="${properties.kcFormGroupClass!} form__group">
+                                                    <input tabindex="3" id="captcha" placeholder="${msg('captchaText')}"
+                                                        required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
+                                                        oninvalid="this.setCustomValidity('${msg('pleaseEnterTheCaptcha')}')" oninput="setCustomValidity('')" />
+                                                    <span class="form__captcha"><img class ="locale-choose" src="data:image/png;charset=utf-8;base64,${captchaImage}" /></span>
+                                                </div>
+                                            </#if>
+                                        </#if>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
                                             <input type="hidden" id="id-hidden-input" name="captchaId" value="${captchaId}" />
                                             <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
                                         </div>
                                         <div class="form__group__external-link">
-                                            <#--  <#if sso_spi_government_sso_is_active??>  -->
-                                                <#--  <#if (msg(sso_spi_government_sso_is_active) == '[TRUE]')>  -->
+                                            <#if auth_government_sso_is_active??>
+                                                <#if (msg(auth_government_sso_is_active[0]) == 'true')>
                                                     <#if realm.password && social.providers??>
                                                         <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
                                                             <ul class="ul ${properties.kcFormSocialAccountListClass!}<#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
@@ -131,21 +133,21 @@
                                                             </ul>
                                                         </div>
                                                     </#if>
-                                                <#--  </#if>  -->
-                                            <#--  </#if>  -->
+                                                </#if>
+                                            </#if>
                                             
-                                            <#--  <#if (sso_spi_change_phone_number_is_active??)>  --> 
-                                                <#--  <#if (msg(sso_spi_change_phone_number_is_active[0]) == 'TRUE')>                                                      -->
+                                            <#if (auth_change_phone_number_is_active??)> 
+                                                <#if (msg(auth_change_phone_number_is_active[0]) == 'true')>                                                    
                                                     <a class="block center-aling no-padding" href="#" disabled><i class="padding-5-all fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('changeMobileNumber')}</span></a>
-                                                <#--  </#if>  -->
-                                            <#--  </#if>  -->
+                                                </#if>
+                                            </#if>
                                         </div>
                                     </div>
                                 </form>
                                 <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>${msg('footerText')}</p>
+                                        <p id="copyright">${msg('footerText')}</p>
                                     </div>
                                 </div>
                             </div>

@@ -31,8 +31,8 @@
                             <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                             <div class="book__form-section">
                                 <div class="book__form__title">
-                                    <h2>${msg('mainTitle')}</h2>
-                                    <h2>${msg('organization')}</h2>
+                                    <h2 id="first-level-system-title">${msg('mainTitle')}</h2>
+                                    <h2 id="system-title">${msg('organization')}</h2>
                                 </div>
                                 <div class="form__group__login">
                                     <span class="form__group__login__text"></span>

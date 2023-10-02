@@ -24,8 +24,8 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2>${msg('mainTitle')}</h2>
-                                            <h2>${msg('organization')}</h2>                                            
+                                            <h2 id="first-level-system-title">${msg('mainTitle')}</h2>
+                                            <h2 id="system-title">${msg('organization')}</h2>                                            
                                         </div>
                                         <div class="form__group__login">
                                         <#if otpUserPhoneSent??>
@@ -65,9 +65,11 @@
                                             <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green submit" onclick="validateOTP()" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
                                         </div>
                                         <div class="form__group__external-link center-aling" style="margin: 115px auto 25px auto">
-                                                <#--  <#if (msg(sso_spi_change_phone_number_is_active)?? && msg(sso_spi_change_phone_number_is_active[0]) == 'TRUE')>  -->
-                                                    <a class="block center-aling no-padd-marg" href="#" disabled><i class="padding-25 fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('changeMobileNumber')}</span></a>                                                
-                                                <#--  </#if>  -->
+                                                <#if (auth_change_phone_number_is_active??)> 
+                                                    <#if (msg(auth_change_phone_number_is_active[0]) == 'true')> 
+                                                        <a class="block center-aling no-padd-marg" href="#" disabled><i class="padding-25 fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('changeMobileNumber')}</span></a>                                                
+                                                    </#if>
+                                                </#if>
                                                 <div id="kc-username" class="${properties.kcFormGroupClass!}">
                                                     <#--  <label id="kc-attempted-username">${auth.attemptedUsername}</label>  -->
                                                     <a id="reset-login" class="no-padd-marg" href="${url.loginRestartFlowUrl}">
@@ -85,7 +87,7 @@
                                 <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>${msg('footerText')}</p>
+                                        <p id="copyright">${msg('footerText')}</p>
                                         <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
                                     </div>
                                 </div>

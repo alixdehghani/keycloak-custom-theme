@@ -1,5 +1,5 @@
 const resourcesPath = document.getElementById('resources-path').value;
-
+const localeLabel = document.getElementById('locale-label')?.value;
 const timeout = function (s) {
   return new Promise(function (_, reject) {
     setTimeout(function () {

@@ -24,8 +24,8 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2>${msg('mainTitle')}</h2>
-                                            <h2>${msg('organization')}</h2>
+                                            <h2 id="first-level-system-title">${msg('mainTitle')}</h2>
+                                            <h2 id="system-title">${msg('organization')}</h2>
                                         </div>
                                         <div class="form__group__login">
                                             <span class="form__group__login__text">${msg('setPassword')}</span>
@@ -57,6 +57,7 @@
                                             <input id="password-is-exist-in-past" type="hidden" value="${msg(passwordIsExistInPast)}">
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
+                                            <input id="username" style="display: none;" value="<#if auth_username??><#if auth_username[0]??>${msg(auth_username[0])}</#if></#if>">
                                             <input tabindex="1" id="password" required placeholder="&#xf023; ${msg('newPassword')}" class="${properties.kcInputClass!} form__input" autofocus name="passwordNew" type="password" autocomplete="off"
                                                 oninvalid="this.setCustomValidity('${msg('pleaseEnterPassword')}')" oninput="setCustomValidity('')"/>
                                             <span toggle="#password-field" onclick="onTogglePassword('password', 'toggle-password-1')" class="fa fa-fw fa-eye field-icon locale-choose toggle-password" id="toggle-password-1"></span>
@@ -89,7 +90,7 @@
                                 <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p>${msg('footerText')}</p>
+                                        <p id="copyright">${msg('footerText')}</p>
                                     </div>
                                 </div>
                             </div>

@@ -16,8 +16,8 @@
             <meta name="${meta?split('==')[0]}" content="${meta?split('==')[1]}"/>
         </#list>
     </#if>
-    <title>${msg("loginTitle",(realm.displayName!''))}</title>
-    <link rel="icon" href="${url.resourcesPath}/img/favicon.ico" />
+    <title id="tab-title">${msg("loginTitle",(realm.displayName!''))}</title>
+    <link id="favicon" rel="icon" href="${url.resourcesPath}/img/favicon.ico" />
     <#if properties.stylesCommon?has_content>
         <#list properties.stylesCommon?split(' ') as style>
             <link href="${url.resourcesCommonPath}/${style}" rel="stylesheet" />
@@ -59,21 +59,24 @@
             }).showToast();
         }
     </script>
+    <#if (realm.internationalizationEnabled  && locale.supported?size gt 1)>
+    <#if ((locale.current == 'Persian') || (locale.current == 'فارسی'))>
+        <input id="locale-value" type="hidden" value="rtl">
+        <input id="locale-label" type="hidden" value="fa">
+    </#if>
+    <#if ((locale.current == 'English') || (locale.current == 'انگلیسی'))>
+        <input id="locale-value" type="hidden" value="ltr">
+        <input id="locale-label" type="hidden" value="en">
+    </#if>
+
+</#if>
     <script src="${url.resourcesPath}/js/helpers.js"></script>
     <script src="${url.resourcesPath}/js/script.js" type="text/javascript"></script>
 </head>
 
 <body class="${properties.kcBodyClass!}" dir="auto" style="display: none;">
 <#--  <img id="body-background-image" style="position: absolute;top:0;width:100%; height:100%">  -->
-<#if (realm.internationalizationEnabled  && locale.supported?size gt 1)>
-    <#if ((locale.current == 'Persian') || (locale.current == 'فارسی'))>
-        <input id="locale-value" type="hidden" value="rtl">
-    </#if>
-    <#if ((locale.current == 'English') || (locale.current == 'انگلیسی'))>
-        <input id="locale-value" type="hidden" value="ltr">
-    </#if>
 
-</#if>
 <div class="${properties.kcLoginClass!}">
     <div id="kc-header" class="${properties.kcHeaderClass!}">
     </div>
