@@ -102,10 +102,10 @@
                                                         oninvalid="this.setCustomValidity('${msg('pleaseEnterTheCaptcha')}')" oninput="setCustomValidity('')" />
                                                     <span class="form__captcha"><img class ="locale-choose" src="data:image/png;charset=utf-8;base64,${captchaImage}" /></span>
                                                 </div>
+                                                <input type="hidden" id="id-hidden-input" name="captchaId" value="${captchaId}" />
                                             </#if>
                                         </#if>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
-                                            <input type="hidden" id="id-hidden-input" name="captchaId" value="${captchaId}" />
                                             <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
                                         </div>
                                         <div class="form__group__external-link">

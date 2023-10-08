@@ -32,13 +32,13 @@ const render = function (data, render = true) {
   _clear();
   // _parentElement.insertAdjacentHTML('afterbegin', markup);
   
-  $('.book__form-image-logo > img').attr("src", state.static.auth_customerLogo);
+  $('.book__form-image-logo > img').attr("src", `${state.static.auth_customerLogo}?nocache=${Date.now()}`);
   //$(".book__form-image-logo > img").attr('height','349');
   $(".book__form-image-logo > img").css('max-width', '100%');
-  $('.book__form-title-logo').attr("src", state.static.auth_fingerprintImageUrl);
+  $('.book__form-title-logo').attr("src", `${state.static.auth_fingerprintImageUrl}?nocache=${Date.now()}`);
   //$(".book__form-title-logo").attr('height','71');
   $(".book__form-title-logo").css('max-width', '100%');
-  $("#favicon").attr("href", state.static.auth_favicon);
+  $("#favicon").attr("href", `${state.static.auth_favicon}?nocache=${Date.now()}`);
   $('#tab-title').text(setTextById('tab-title'));
   $('#copyright').text(setTextById('copyright'));
   $('#system-title').text(setTextById('system-title'));

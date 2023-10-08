@@ -17,7 +17,7 @@
         </#list>
     </#if>
     <title id="tab-title">${msg("loginTitle",(realm.displayName!''))}</title>
-    <link id="favicon" rel="icon" href="${url.resourcesPath}/img/favicon.ico" />
+    <link id="favicon" rel="icon" />
     <#if properties.stylesCommon?has_content>
         <#list properties.stylesCommon?split(' ') as style>
             <link href="${url.resourcesCommonPath}/${style}" rel="stylesheet" />

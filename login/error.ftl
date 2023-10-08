@@ -20,31 +20,24 @@
                                         </div>
                                     </div>
                                 </#if>
-                                <form id="kc-form-login" class="form" onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post">
+                                <form id="kc-form-login" class="form">
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
                                             <h2 id="first-level-system-title">${msg('mainTitle')}</h2>
                                             <h2 id="system-title">${msg('organization')}</h2>
                                         </div>
-                                        <div class="form__group__login">
-                                            <span class="form__group__login__text"></span>
-                                        </div>
                                         <span id="input-error" aria-live="polite">
                                                 ${msg('errorMessage')}
                                         </span>
                                         <div id="kc-error-message">
-                                             <p id="input-error" class="instruction">${message.summary?no_esc}</p>
-                                        </div>
-                                        <div class="form__group__external-link">                                            
-                                                                                       
+                                             <p  class="instruction">${message.summary?no_esc}</p>
+                                        </div>   
+                                       <div class="form__group__external-link center-aling" style="margin: 115px auto 25px auto">                                            
                                                 <div id="kc-username" class="${properties.kcFormGroupClass!}">
-                                                    <#--  <label id="kc-attempted-username">${auth.attemptedUsername}</label>  -->
-                                                        <a id="reset-login" class="btn main-color center" href="${url.loginRestartFlowUrl}">
-                                                    
-                                                        <div class="kc-login-tooltip">
-                                                            <#--  <i class="${properties.kcResetFlowIcon!}"></i>  -->
-                                                            <i class="fa-repeat"></i>
+                                                    <a id="reset-login" class="no-padd-marg" href="${url.loginRestartFlowUrl}">
+                                                        <div class="kc-login-tooltip center">
+                                                            <i class="fa-repeat padding-25 margin-left-5px"></i>
                                                             <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
                                                         </div>
                                                     </a>

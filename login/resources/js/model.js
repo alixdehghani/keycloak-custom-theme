@@ -13,7 +13,7 @@ export const state = {
 // }
 export const loadStaticConfig = async function() {
   try {
-    const data  = await AJAX(`${API_URL}/auth_config.json`);
+    const data  = await AJAX(`${API_URL}/auth_config.json?nocache=${Date.now()}`);
     state.static = {...data};
   } catch (error) {
      console.error(`${err} 💥💥💥💥`);
