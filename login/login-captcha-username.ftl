@@ -24,11 +24,11 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2 id="first-level-system-title">${msg('mainTitle')}</h2>
-                                            <h2 id="system-title">${msg('organization')}</h2>
+                                            <h2 id="first-level-system-title">${msg('auth_mainTitle')}</h2>
+                                            <h2 id="system-title">${msg('auth_organization')}</h2>
                                         </div>
                                         <div class="form__group__login">
-                                            <span class="form__group__login__text">${msg('login')} / ${msg('register')}</span>
+                                            <span class="form__group__login__text">${msg('auth_login')} / ${msg('auth_register')}</span>
                                         </div>
                                         <#if messagesPerField.existsError('username','password')>
                                             <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
@@ -37,22 +37,22 @@
                                         </#if>
                                         <#if captchaIsNotValid??>
                                             <span id="input-error" aria-live="polite">
-                                                ${msg('captchaIsNotValid')}
+                                                ${msg('auth_captchaIsNotValid')}
                                             </span>
                                         </#if>
                                         <#if userIsNotExist??>
                                             <span id="input-error" aria-live="polite">
-                                                ${msg('userIsNotExist')}
+                                                ${msg('auth_userIsNotExist')}
                                             </span>
                                         </#if>
                                         <#if userIsNotEnable??>
                                             <span id="input-error" aria-live="polite">
-                                                ${msg('userIsNotEnable')}
+                                                ${msg('auth_userIsNotEnable')}
                                             </span>
                                         </#if>
                                         <#if inquiryCompanyInfoHasError??>
                                             <span id="input-error" aria-live="polite">
-                                                ${msg('inquiryCompanyInfoHasError')}
+                                                ${msg('auth_inquiryCompanyInfoHasError')}
                                             </span>
                                         </#if>
                                         <#if nationalCodeIsNotValid??>
@@ -60,12 +60,12 @@
                                                 <#if sso_plus_user_type[0]??>
                                                     <#if msg(sso_plus_user_type[0]) == 'PERSON'>
                                                         <span id="input-error" aria-live="polite">
-                                                         ${msg('nationalCodeIsNotValid')}
+                                                         ${msg('auth_nationalCodeIsNotValid')}
                                                         </span>
                                                     </#if>
                                                     <#if msg(sso_plus_user_type[0]) == 'LEGAL'>
                                                         <span id="input-error" aria-live="polite">
-                                                         ${msg('companyIdIsNotValid')}
+                                                         ${msg('auth_companyIdIsNotValid')}
                                                         </span>
                                                     </#if>
                                                 </#if>
@@ -79,11 +79,11 @@
                                                 </select>  -->
                                                 <div class="form__group form__input center no-border no-padding ">
                                                     <input type="hidden" id="sso_plus_user_type"  value="<#if sso_plus_user_type??><#if sso_plus_user_type[0]??>${msg(sso_plus_user_type[0])}</#if></#if>">
-                                                    <span class="padding-5-vertical">${msg('userType')}: </span>
+                                                    <span class="padding-5-vertical">${msg('auth_userType')}: </span>
                                                     <input type="radio" id="person" class="padding-5-vertical" name="sso_plus_user_type" onclick="setPlaceHolder('PERSON')" value="PERSON">
-                                                    <label for="person" class="padding-5-vertical">${msg('person')}</label>
+                                                    <label for="person" class="padding-5-vertical">${msg('auth_person')}</label>
                                                     <input type="radio" id="legal" class="padding-5-vertical" name="sso_plus_user_type" onclick="setPlaceHolder('LEGAL')" value="LEGAL">
-                                                    <label for="legal" class="padding-5-vertical">${msg('legal')}</label>
+                                                    <label for="legal" class="padding-5-vertical">${msg('auth_legal')}</label>
                                                 </div>
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
@@ -97,9 +97,9 @@
                                         <#if (auth_captcha_is_active??)> 
                                             <#if (msg(auth_captcha_is_active[0]) == 'true')> 
                                                 <div class="${properties.kcFormGroupClass!} form__group">
-                                                    <input tabindex="3" id="captcha" placeholder="${msg('captchaText')}"
+                                                    <input tabindex="3" id="captcha" placeholder="${msg('auth_captchaText')}"
                                                         required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
-                                                        oninvalid="this.setCustomValidity('${msg('pleaseEnterTheCaptcha')}')" oninput="setCustomValidity('')" />
+                                                        oninvalid="this.setCustomValidity('${msg('auth_pleaseEnterTheCaptcha')}')" oninput="setCustomValidity('')" />
                                                     <span class="form__captcha"><img class ="locale-choose" src="data:image/png;charset=utf-8;base64,${captchaImage}" /></span>
                                                 </div>
                                                 <input type="hidden" id="id-hidden-input" name="captchaId" value="${captchaId}" />
@@ -138,7 +138,7 @@
                                             
                                             <#if (auth_change_phone_number_is_active??)> 
                                                 <#if (msg(auth_change_phone_number_is_active[0]) == 'true')>                                                    
-                                                    <a class="block center-aling no-padding" href="#" disabled><i class="padding-5-all fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('changeMobileNumber')}</span></a>
+                                                    <a class="block center-aling no-padding" href="#" disabled><i class="padding-5-all fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('auth_changeMobileNumber')}</span></a>
                                                 </#if>
                                             </#if>
                                         </div>
@@ -147,7 +147,7 @@
                                 <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p id="copyright">${msg('footerText')}</p>
+                                        <p id="copyright">${msg('auth_footerText')}</p>
                                     </div>
                                 </div>
                             </div>
@@ -180,8 +180,15 @@
         const inputErrorEl = document.getElementById('input-error');
         const p2e = s => s.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
         if(!ssoPlusUserTypeEl?.value ) {
-            personElement.checked = true;
-            setPlaceHolder('PERSON');
+            const urlParams = new URLSearchParams(window.location.search);
+            const userType = urlParams.get('user_type');
+            if(userType && userType.toUpperCase() === 'LEGAL') {
+                legalElement.checked = true;
+                setPlaceHolder('LEGAL');
+            } else {
+                personElement.checked = true;
+                setPlaceHolder('PERSON');
+            }
         } else if(ssoPlusUserTypeEl?.value === 'LEGAL') {
             legalElement.checked = true;
             setPlaceHolder('LEGAL');
@@ -192,10 +199,10 @@
 
         function setPlaceHolder (value) {            
             if(value === 'PERSON') {       
-                usernameElement.placeholder = "${msg('nationalCode')}/${msg('userName')}";
+                usernameElement.placeholder = "${msg('auth_nationalCode')}/${msg('auth_userName')}";
             }
             if(value === 'LEGAL') {    
-                usernameElement.placeholder = "${msg('companyID')}/${msg('userName')}"; 
+                usernameElement.placeholder = "${msg('auth_companyID')}/${msg('auth_userName')}"; 
             }
         }
         kcLoginEl.addEventListener('click', (e) => {
@@ -205,7 +212,7 @@
                 //usernameElement.setCustomValidity('لطفا فقط مقادیر عددی وارد کنید')
             //}
             if(!usernameElement?.value) {
-                usernameElement.setCustomValidity('${msg('pleaseEnterUsername')}');  
+                usernameElement.setCustomValidity('${msg('auth_pleaseEnterUsername')}');  
             }
         })
         

@@ -28,13 +28,13 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2 id="first-level-system-title">${msg('mainTitle')}</h2>
-                                            <h2 id="system-title">${msg('organization')}</h2>
+                                            <h2 id="first-level-system-title">${msg('auth_mainTitle')}</h2>
+                                            <h2 id="system-title">${msg('auth_organization')}</h2>
                                         </div>
                                         <#if (auth_forget_password_is_active??)> 
                                             <#if (msg(auth_forget_password_is_active[0]) == 'true')> 
                                                 <div class="form__group__login">
-                                                    <span class="form__group__login__text">${msg('forgetPassword')}</span>
+                                                    <span class="form__group__login__text">${msg('auth_forgetPassword')}</span>
                                                 </div>
                                             </#if>
                                         </#if>
@@ -45,27 +45,27 @@
                                         </#if>
                                         <#if captchaIsNotValid??>
                                             <span id="input-error" aria-live="polite">
-                                                ${msg('captchaIsNotValid')}
+                                                ${msg('auth_captchaIsNotValid')}
                                             </span>
                                         </#if>
                                         <#if userIsNotExist??>
                                             <span id="input-error" aria-live="polite">
-                                                ${msg('userIsNotExist')}
+                                                ${msg('auth_userIsNotExist')}
                                             </span>
                                         </#if>
                                         <#if userIsNotEnable??>
                                             <span id="input-error" aria-live="polite">
-                                                ${msg('userIsNotEnable')}
+                                                ${msg('auth_userIsNotEnable')}
                                             </span>
                                         </#if>
                                         <#if userIsNotOwnerOfMobile??>
                                             <span id="input-error" aria-live="polite">
-                                                ${msg('userIsNotOwnerOfMobile')}
+                                                ${msg('auth_userIsNotOwnerOfMobile')}
                                             </span>
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="1" id="nid" placeholder="${msg('nationalCode')}" required class="${properties.kcInputClass!} form__input" name="username" value="" type="text" autofocus autocomplete="off"
-                                                oninvalid="this.setCustomValidity('${msg('pleaseEnterNationalCode')}')" oninput="setCustomValidity('')"/>
+                                            <input tabindex="1" id="nid" placeholder="${msg('auth_nationalCode')}" required class="${properties.kcInputClass!} form__input" name="username" value="" type="text" autofocus autocomplete="off"
+                                                oninvalid="this.setCustomValidity('${msg('auth_pleaseEnterNationalCode')}')" oninput="setCustomValidity('')"/>
                                         </div>
                                         <#--  <div class="${properties.kcFormGroupClass!} form__group">
                                             <input tabindex="2" id="mobile" placeholder="موبایل" required class="${properties.kcInputClass!} form__input" name="mobile_number" value="" type="text" autofocus autocomplete="off"
@@ -74,9 +74,9 @@
                                         <#if (auth_captcha_is_active??)> 
                                             <#if (msg(auth_captcha_is_active[0]) == 'true')> 
                                                 <div class="${properties.kcFormGroupClass!} form__group">
-                                                    <input tabindex="2" id="captcha" placeholder="${msg('captchaText')}"
+                                                    <input tabindex="2" id="captcha" placeholder="${msg('auth_captchaText')}"
                                                         required class="${properties.kcInputClass!} form__input" name="userCaptchaValue" type="text" autocomplete="off"
-                                                        oninvalid="this.setCustomValidity('${msg('pleaseEnterTheCaptcha')}')" oninput="setCustomValidity('')" />
+                                                        oninvalid="this.setCustomValidity('${msg('auth_pleaseEnterTheCaptcha')}')" oninput="setCustomValidity('')" />
                                                     <span class="form__captcha"><img class ="locale-choose" src="data:image/png;charset=utf-8;base64,${captchaImage}" /></span>
                                                 </div>
                                                 <input type="hidden" id="id-hidden-input" name="captchaId" value="${captchaId}" />
@@ -103,7 +103,7 @@
                                 <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p id="copyright">${msg('footerText')}</p>
+                                        <p id="copyright">${msg('auth_footerText')}</p>
                                     </div>
                                 </div>
                             </div>

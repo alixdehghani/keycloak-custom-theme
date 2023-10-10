@@ -24,11 +24,11 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2 id="first-level-system-title">${msg('mainTitle')}</h2>
-                                            <h2 id="system-title">${msg('organization')}</h2>
+                                            <h2 id="first-level-system-title">${msg('auth_mainTitle')}</h2>
+                                            <h2 id="system-title">${msg('auth_organization')}</h2>
                                         </div>
                                         <div class="form__group__login">
-                                            <span class="form__group__login__text">${msg('login')} / ${msg('register')}</span>
+                                            <span class="form__group__login__text">${msg('auth_login')} / ${msg('auth_register')}</span>
                                         </div>
                                         <#if messagesPerField.existsError('password')>
                                             <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
@@ -37,54 +37,54 @@
                                         </#if>
                                         <#if invalidPasswordMessage??>
                                             <span id="input-error" aria-live="polite">
-                                                ${msg('invalidPasswordMessage')}
+                                                ${msg('auth_invalidPasswordMessage')}
                                             </span>
                                         </#if>
                                         <#if inquiryServiceIdMatchingHasError??>
                                             <span id="input-error" aria-live="polite">
-                                                ${msg('inquiryServiceIdMatchingHasError')}
+                                                ${msg('auth_inquiryServiceIdMatchingHasError')}
                                             </span>
                                         </#if>
                                         <#if inquiryCivilRegistryHasError??>
                                             <span id="input-error" aria-live="polite">
-                                                ${msg('inquiryCivilRegistryHasError')}
+                                                ${msg('auth_inquiryCivilRegistryHasError')}
                                             </span>
                                         </#if>
                                         <#if inquiryPostalCodeHasError??>
                                             <span id="input-error" aria-live="polite">
-                                                ${msg('inquiryPostalCodeHasError')}
+                                                ${msg('auth_inquiryPostalCodeHasError')}
                                             </span>
                                         </#if>                                        
                                         <#if userIsNotOwnerOfMobile??>
                                             <span id="input-error" aria-live="polite">
-                                                ${msg('userIsNotOwnerOfMobile2')}
+                                                ${msg('auth_userIsNotOwnerOfMobile2')}
                                             </span>
                                         </#if>                                        
                                         <#if postalCodeIsNotValid??>
                                             <span id="input-error" aria-live="polite">
-                                                ${msg('postalCodeIsNotValid')}
+                                                ${msg('auth_postalCodeIsNotValid')}
                                             </span>
                                         </#if>                                        
                                         <#if birthDateAndNationalCodeAreNotCorrect??>
                                             <span id="input-error" aria-live="polite">
-                                                ${msg('birthDateAndNationalCodeAreNotCorrect')}
+                                                ${msg('auth_pbirthDateAndNationalCodeAreNotCorrect')}
                                             </span>
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">                                            
-                                            <input tabindex="1" id="mobile_number_input" required title="" placeholder="${msg('mobileNumber')}" class="${properties.kcInputClass!} form__input" name="mobile_number" value="<#if mobile_number??><#if mobile_number[0]??>${msg(mobile_number[0])}</#if></#if>" type="text" autofocus autocomplete="on"
+                                            <input tabindex="1" id="mobile_number_input" required title="" placeholder="${msg('auth_mobileNumber')}" class="${properties.kcInputClass!} form__input" name="mobile_number" value="<#if mobile_number??><#if mobile_number[0]??>${msg(mobile_number[0])}</#if></#if>" type="text" autofocus autocomplete="on"
                                                 maxlength="11"/>
-                                            <span class="locale-font-family" style="padding: .25rem .5rem 0 0">${msg('correctFormatOfMobileNumber')}: <span class="locale-choose"></span></span>
+                                            <span class="locale-font-family" style="padding: .25rem .5rem 0 0">${msg('auth_correctFormatOfMobileNumber')}: <span class="locale-choose"></span></span>
                                         </div>
                                         <#--  <div class="${properties.kcFormGroupClass!} form__group" style="position: relative">
                                             <input tabindex="2" data-jdp  required title="" placeholder="تاریخ تولد" type="text" id="sso_plus_user_birth_date_key_input" class="${properties.kcInputClass!} form__input" name="sso_plus_user_birth_date_key" value="<#if sso_plus_user_birth_date_key??><#if sso_plus_user_birth_date_key[0]??>${msg(sso_plus_user_birth_date_key[0])}</#if></#if>" readonly
                                                 oninvalid="this.setCustomValidity('لطفا تاریخ تولد را وارد کنید')" oninput="setCustomValidity('')"/>
                                         </div>                                          -->
                                         <div class="${properties.kcFormGroupClass!} form__group" style="position: relative;">
-                                            <input tabindex="2" required title="" placeholder="${msg('dateOfBirth')}" type="text" id="sso_plus_user_birth_date_key_input" class="${properties.kcInputClass!} form__input birth_date" name="sso_plus_user_birth_date_key" value="<#if sso_plus_user_birth_date_key??><#if sso_plus_user_birth_date_key[0]??>${msg(sso_plus_user_birth_date_key[0])}</#if></#if>" readonly
+                                            <input tabindex="2" required title="" placeholder="${msg('auth_dateOfBirth')}" type="text" id="sso_plus_user_birth_date_key_input" class="${properties.kcInputClass!} form__input birth_date" name="sso_plus_user_birth_date_key" value="<#if sso_plus_user_birth_date_key??><#if sso_plus_user_birth_date_key[0]??>${msg(sso_plus_user_birth_date_key[0])}</#if></#if>" readonly
                                                 />
                                         </div>
                                         <div class="${properties.kcFormGroupClass!} form__group">
-                                            <input tabindex="3" id="sso_plus_user_postal_code_input" placeholder="${msg('postalCode')}" required title="" class="${properties.kcInputClass!} form__input" name="sso_plus_user_postal_code" value="<#if sso_plus_user_postal_code??><#if sso_plus_user_postal_code[0]??>${msg(sso_plus_user_postal_code[0])}</#if></#if>" type="text" autofocus autocomplete="on"
+                                            <input tabindex="3" id="sso_plus_user_postal_code_input" placeholder="${msg('auth_postalCode')}" required title="" class="${properties.kcInputClass!} form__input" name="sso_plus_user_postal_code" value="<#if sso_plus_user_postal_code??><#if sso_plus_user_postal_code[0]??>${msg(sso_plus_user_postal_code[0])}</#if></#if>" type="text" autofocus autocomplete="on"
                                                maxlength="10"/>
                                         </div>                                        
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
@@ -109,7 +109,7 @@
                                 <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p id="copyright">${msg('footerText')}</p>
+                                        <p id="copyright">${msg('auth_footerText')}</p>
                                         <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
                                     </div>
                                 </div>
@@ -164,19 +164,19 @@
             const postalCodeValue = p2e(postalCodeEl.value);
             const birthDateValue = p2e(birthDateEl.value);
             if(!mobileReg.test(mobikeValue)) {
-                phoneEl.setCustomValidity('${msg('pleaseEnterCorrectPhoneNumber')}');
+                phoneEl.setCustomValidity('${msg('auth_pleaseEnterCorrectPhoneNumber')}');
             }
             if(!mobikeValue) {
-                phoneEl.setCustomValidity('${msg('pleaseEnterPhoneNumber')}');  
+                phoneEl.setCustomValidity('${msg('auth_pleaseEnterPhoneNumber')}');  
             }
             if(!birthDateValue) {
-                birthDateEl.setCustomValidity('${msg('pleaseEnterBirthDate')}');  
+                birthDateEl.setCustomValidity('${msg('auth_pleaseEnterBirthDate')}');  
             }
             if(!postalCodeReg.test(postalCodeValue)) {
-                postalCodeEl.setCustomValidity('${msg('pleaseEnterCorrectPostalCode')}')
+                postalCodeEl.setCustomValidity('${msg('auth_pleaseEnterCorrectPostalCode')}')
             }
             if(!postalCodeValue) {
-                postalCodeEl.setCustomValidity('${msg('pleaseEnterPostalCode')}');  
+                postalCodeEl.setCustomValidity('${msg('auth_pleaseEnterPostalCode')}');  
             }
         });
         phoneEl.oninput = function(e) {

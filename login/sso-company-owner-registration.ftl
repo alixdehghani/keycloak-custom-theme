@@ -24,11 +24,11 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2 id="first-level-system-title">${msg('mainTitle')}</h2>
-                                            <h2 id="system-title">${msg('organization')}</h2>
+                                            <h2 id="first-level-system-title">${msg('auth_mainTitle')}</h2>
+                                            <h2 id="system-title">${msg('auth_organization')}</h2>
                                         </div>
                                         <div class="form__group__login">
-                                            <span class="form__group__login__text">${msg('login')} / ${msg('register')}</span>
+                                            <span class="form__group__login__text">${msg('auth_login')} / ${msg('auth_register')}</span>
                                         </div>
                                         <#if messagesPerField.existsError('password')>
                                             <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
@@ -37,17 +37,17 @@
                                         </#if>
                                         <#if invalidPasswordMessage??>
                                             <span id="input-error" aria-live="polite">
-                                                ${msg('invalidPasswordMessage')}
+                                                ${msg('auth_invalidPasswordMessage')}
                                             </span>
                                         </#if>
                                         <#if companyOwnerNationalCodeIsNotValid??>
                                             <span id="input-error" aria-live="polite">
-                                                ${msg('companyOwnerNationalCodeIsNotValid')}
+                                                ${msg('auth_companyOwnerNationalCodeIsNotValid')}
                                             </span>
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
                                             <input tabindex="1" id="sso_plus_user_company_owner_national_code_input" class="${properties.kcInputClass!} form__input" name="sso_plus_user_company_owner_national_code" value="<#if sso_plus_user_company_owner_national_code??><#if sso_plus_user_company_owner_national_code[0]??>${msg(sso_plus_user_company_owner_national_code[0])}</#if></#if>" type="text" autofocus autocomplete="on"
-                                                required title=""  placeholder="${msg('companyOwnerNationalCode')}"/>
+                                                required title=""  placeholder="${msg('auth_companyOwnerNationalCode')}"/>
                                                 <#--  pattern="^[0-9]{10}$"  -->
                                         </div>
                                         <div id="kc-form-buttons" class="${properties.kcFormGroupClass!} form__group form__group__btn">
@@ -72,7 +72,7 @@
                                 <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p id="copyright">${msg('footerText')}</p>
+                                        <p id="copyright">${msg('auth_footerText')}</p>
                                     </div>
                                 </div>
                             </div>
@@ -103,10 +103,10 @@
             const reg = new RegExp('^[0-9]+$');
             const value = p2e(usernameElement.value);
             if(!reg.test(value)) {
-                usernameElement.setCustomValidity('${msg('pleaseEnterNumeric')}')
+                usernameElement.setCustomValidity('${msg('auth_pleaseEnterNumeric')}')
             }
             if(!value) {
-                usernameElement.setCustomValidity('${msg('pleaseEnterComponyOwnerCode')}');  
+                usernameElement.setCustomValidity('${msg('auth_pleaseEnterComponyOwnerCode')}');  
             }
         })
         

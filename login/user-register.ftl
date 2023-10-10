@@ -24,11 +24,11 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2 id="first-level-system-title">${msg('mainTitle')}</h2>
-                                            <h2 id="system-title">${msg('organization')}</h2>
+                                            <h2 id="first-level-system-title">${msg('auth_mainTitle')}</h2>
+                                            <h2 id="system-title">${msg('auth_organization')}</h2>
                                         </div>
                                         <div class="form__group__login">
-                                            <#--  <span class="form__group__login__text">${msg('login')} / ${msg('register')}</span>  -->
+                                            <#--  <span class="form__group__login__text">${msg('auth_login')} / ${msg('auth_register')}</span>  -->
                                         </div>
                                         <#if messagesPerField.existsError('username','password')>
                                             <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
@@ -108,7 +108,7 @@
                                         </div>                                       
                                     </div>
                                     <div class="copyright">
-                                        <p>${msg('footerText')}</p>
+                                        <p>${msg('auth_footerText')}</p>
                                         <#--  <p>سامانه اس اس او پلاس به شماره 206911 نزد سازمان فناوری اطلاعات ثبت شده است</p>  -->
                                     </div>
                                 </form>

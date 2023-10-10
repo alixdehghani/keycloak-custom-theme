@@ -24,8 +24,8 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2 id="first-level-system-title">${msg('mainTitle')}</h2>
-                                            <h2 id="system-title">${msg('organization')}</h2>
+                                            <h2 id="first-level-system-title">${msg('auth_mainTitle')}</h2>
+                                            <h2 id="system-title">${msg('auth_organization')}</h2>
                                         </div>
                                         <span id="input-error" aria-live="polite">
                                                 ${msg('errorMessage')}
@@ -35,12 +35,23 @@
                                         </div>   
                                        <div class="form__group__external-link center-aling" style="margin: 115px auto 25px auto">                                            
                                                 <div id="kc-username" class="${properties.kcFormGroupClass!}">
-                                                    <a id="reset-login" class="no-padd-marg" href="${url.loginRestartFlowUrl}">
+                                                    <#if client?? && client.baseUrl?has_content>
+                                                        <a id="reset-login" class="no-padd-marg" href="${url.loginRestartFlowUrl}">
+                                                            <div class="kc-login-tooltip center">
+                                                                <i class="fa-repeat padding-25 margin-left-5px"></i>
+                                                                <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
+                                                            </div>
+                                                        </a>
+                                                    <#else>
+                                                    <a id="reset-login" href="/">
                                                         <div class="kc-login-tooltip center">
                                                             <i class="fa-repeat padding-25 margin-left-5px"></i>
-                                                            <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
+                                                            <span class="kc-tooltip-text">
+                                                                ${msg("auth_backToApp")}
+                                                            </span>
                                                         </div>
                                                     </a>
+                                                    </#if>
                                                 </div>
                                         </div>
                                     </div>
@@ -48,7 +59,7 @@
                                 <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p id="copyright">${msg('footerText')}</p>
+                                        <p id="copyright">${msg('auth_footerText')}</p>
                                     </div>
                                 </div>
                             </div>

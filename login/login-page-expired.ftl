@@ -31,8 +31,8 @@
                             <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                             <div class="book__form-section">
                                 <div class="book__form__title">
-                                    <h2 id="first-level-system-title">${msg('mainTitle')}</h2>
-                                    <h2 id="system-title">${msg('organization')}</h2>
+                                    <h2 id="first-level-system-title">${msg('auth_mainTitle')}</h2>
+                                    <h2 id="system-title">${msg('auth_organization')}</h2>
                                 </div>
                                 <div class="form__group__login">
                                     <span class="form__group__login__text"></span>
@@ -59,7 +59,7 @@
                         <div class="book__form-image locale-choose">
                             <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                             <div class="book__form-image-text">
-                                <p>${msg('footerText')}</p>
+                                <p>${msg('auth_footerText')}</p>
                             </div>
                         </div>
                     </div>

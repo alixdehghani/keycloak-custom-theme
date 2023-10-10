@@ -24,11 +24,11 @@
                                     <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                                     <div class="book__form-section">
                                         <div class="book__form__title">
-                                            <h2 id="first-level-system-title">${msg('mainTitle')}</h2>
-                                            <h2 id="system-title">${msg('organization')}</h2>
+                                            <h2 id="first-level-system-title">${msg('auth_mainTitle')}</h2>
+                                            <h2 id="system-title">${msg('auth_organization')}</h2>
                                         </div>
                                         <div class="form__group__login">
-                                            <span class="form__group__login__text">${msg('login')} / ${msg('register')}</span>
+                                            <span class="form__group__login__text">${msg('auth_login')} / ${msg('auth_register')}</span>
                                         </div>
                                         <#if messagesPerField.existsError('username','password')>
                                             <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
@@ -39,7 +39,7 @@
                                             <#if usernameEditDisabled??>
                                                 <input tabindex="1" id="username" class="${properties.kcInputClass!} form__input" name="username" value="${(login.username!'')}" type="text" disabled />
                                                 <#else>
-                                                    <input tabindex="1" id="username" placeholder="&#xf007; ${msg('username')}" class="${properties.kcInputClass!} form__input" name="username" value="${(login.username!'')}" type="text" autofocus autocomplete="off"
+                                                    <input tabindex="1" id="username" placeholder="&#xf007; ${msg('auth_userName')}" class="${properties.kcInputClass!} form__input" name="username" value="${(login.username!'')}" type="text" autofocus autocomplete="off"
                                                         aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" />
                                             </#if>
                                         </div>
@@ -87,7 +87,7 @@
                                                 </div>
                                                 <#if (auth_change_phone_number_is_active??)> 
                                                     <#if (msg(auth_change_phone_number_is_active[0]) == 'true')> 
-                                                        <a class="block center-aling no-padding" href="#" disabled><i class="padding-5-all fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('changeMobileNumber')}</span></a>
+                                                        <a class="block center-aling no-padding" href="#" disabled><i class="padding-5-all fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('auth_changeMobileNumber')}</span></a>
                                                     </#if>
                                                 </#if>
                                         </div>
@@ -96,7 +96,7 @@
                                 <div class="book__form-image locale-choose">
                                     <div class="book__form-image-logo"><img src="${url.resourcesPath}/img/logo.png"></div>
                                     <div class="book__form-image-text">
-                                        <p id="copyright">${msg('footerText')}</p>
+                                        <p id="copyright">${msg('auth_footerText')}</p>
                                     </div>
                                 </div>
                             </div>
