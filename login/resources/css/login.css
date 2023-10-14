@@ -1373,14 +1373,14 @@ body {
     @media only screen and (max-width: 56.25em) {
       .book__form-image {
         display: none; } }
-  .book #kc-form-login {
+  .book #kc-form-login, .book #kc-passwd-update-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 50%;
     padding: 54px 70px 0px 70px; }
     @media only screen and (max-width: 56.25em) {
-      .book #kc-form-login {
+      .book #kc-form-login, .book #kc-passwd-update-form {
         padding: 27px 35px 0px 35px;
         width: 100%; } }
   .book #kc-register-form {

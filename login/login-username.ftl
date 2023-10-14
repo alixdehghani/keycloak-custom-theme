@@ -17,7 +17,7 @@
                                        aria-invalid="<#if message?has_content && message.type = 'error'>true</#if>"
                                        class="${properties.kcInputClass!}" name="username"
                                        value="${(login.username!'')}"
-                                       type="text" disabled/>
+                                       type="text" autofocus disabled/>
                             <#else>
                                 <input tabindex="1" id="username"
                                        aria-invalid="<#if messagesPerField.existsError('username')>true</#if>"

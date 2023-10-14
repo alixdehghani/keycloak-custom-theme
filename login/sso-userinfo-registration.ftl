@@ -134,7 +134,7 @@
     </@layout.registrationLayout>
 
     <link type="text/css" rel="stylesheet" href="${url.resourcesPath}/datepicker-persian/persianDatepicker-default.css" />
-    <script type="text/javascript" src="${url.resourcesPath}/datepicker-persian/persianDatepicker.min.js"></script>
+    <script type="text/javascript" src="${url.resourcesPath}/datepicker-persian/persianDatepicker.js"></script>
     <script type="text/javascript">
         const phoneEl = document.getElementById('mobile_number_input');
         const postalCodeEl = document.getElementById('sso_plus_user_postal_code_input');

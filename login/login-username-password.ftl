@@ -63,8 +63,18 @@
                                                     <i class="fa-unlock-alt margin-left-5px"></i> ${msg("doForgotPassword")}
                                                 </a></span>
                                             </#if>
-                                        </div>                                       
-                                        <div class="form__group__external-link center-aling" style="margin: 115px auto 25px auto">                                            
+                                        </div> 
+                                        <div id="kc-form-options" class="form__group__external-link">
+                                            <#if realm.rememberMe??>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input tabindex="4" id="rememberMe" name="rememberMe"
+                                                                type="checkbox"> ${msg("auth_rememberMe")}
+                                                    </label>
+                                                </div>
+                                            </#if>
+                                         </div>                                        
+                                        <div class="form__group__external-link center-aling" style="margin: 115px auto 25px auto">                                          
                                                 <#if (auth_change_phone_number_is_active??)> 
                                                     <#if (msg(auth_change_phone_number_is_active[0]) == 'true')> 
                                                         <a class="block center-aling no-padd-marg" href="#" disabled><i class="padding-25 fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('auth_changeMobileNumber')}</span></a>                                                
