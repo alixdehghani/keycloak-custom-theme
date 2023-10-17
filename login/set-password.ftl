@@ -58,7 +58,7 @@
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
                                             <input id="username" style="display: none;" value="<#if auth_username??><#if auth_username[0]??>${msg(auth_username[0])}</#if></#if>">
-                                            <input tabindex="1" id="password" required placeholder="&#xf023; ${msg('auth_newPassword')}" class="${properties.kcInputClass!} form__input" autofocus name="passwordNew" type="password" autocomplete="off"
+                                            <input tabindex="1" id="password" required placeholder="&#xf023; ${msg('auth_newPassword')}" class="${properties.kcInputClass!} password-hint-policy-el form__input" autofocus name="passwordNew" type="password" autocomplete="off"
                                                 oninvalid="this.setCustomValidity('${msg('auth_pleaseEnterPassword')}')" oninput="setCustomValidity('')"/>
                                             <span toggle="#password-field" onclick="onTogglePassword('password', 'toggle-password-1')" class="fa fa-fw fa-eye field-icon locale-choose toggle-password" id="toggle-password-1"></span>
                                             <div  class="textbox text-center" style="padding: .25rem .5rem 0 0; color: red;"></div>

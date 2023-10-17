@@ -1,4 +1,4 @@
-const code = document.getElementById("password");
+const code = document.querySelector("password-hint-policy-el");
 const display = document.getElementsByClassName("textbox")[0];
 const passwordIsExistInPastEl = document.getElementById('password-is-exist-in-past');
 let passwordPolicyHints = [];
