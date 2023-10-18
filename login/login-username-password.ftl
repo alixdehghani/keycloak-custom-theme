@@ -47,7 +47,7 @@
                                         </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
                                         <input id="username" style="display: none;" value="<#if auth_username??><#if auth_username[0]??>${msg(auth_username[0])}</#if></#if>">
-                                            <input tabindex="1" id="password" required placeholder="${msg('password')}" class="${properties.kcInputClass!} form__input" name="password" autofocus type="password" autocomplete="off"
+                                            <input tabindex="1" id="password" required placeholder="${msg('password')}" class="${properties.kcInputClass!} form__input" name="password" autofocus type="password" autocomplete="on"
                                                 aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
                                                 oninvalid="this.setCustomValidity('${msg('auth_pleaseEnterPassword')}')" oninput="setCustomValidity('')"/>
                                                 <span toggle="#password-field" onclick="onTogglePassword()" class="fa fa-fw fa-eye field-icon locale-choose toggle-password" id="toggle-password"></span>
@@ -57,13 +57,6 @@
                                             <#--  <input type="hidden" id="id-hidden-input" name="credentialId" />  -->
                                             <input tabindex="2" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" name="login" id="kc-login" type="submit" value="${msg('doLogIn')}" />
                                         </div>
-                                        <div class="${properties.kcFormOptionsWrapperClass!} form__group__external-link" style="margin-top: -1rem;">
-                                            <#if realm.resetPasswordAllowed>                                                        
-                                                <span><a tabindex="3" class="padding-5-vertical" href="${url.loginResetCredentialsUrl}">
-                                                    <i class="fa-unlock-alt margin-left-5px"></i> ${msg("doForgotPassword")}
-                                                </a></span>
-                                            </#if>
-                                        </div> 
                                         <div id="kc-form-options" class="form__group__external-link">
                                             <#if realm.rememberMe??>
                                                 <div class="checkbox">
@@ -74,7 +67,14 @@
                                                 </div>
                                             </#if>
                                          </div>                                        
-                                        <div class="form__group__external-link center-aling" style="margin: 115px auto 25px auto">                                          
+                                        <div class="form__group__external-link center-aling" style="margin: 115px auto 25px auto">   
+                                                <div class="${properties.kcFormOptionsWrapperClass!} form__group__external-link">
+                                                    <#if realm.resetPasswordAllowed>                                                        
+                                                        <span><a tabindex="3" class="padding-5-vertical" href="${url.loginResetCredentialsUrl}">
+                                                            <i class="fa-unlock-alt margin-left-5px"></i> ${msg("doForgotPassword")}
+                                                        </a></span>
+                                                    </#if>
+                                                </div>                                        
                                                 <#if (auth_change_phone_number_is_active??)> 
                                                     <#if (msg(auth_change_phone_number_is_active[0]) == 'true')> 
                                                         <a class="block center-aling no-padd-marg" href="#" disabled><i class="padding-25 fa fa-mobile font-size-large margin-left-5px"></i><span>${msg('auth_changeMobileNumber')}</span></a>                                                
@@ -122,6 +122,9 @@
     </@layout.registrationLayout>
 
      <script>
+        setTimeout(function() {
+            $("#password").focus();
+        }, 100);
         function onTogglePassword() {
             const x = document.getElementById("password");
             if (x.type === "password") {

@@ -56,24 +56,6 @@
                                     readonly="readonly" style="display:none;"/>
                                 <input type="password" id="password" name="password" autocomplete="current-password" style="display:none;"/>
 
-                                <#--  <div class="${properties.kcFormGroupClass!}">
-                                    <div class="${properties.kcLabelWrapperClass!}">
-                                        <label for="password-new" class="${properties.kcLabelClass!}">${msg("passwordNew")}</label>
-                                    </div>
-                                    <div class="${properties.kcInputWrapperClass!}">
-                                        <input type="password" id="password-new" name="password-new" class="${properties.kcInputClass!}"
-                                            autofocus autocomplete="new-password"
-                                            aria-invalid="<#if messagesPerField.existsError('password','password-confirm')>true</#if>"
-                                        />
-
-                                        <#if messagesPerField.existsError('password')>
-                                            <span id="input-error-password" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
-                                                ${kcSanitize(messagesPerField.get('password'))?no_esc}
-                                            </span>
-                                        </#if>
-                                    </div>
-                                </div>  -->
-
                                 <div class="${properties.kcFormGroupClass!} form__group">
                                     <input type="password" id="password-new" name="password-new" class="${properties.kcInputClass!} password-hint-policy-el form__input"
                                             autofocus autocomplete="new-password" placeholder="${msg('passwordNew')}" 
@@ -84,26 +66,6 @@
                                     
                                 </div>
 
-                                <#--  <div class="${properties.kcFormGroupClass!}">
-                                    <div class="${properties.kcLabelWrapperClass!}">
-                                        <label for="password-confirm" class="${properties.kcLabelClass!}">${msg("passwordConfirm")}</label>
-                                    </div>
-                                    <div class="${properties.kcInputWrapperClass!}">
-                                        <input type="password" id="password-confirm" name="password-confirm"
-                                            class="${properties.kcInputClass!}"
-                                            autocomplete="new-password"
-                                            aria-invalid="<#if messagesPerField.existsError('password-confirm')>true</#if>"
-                                        />
-
-                                        <#if messagesPerField.existsError('password-confirm')>
-                                            <span id="input-error-password-confirm" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
-                                                ${kcSanitize(messagesPerField.get('password-confirm'))?no_esc}
-                                            </span>
-                                        </#if>
-
-                                    </div>
-                                </div>  -->
-
                                 <div class="${properties.kcFormGroupClass!} form__group">
                                     <input type="password" id="password-confirm" name="password-confirm"
                                             class="${properties.kcInputClass!} form__input"
@@ -113,37 +75,21 @@
                                     <span toggle="#password-field" onclick="onTogglePassword('password-confirm', 'toggle-password-2')" class="fa fa-fw fa-eye field-icon locale-choose toggle-password" id="toggle-password-2"></span>
                                 </div>
 
-                                <div class="${properties.kcFormGroupClass!}">
-                                    <#--  <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
-                                        <div class="${properties.kcFormOptionsWrapperClass!}">
-                                            <#if isAppInitiatedAction??>
-                                                <div class="checkbox">
-                                                    <label><input type="checkbox" id="logout-sessions" name="logout-sessions" value="on" checked> ${msg("logoutOtherSessions")}</label>
-                                                </div>
-                                            </#if>
-                                        </div>
-                                    </div>  -->
 
-                                    <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!} form__group form__group__btn">
-                                        <#--  <#if isAppInitiatedAction??>
-                                            <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doSubmit")}" />
-                                            <button class="${properties.kcButtonClass!} ${properties.kcButtonDefaultClass!} ${properties.kcButtonLargeClass!}" type="submit" name="cancel-aia" value="true" />${msg("doCancel")}</button>
-                                        <#else>
-                                        </#if>  -->
-                                        <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" type="submit" value="${msg('doSubmit')}" />
-                                    </div>
-                                    <div class="${properties.kcFormOptionsWrapperClass!} form__group__external-link" style="margin-top: -1rem;">
-                                        <div id="kc-username" class="${properties.kcFormGroupClass!}">
-                                            <#--  <label id="kc-attempted-username">${auth.attemptedUsername}</label>  -->
-                                            <a id="reset-login" class="no-padd-marg" href="${url.loginRestartFlowUrl}">
-                                            
-                                                <div class="kc-login-tooltip center">
-                                                    <#--  <i class="${properties.kcResetFlowIcon!}"></i>  -->
-                                                    <i class="fa-repeat padding-25 margin-left-5px"></i>
-                                                    <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
-                                                </div>
-                                            </a>
-                                        </div>
+                                <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!} form__group form__group__btn">
+                                    <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!} btn btn--green" type="submit" value="${msg('doSubmit')}" />
+                                </div>
+                                <div class="${properties.kcFormOptionsWrapperClass!} form__group__external-link center-aling" style="margin: 115px auto 25px auto">
+                                    <div id="kc-username" class="${properties.kcFormGroupClass!}">
+                                        <#--  <label id="kc-attempted-username">${auth.attemptedUsername}</label>  -->
+                                        <a id="reset-login" class="no-padd-marg" href="${url.loginRestartFlowUrl}">
+                                        
+                                            <div class="kc-login-tooltip center">
+                                                <#--  <i class="${properties.kcResetFlowIcon!}"></i>  -->
+                                                <i class="fa-repeat padding-25 margin-left-5px"></i>
+                                                <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

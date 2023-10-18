@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                         </#if>
-                        <form id="kc-form-login" class="form-actions" method="POST">
+                        <form id="kc-form-login" class="form-actions" action="${url.oauthAction}" method="POST">
                             <img class="book__form-title-logo" src="${url.resourcesPath}/img/fingerprint.png">
                             <div class="book__form-section">
                                 <div class="book__form__title">
@@ -61,6 +61,19 @@
                                             <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!} btn btn--green" style="width: 45%;" name="accept" id="kc-login" type="submit" value="${msg("doYes")}"/>
                                             <input class="${properties.kcButtonClass!} ${properties.kcButtonDefaultClass!} ${properties.kcButtonLargeClass!} btn " name="cancel" style="width: 45%;" id="kc-cancel" type="submit" value="${msg("doNo")}"/>
                                         <#--  </div>  -->
+                                    </div>
+                                </div>
+                                <div class="${properties.kcFormOptionsWrapperClass!} form__group__external-link center-aling" style="margin: 115px auto 25px auto">
+                                    <div id="kc-username" class="${properties.kcFormGroupClass!}">
+                                        <#--  <label id="kc-attempted-username">${auth.attemptedUsername}</label>  -->
+                                        <a id="reset-login" class="no-padd-marg" href="${url.loginRestartFlowUrl}">
+                                        
+                                            <div class="kc-login-tooltip center">
+                                                <#--  <i class="${properties.kcResetFlowIcon!}"></i>  -->
+                                                <i class="fa-repeat padding-25 margin-left-5px"></i>
+                                                <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
