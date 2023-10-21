@@ -122,9 +122,6 @@
     </@layout.registrationLayout>
 
      <script>
-        setTimeout(function() {
-            $("#password").focus();
-        }, 100);
         function onTogglePassword() {
             const x = document.getElementById("password");
             if (x.type === "password") {

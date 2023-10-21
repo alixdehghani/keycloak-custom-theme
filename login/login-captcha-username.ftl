@@ -71,26 +71,41 @@
                                                 </#if>
                                             </#if>
                                         </#if>
-                                        <div class="${properties.kcFormGroupClass!} form__group">
-                                                <#--  <select name="sso_plus_user_type" id="sso_plus_user_type_input" class="form__input" tabindex="1" placeholder="نوع کاربر" required
-                                                    oninvalid="this.setCustomValidity('لطفا نوع کاربر را وارد کنید')" oninput="setCustomValidity('')">
-                                                    <option value="PERSON" <#if sso_plus_user_type??><#if sso_plus_user_type[0]??><#if msg(sso_plus_user_type[0]) == 'PERSON'>selected</#if></#if></#if>>حقیقی</option>
-                                                    <option value="LEGAL" <#if sso_plus_user_type??><#if sso_plus_user_type[0]??><#if msg(sso_plus_user_type[0]) == 'LEGAL'>selected</#if></#if></#if>>حقوقی</option>
-                                                </select>  -->
-                                                <div class="form__group form__input center no-border no-padding ">
-                                                    <input type="hidden" id="sso_plus_user_type"  value="<#if sso_plus_user_type??><#if sso_plus_user_type[0]??>${msg(sso_plus_user_type[0])}</#if></#if>">
-                                                    <span class="padding-5-vertical">${msg('auth_userType')}: </span>
-                                                    <input type="radio" id="person" class="padding-5-vertical" name="sso_plus_user_type" onclick="setPlaceHolder('PERSON')" value="PERSON">
-                                                    <label for="person" class="padding-5-vertical">${msg('auth_person')}</label>
-                                                    <input type="radio" id="legal" class="padding-5-vertical" name="sso_plus_user_type" onclick="setPlaceHolder('LEGAL')" value="LEGAL">
-                                                    <label for="legal" class="padding-5-vertical">${msg('auth_legal')}</label>
+                                        <input type="hidden" id="sso_plus_user_type"  value="<#if sso_plus_user_type??><#if sso_plus_user_type[0]??>${msg(sso_plus_user_type[0])}</#if></#if>">
+                                        <input type="hidden" id="auth_default_user_type"  value="<#if auth_default_user_type??><#if auth_default_user_type[0]??>${msg(auth_default_user_type[0])}</#if></#if>">
+                                        <#if (auth_show_user_type??)>
+                                            <#if (msg(auth_show_user_type[0]) == 'true')> 
+                                                <div class="${properties.kcFormGroupClass!} form__group">
+                                                        <#--  <select name="sso_plus_user_type" id="sso_plus_user_type_input" class="form__input" tabindex="1" placeholder="نوع کاربر" required
+                                                            oninvalid="this.setCustomValidity('لطفا نوع کاربر را وارد کنید')" oninput="setCustomValidity('')">
+                                                            <option value="PERSON" <#if sso_plus_user_type??><#if sso_plus_user_type[0]??><#if msg(sso_plus_user_type[0]) == 'PERSON'>selected</#if></#if></#if>>حقیقی</option>
+                                                            <option value="LEGAL" <#if sso_plus_user_type??><#if sso_plus_user_type[0]??><#if msg(sso_plus_user_type[0]) == 'LEGAL'>selected</#if></#if></#if>>حقوقی</option>
+                                                        </select>  -->
+                                                        <div class="form__group form__input center no-border no-padding ">
+                                                            <span class="padding-5-vertical">${msg('auth_userType')}: </span>
+                                                            <input type="radio" id="person" class="padding-5-vertical" name="sso_plus_user_type" onclick="setPlaceHolder('PERSON')" value="PERSON">
+                                                            <label for="person" class="padding-5-vertical">${msg('auth_person')}</label>
+                                                            <input type="radio" id="legal" class="padding-5-vertical" name="sso_plus_user_type" onclick="setPlaceHolder('LEGAL')" value="LEGAL">
+                                                            <label for="legal" class="padding-5-vertical">${msg('auth_legal')}</label>
+                                                        </div>
                                                 </div>
-                                        </div>
+                                            <#else>
+                                                <div style="display: none">
+                                                    <input type="radio" id="person" class="padding-5-vertical" name="sso_plus_user_type" value="PERSON">
+                                                    <input type="radio" id="legal" class="padding-5-vertical" name="sso_plus_user_type" value="LEGAL">
+                                                </div>
+                                            </#if>
+                                        <#else>
+                                            <div style="display: none">
+                                                <input type="radio" id="person" class="padding-5-vertical" name="sso_plus_user_type" value="PERSON">
+                                                <input type="radio" id="legal" class="padding-5-vertical" name="sso_plus_user_type" value="LEGAL">
+                                            </div>
+                                        </#if>
                                         <div class="${properties.kcFormGroupClass!} form__group">
                                             <#if usernameEditDisabled??>
                                                 <input tabindex="2" id="username" class="${properties.kcInputClass!} form__input" name="username" value="${(login.username!'')}" type="text" disabled />
                                                 <#else>
-                                                    <input tabindex="2" required id="username" class="${properties.kcInputClass!} form__input" name="username" value="<#if username??><#if username[0]??>${msg(username[0])}</#if></#if>" type="text" autofocus autocomplete="off"
+                                                    <input tabindex="1" required id="username" class="${properties.kcInputClass!} form__input" name="username" value="<#if username??><#if username[0]??>${msg(username[0])}</#if></#if>" type="text" autofocus autocomplete="off"
                                                         aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" />
                                             </#if>
                                         </div>
@@ -174,6 +189,7 @@
     <script type="text/javascript">
         const usernameElement = document.getElementById('username');
         const ssoPlusUserTypeEl = document.getElementById('sso_plus_user_type');
+        const authDefaultUserTypeEl = document.getElementById('auth_default_user_type');
         const legalElement = document.getElementById('legal');
         const personElement = document.getElementById('person');
         const kcLoginEl = document.getElementById('kc-login');
@@ -181,10 +197,26 @@
         const p2e = s => s.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
         if(!ssoPlusUserTypeEl?.value ) {
             const urlParams = new URLSearchParams(window.location.search);
-            const userType = urlParams.get('user_type');
-            if(userType && userType.toUpperCase() === 'LEGAL') {
-                legalElement.checked = true;
-                setPlaceHolder('LEGAL');
+            const paramUT = urlParams.get('user_type');
+            if(paramUT) {
+                if(paramUT.toUpperCase() === 'LEGAL') {
+                    legalElement.checked = true;
+                    setPlaceHolder('LEGAL');
+                }
+                if(paramUT.toUpperCase() === 'PERSON') {
+                    legalElement.checked = true;
+                    setPlaceHolder('LEGAL');
+                }
+            } else if(authDefaultUserTypeEl?.value) {
+                const dUserType = authDefaultUserTypeEl.value;
+                if(dUserType.toUpperCase() === 'LEGAL') {
+                    legalElement.checked = true;
+                    setPlaceHolder('LEGAL');
+                }
+                if(dUserType.toUpperCase() === 'PERSON') {
+                    legalElement.checked = true;
+                    setPlaceHolder('LEGAL');
+                }
             } else {
                 personElement.checked = true;
                 setPlaceHolder('PERSON');

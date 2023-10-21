@@ -43,13 +43,9 @@
                                                 ${msg('auth_otpIsNotValid')}
                                             </span>
                                         </#if>
+                                        <input type="hidden" id="auth_otp_length"  value="<#if auth_otp_length??><#if auth_otp_length[0]??>${msg(auth_otp_length[0])}</#if></#if>">
                                         <div class="sms-container form__group">
                                             <div class="inputfield">
-                                            <input type="text" pattern="\d*" maxlength="1" class="sms-input" disabled />
-                                            <input type="text" pattern="\d*" maxlength="1" class="sms-input" disabled />
-                                            <input type="text" pattern="\d*" maxlength="1" class="sms-input" disabled />
-                                            <input type="text" pattern="\d*" maxlength="1" class="sms-input" disabled />
-                                            <input type="text" pattern="\d*" maxlength="1" class="sms-input" disabled />
                                             </div>
                                         </div>
                                         <#if generatedOtpRemainTime??>
@@ -113,14 +109,29 @@
 
 <script>
     //Initial references
-    const input = document.querySelectorAll(".sms-input");
+    const authOtpLengthEl = document.getElementById('auth_otp_length');
     const inputField = document.querySelector(".inputfield");
+    inputs = [];
+    const otpLength = Number(authOtpLengthEl.value);
+    if(!otpLength) {
+        throw "auth_otp_length is not define!";
+    }
+    for(let i = 0; i < otpLength; i++) {
+        const iEl = document.createElement("input");
+        iEl.setAttribute('type', 'text');
+        iEl.setAttribute('maxlength', '1');
+        iEl.setAttribute('pattern', "\\d*");
+        iEl.setAttribute('class', 'sms-input');
+        iEl.setAttribute('disabled', true);
+        inputField.appendChild(iEl);
+        inputs.push('');
+    }
+    const input = document.querySelectorAll(".sms-input");
     const submitButton = document.querySelector(".submit");
     const dataInput = document.querySelector("#id-hidden-input");
     const p2e = s => s.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
     const a2e = s => s.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d))
     submitButton.disabled = true;
-    inputs = ['','','','',''];
     
     //Update input
     const updateInputConfig = (element, disabledStatus) => {
@@ -146,7 +157,7 @@
             }
             if (value.length == 1 && (e.key != "Backspace" || e.key != "Delete")) {
                 inputs[index] = value;
-                if(index < 4) {
+                if(index < otpLength - 1) {
                     updateInputConfig(e.target.nextElementSibling, false);
                 }
             } else if (value.length == 0 && e.key == "Backspace") {

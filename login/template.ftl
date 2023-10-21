@@ -204,5 +204,16 @@
         }
     }
 </script>
+<script>
+    confEmitter$.subscribe(() => {
+        setTimeout(function() {
+            if ($('input[tabindex=0]').length > 0){
+                $('input[tabindex=0]').focus();
+            } else {
+                $('input[tabindex=1]').focus();
+            }
+        }, 100);
+    });
+</script>
 
 </#macro>

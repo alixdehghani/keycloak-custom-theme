@@ -78,7 +78,7 @@
                                     </li>
                                 </ol>
                                 <div class="${properties.kcFormGroupClass!} form__group">
-                                    <input tabindex="1" type="text" id="totp" name="totp" autocomplete="off" required placeholder="${msg('authenticatorCode')}" class="${properties.kcInputClass!} form__input" autofocus 
+                                    <input tabindex="0" type="text" id="totp" name="totp" autocomplete="off" required placeholder="${msg('authenticatorCode')}" class="${properties.kcInputClass!} form__input" autofocus 
                                         aria-invalid="<#if messagesPerField.existsError('totp')>true</#if>" />
                                     <input type="hidden" id="totpSecret" name="totpSecret" value="${totp.totpSecret}" />
                                     <#if mode??><input type="hidden" id="mode" name="mode" value="${mode}"/></#if>

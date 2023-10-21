@@ -57,7 +57,7 @@
                                 <input type="password" id="password" name="password" autocomplete="current-password" style="display:none;"/>
 
                                 <div class="${properties.kcFormGroupClass!} form__group">
-                                    <input type="password" id="password-new" name="password-new" class="${properties.kcInputClass!} password-hint-policy-el form__input"
+                                    <input type="password" tabindex="0" id="password-new" name="password-new" class="${properties.kcInputClass!} password-hint-policy-el form__input"
                                             autofocus autocomplete="new-password" placeholder="${msg('passwordNew')}" 
                                             aria-invalid="<#if messagesPerField.existsError('password','password-confirm')>true</#if>"
                                         />
