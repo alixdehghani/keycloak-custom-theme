@@ -194,9 +194,9 @@
         const personElement = document.getElementById('person');
         const kcLoginEl = document.getElementById('kc-login');
         const inputErrorEl = document.getElementById('input-error');
+        const urlParams = new URLSearchParams(window.location.search);
         const p2e = s => s.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
         if(!ssoPlusUserTypeEl?.value ) {
-            const urlParams = new URLSearchParams(window.location.search);
             const paramUT = urlParams.get('user_type');
             if(paramUT) {
                 if(paramUT.toUpperCase() === 'LEGAL') {
@@ -228,7 +228,13 @@
             personElement.checked = true;
             setPlaceHolder('PERSON');
         }        
-
+        const userTypeReadOnly = urlParams.get('auth_user_type_read_only');
+        if(userTypeReadOnly) {
+            if(userTypeReadOnly.toUpperCase() === 'TRUE') {
+                legalElement.disabled = true;
+                personElement.disabled = true;
+            }
+        }
         function setPlaceHolder (value) {            
             if(value === 'PERSON') {       
                 usernameElement.placeholder = "${msg('auth_nationalCode')}/${msg('auth_userName')}";
